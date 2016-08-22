@@ -1,12 +1,162 @@
-<h2>Client list</h2>
-<ul>
-<% @clients.each do |client| %>
-  <li>
-    <%= client.name %> -
-    <%= link_to "Edit", edit_client_path(client) %> -
-    <%= link_to "Delete", client_url(client), method: :delete, data: { confirm: "Are you sure?" } %>
-  </li>
-<% end %>
-</ul>
+<main class="mdl-layout__content">
+          <div class="page-content my-projects">
 
-<%= link_to "Add a new client", new_client_url %>
+            <BR>
+
+            <div class="right-aligned new-client-button">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-client">
+                New Client
+              </button>
+            </div>
+            <BR>
+            <div id="new-client-table">
+              <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @clients.each do |client| %>
+                  <tr>
+                    <td><%= client.name %></td>
+                    <td><%= client.email %></td>
+                    <td><%= client.phone %></td>
+                    <td><%= client.website %></td>
+                    <td><%= client.address %></td>
+                    <td><%= link_to "Edit", edit_client_path(client) %> - <%= link_to "Delete", client_url(client), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+      </main>
+
+      <%= link_to "Add a new client", new_client_url %>
+
+      <!-- Modal -->
+      <div class="ui long modal create-client-modal">
+        <div class="header">Add a new client</div>
+        <div class="content">
+          <form class="ui create-new-client form">
+            <div class="required field">
+              <label>Client name</label>
+              <input type="text" name="client-name" placeholder="Great Company">
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="text" name="client-email" placeholder="name@company.com">
+            </div>
+            <div class="field">
+              <label>Website</label>
+              <input type="text" name="client-website" placeholder="http://great.co">
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <input type="text" name="client-email" placeholder="+32 11 11 11 11">
+            </div>
+            <div class="field">
+              <label>Address</label>
+              <textarea rows="2" class="project-description" placeholder="Parvis Sainte-Gudule 5
+              1000 Bruxelles"></textarea>
+            </div>
+            <div class="ui error message"></div>
+            <div class="right-aligned">
+              <button class="ui button">Cancel</button>
+              <button class="ui inverted button submit-button" type="submit">Create Project</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+    <script src="./date/moment.min.js"></script>
+    <script src="./date/daterangepicker.min.js"></script>
+
+    <!-- Modal -->
+    <script type="text/javascript">
+      $(document)
+      .ready(function() {
+
+        $('.project-manager-popup-trigger')
+        .popup()
+      ;
+      });
+
+      $( ".create-client" ).click(function() {
+        $('.create-client-modal')
+      .modal('show')
+      ;
+      });
+
+      $('.project-leader-select')
+        .dropdown({fullTextSearch: true})
+      ;
+
+      $('.ui.create-new-project')
+      .form({
+        fields: {
+          name: {
+            identifier: 'project-title',
+            rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter a name for your project'
+            }
+            ]
+          },
+          username: {
+            identifier: 'client-name',
+            rules: [
+            {
+              type   : 'empty',
+              prompt : 'The project must be linked to a client'
+            }
+            ]
+          }
+        }
+      })
+      ;
+
+      // For responsive table (get table headers)
+
+      var headertext = [];
+      var headers = document.querySelectorAll("thead");
+      var tablebody = document.querySelectorAll("tbody");
+
+      for (var i = 0; i < headers.length; i++) {
+        headertext[i]=[];
+        for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
+          var current = headrow;
+          headertext[i].push(current.textContent);
+        }
+      }
+
+      for (var h = 0, tbody; tbody = tablebody[h]; h++) {
+        for (var i = 0, row; row = tbody.rows[i]; i++) {
+          for (var j = 0, col; col = row.cells[j]; j++) {
+            col.setAttribute("data-th", headertext[h][j]);
+          }
+        }
+      }
+
+    </script>
+
+    <script>
+      $(document).ready(function() {
+                            $('.deadline-date').daterangepicker({
+                                singleDatePicker: true,
+                                locale: {
+                                  format: 'YYYY-MM-DD'
+                                }
+                            });
+                        });
+    </script>
