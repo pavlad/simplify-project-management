@@ -1,0 +1,12 @@
+<h2>Client list</h2>
+<ul>
+<% @clients.each do |client| %>
+  <li>
+    <%= client.name %> -
+    <%= link_to "Edit", edit_client_path(client) %> -
+    <%= link_to "Delete", client_url(client), method: :delete, data: { confirm: "Are you sure?" } %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "Add a new client", new_client_url %>
