@@ -1,11 +1,16 @@
 <h2>Tasks overview for project <%= @project.name %></h2>
 <ul></ul>
 <% @tasks.each do |task| %>
-  <li><%= task.name %> -
+  <li><%= link_to task.name, project_task_url(@project, task) %> -
     Assigned to: <%= User.find(task.user_id).first_name %> -
     <%= task.is_done? %> -
     <%= link_to "Edit", edit_project_task_url(@project, task)%>
     <%= link_to "Delete", project_task_url(@project, task), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% if task.is_done? %>
+      <%= link_to "Unmark as done", unmark_as_done_project_task_url(@project, task) %>
+    <% else %>
+      <%= link_to "Mark as done", mark_as_done_project_task_url(@project, task) %>
+    <% end %>
   </li>
 <% end %>
 </ul>
