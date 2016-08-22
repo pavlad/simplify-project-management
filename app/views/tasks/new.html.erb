@@ -1,0 +1,7 @@
+<%= simple_form_for [@project, @task] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :user_id %>
+  <%= f.button :submit %>
+<% end %>
