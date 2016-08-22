@@ -1,8 +1,6 @@
-<!-- DB schema -->
-<!-- Generated with http://db.lewagon.org/ -->
-
-
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->
+<!-- Active URL: http://db.lewagon.org/ -->
 <sql>
 <datatypes db="mysql">
   <group label="Numeric" color="rgb(238,238,170)">
@@ -52,9 +50,6 @@
 <row name="job_title" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="email" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
 <row name="mobile_phone" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -69,12 +64,23 @@
 <default>NULL</default></row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="User" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="company_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="Company" row="id" />
 </row>
+<row name="password" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="is_admin" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="is_owner" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -93,6 +99,9 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="website" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -125,19 +134,17 @@
 <part>id</part>
 </key>
 </table>
-<table x="588" y="165" name="Project">
+<table x="612" y="171" name="Project">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="client" null="1" autoincrement="0">
+<row name="project_manager_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="project_manager" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="Consultant" row="id" />
+</row>
 <row name="description" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -145,21 +152,14 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="Client" row="id" />
 </row>
-<row name="project_consultants_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="ProjectConsultants" row="id" />
-</row>
 <row name="man_days" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="project_contacts" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="419" y="375" name="Task">
+<table x="409" y="332" name="Task">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -184,26 +184,6 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="comment" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="122" y="586" name="User">
-<row name="id" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="username" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="password" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="is_admin" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="is_client" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -254,7 +234,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="348" y="162" name="ProjectConsultants">
+<table x="289" y="99" name="ProjectConsultants">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -270,14 +250,13 @@
 <part>id</part>
 </key>
 </table>
-<table x="816" y="164" name="ProjectContacts">
+<table x="1038" y="62" name="ProjectContacts">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="project_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="Project" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="client_contact_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="ClientContact" row="id" />
