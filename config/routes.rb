@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      get 'mark_as_done', on: :member
+      get 'unmark_as_done', on: :member
+    end
     resources :issues
   end
   resources :users do

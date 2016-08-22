@@ -1,0 +1,5 @@
+<h2><%= @task.name %></h2>
+<p>Start date: <%= @task.start_date %></p>
+<p>End date: <%= @task.end_date %></p>
+<p>Assigned to: <%= User.find(@task.user_id).first_name %> <% User.find(@task.user_id).last_name %></p>
+<p>Is done: <%= @task.is_done? %></p>
