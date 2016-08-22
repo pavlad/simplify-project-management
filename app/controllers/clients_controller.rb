@@ -3,6 +3,7 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.all
+    @client = Client.new
   end
 
   def show

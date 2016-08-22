@@ -1,8 +1,79 @@
-<%= simple_form_for @client do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :phone %>
-  <%= f.input :website %>
-  <%= f.input :email %>
-  <%= f.button :submit %>
-<% end %>
+
+<!-- Modal -->
+<div class="ui long modal create-client-modal">
+  <div class="header">Add a new client</div>
+  <div class="content">
+    <form class="ui create-new-client form" action="/clients" method="post">
+      <div class="required field">
+        <label>Client name</label>
+        <input type="text" name="client[name]" placeholder="Great Company">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" name="client[email]" placeholder="name@company.com">
+      </div>
+      <div class="field">
+        <label>Website</label>
+        <input type="text" name="client[website]" placeholder="http://great.co">
+      </div>
+      <div class="field">
+        <label>Phone</label>
+        <input type="text" name="client[phone]" placeholder="+32 11 11 11 11">
+      </div>
+      <div class="field">
+        <label>Address</label>
+        <textarea rows="2" class="client[address]" placeholder="Parvis Sainte-Gudule 5
+        1000 Bruxelles"></textarea>
+      </div>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="ui error message"></div>
+      <div class="right-aligned">
+        <button class="ui button">Cancel</button>
+        <button class="ui inverted button submit-button" type="submit">Create Project</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+
+<!-- Modal -->
+<script type="text/javascript">
+  $(document)
+  .ready(function() {
+
+    $('.project-manager-popup-trigger')
+    .popup()
+    ;
+  });
+
+  $( ".create-client" ).click(function() {
+    $('.create-client-modal')
+    .modal('show')
+    ;
+  });
+
+// For responsive table (get table headers)
+
+var headertext = [];
+var headers = document.querySelectorAll("thead");
+var tablebody = document.querySelectorAll("tbody");
+
+for (var i = 0; i < headers.length; i++) {
+  headertext[i]=[];
+  for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
+    var current = headrow;
+    headertext[i].push(current.textContent);
+  }
+}
+
+for (var h = 0, tbody; tbody = tablebody[h]; h++) {
+  for (var i = 0, row; row = tbody.rows[i]; i++) {
+    for (var j = 0, col; col = row.cells[j]; j++) {
+      col.setAttribute("data-th", headertext[h][j]);
+    }
+  }
+}
+
+</script>
