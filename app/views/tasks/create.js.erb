@@ -1,0 +1,5 @@
+var new_review = $("<p><%= @task.name %></p>").hide();
+$('#tasks').append(new_review);
+new_review.slideDown();
+$('#task-form').find('input').val('');
+$('#task-form').find('select').val('');

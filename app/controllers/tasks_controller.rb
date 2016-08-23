@@ -16,9 +16,12 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.project_id = params[:project_id]
-    @task.save
-
-    redirect_to project_tasks_path(@project)
+    if @task.save
+      respond_to do |format|
+        format.html { redirect_to projects_path(project) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    end
   end
 
   def new

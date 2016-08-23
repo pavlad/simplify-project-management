@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>project-demo</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
-    <link rel="stylesheet" href="./date/daterangepicker.min.css">
-
-    <link rel="stylesheet" href="./css/style.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-
-  <body>
-
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
 
       <div class="mdl-layout__drawer">
@@ -42,8 +20,6 @@
                   <tr>
                     <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="task-status">Done</span></th>
                     <th><span class="sort" data-sort="task-name">Task</span></th>
-                    <th><span class="sort" data-sort="task-client">Client</span></th>
-                    <th><span class="sort" data-sort="task-project">Project</span></th>
                     <th><span class="sort" data-sort="task-start">Start</span></th>
                     <th><span class="sort" data-sort="task-end">End</span></th>
                     <th><span class="sort" data-sort="task-consultant">Assigned to</span></th>
@@ -53,8 +29,6 @@
                   <tr>
                     <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
                     <td class="task-name">Finish project report</td>
-                    <td class="task-client">Rich Client</td>
-                    <td class="task-project">Awesome Project</td>
                     <td class="task-start">25.7.2016</td>
                     <td class="task-end">27.7.2016</td>
                     <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
@@ -321,6 +295,3 @@
         alert( "Handler for .click() called." );
       });
     </script>
-
-  </body>
-</html>
