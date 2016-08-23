@@ -35,7 +35,7 @@ class IssuesController < ApplicationController
     @issue.is_resolved = true
   end
 
-  def unmark_as_resolved
+  def undo_mark_as_resolved
     @issue.is_resolved = true
   end
 
