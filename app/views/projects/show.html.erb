@@ -6,7 +6,7 @@
         <div class="project-info" style="padding: 20px;">
           <div class="basic-info">
             <h2>
-              Amazing project
+              <%= @project.name %>
             </h2>
             <h3>
               <ul class="list-inline">
@@ -18,7 +18,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eius, facere voluptatum sequi et repellat omnis eum excepturi? Recusandae placeat aspernatur unde dolorum consequatur, labore possimus quod cupiditate modi, doloremque.</p>
           </div>
           <div class="project-owners">
-            <h3>Project owners</h3>
+            <h3>Project Leader</h3>
             <!-- testing code -->
 
 
@@ -26,21 +26,7 @@
               <div class="item">
                 <img class="ui avatar image" src="img/lukas.png">
                 <div class="content">
-                  <a class="header">Lukas Gutwinski</a>
-                  <div class="description">Co-founder</div>
-                </div>
-              </div>
-              <div class="item">
-                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar2/small/matthew.png">
-                <div class="content">
-                  <a class="header">Pak Phanarat</a>
-                  <div class="description">Co-founder</div>
-                </div>
-              </div>
-              <div class="item">
-                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar2/small/matthew.png">
-                <div class="content">
-                  <a class="header">Vladimir Pavlyukov</a>
+                <a class="header"><%= @project.project_manager.email %></a>
                   <div class="description">Co-founder</div>
                 </div>
               </div>
@@ -51,27 +37,15 @@
           <div class="project-members">
             <h3>Consultants</h3>
             <div class="ui list">
+            <% @consultants.each do |c| %>
               <div class="item">
                 <img class="ui avatar image" src="img/lukas.png">
                 <div class="content">
-                  <a class="header">Lukas Gutwinski</a>
+                  <a class="header"><%= c.email %></a>
                   <div class="description">Co-founder</div>
                 </div>
               </div>
-              <div class="item">
-                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar2/small/matthew.png">
-                <div class="content">
-                  <a class="header">Pak Phanarat</a>
-                  <div class="description">Co-founder</div>
-                </div>
-              </div>
-              <div class="item">
-                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar2/small/matthew.png">
-                <div class="content">
-                  <a class="header">Vladimir Pavlyukov</a>
-                  <div class="description">Co-founder</div>
-                </div>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -81,31 +55,9 @@
           <div id="p1" class="mdl-progress mdl-js-progress graph"></div>
           <script>
             document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-              this.MaterialProgress.setProgress(75);
+              this.MaterialProgress.setProgress(40);
             });
           </script>
-
-          <div id="p2" class="mdl-progress mdl-js-progress graph"></div>
-          <script>
-            document.querySelector('#p2').addEventListener('mdl-componentupgraded', function() {
-              this.MaterialProgress.setProgress(25);
-            });
-          </script>
-
-          <div id="p3" class="mdl-progress mdl-js-progress graph"></div>
-          <script>
-            document.querySelector('#p3').addEventListener('mdl-componentupgraded', function() {
-              this.MaterialProgress.setProgress(0);
-            });
-          </script>
-
-          <div id="p4" class="mdl-progress mdl-js-progress graph"></div>
-          <script>
-            document.querySelector('#p4').addEventListener('mdl-componentupgraded', function() {
-              this.MaterialProgress.setProgress(0);
-            });
-          </script>
-
         </div>
       </div>
 
