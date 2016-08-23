@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks
     resources :issues
+    resources :assignments
   end
   resources :users do
     get 'projects', on: :member

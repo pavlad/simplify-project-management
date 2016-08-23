@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show, :create, :update, :destroy]
+  before_action :find_project, only: [:show, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -9,12 +9,24 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @users = User.all
     @project = Project.new
+    @project.assignments.build
   end
 
   def create
     @project = Project.new(project_params)
     @project.save
+
+    # project_params[:assignments_attributes]['0'][:user_id].each do |user_id|
+    #   assign = @project.assignments.build(user_id: user_id)
+    #   assign.save!
+    # end
+    assignments_params[:assignments_attributes]["0"][:user_id].drop(1).each do |user_id|
+      @project.assignments.build(user_id: user_id)
+    end
+    @project.save
+    raise
   end
 
   def edit
@@ -35,7 +47,11 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :descritpion, :man_days, :project_manager_id, :client_id, )
+    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id)
+  end
+
+  def assignments_params
+    params.require(:project).permit!
   end
 
 end
