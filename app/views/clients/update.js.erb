@@ -1,0 +1,13 @@
+// Here you will write *javascript* that would be executed by the browser
+<% if @client.errors.any? %>
+<% raise %>
+  // Render new client form with errors
+  $('#form_client').html("<%= j render 'form', client: @client %>");
+<% else %>
+  // Create a paragraph for the new client. But hide it.
+  // var new_client = $("<%= j render 'clients/show', client: @client %>").hide();
+  // Add it to the DOM, at the end of the existing clients. It's still hidden.
+  //
+  //
+  $('#form_client').html("<%= j render 'form', client: @client %>");
+<% end %>
