@@ -16,6 +16,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'devise_invitable', '~> 1.7.0'
+gem 'postmark-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -26,6 +28,7 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener"
 end
 
 

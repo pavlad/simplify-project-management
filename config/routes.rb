@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   namespace :user do
     resources :tasks
   end
+
+  scope "settings" do
+    root :to => "user_management#index"
+  end
 end
