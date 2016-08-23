@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @consultants = @project.users
   end
 
   def new
@@ -26,7 +27,6 @@ class ProjectsController < ApplicationController
       @project.assignments.build(user_id: user_id)
     end
     @project.save
-    raise
   end
 
   def edit
