@@ -16,6 +16,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'devise_invitable', '~> 1.7.0'
 
 group :development, :test do
   gem 'binding_of_caller'

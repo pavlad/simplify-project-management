@@ -71,6 +71,9 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    devise_invitable (1.7.0)
+      actionmailer (>= 4.0.0)
+      devise (>= 4.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -195,6 +198,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   devise!
+  devise_invitable (~> 1.7.0)
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)

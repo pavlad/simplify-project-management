@@ -19,4 +19,8 @@ Rails.application.routes.draw do
    root :to => "tasks#index"
    resources :tasks
   end
+
+  scope "settings" do
+    root :to => "user_management#index"
+  end
 end
