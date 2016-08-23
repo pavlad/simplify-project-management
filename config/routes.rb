@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'unmark_as_done', on: :member
     end
     resources :issues
+    resources :assignments
   end
   resources :users do
     get 'projects', on: :member
