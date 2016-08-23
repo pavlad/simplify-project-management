@@ -1,4 +1,4 @@
-class Tasks::TasksController < ApplicationController
+class User::TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks
