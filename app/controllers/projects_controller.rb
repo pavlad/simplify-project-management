@@ -3,6 +3,9 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @project = Project.new
+    @users = User.all
+    @project.assignments.build
   end
 
   def show
@@ -27,6 +30,8 @@ class ProjectsController < ApplicationController
       @project.assignments.build(user_id: user_id)
     end
     @project.save
+
+    redirect_to projects_path
   end
 
   def edit
