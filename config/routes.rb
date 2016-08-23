@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   end
   resources :clients
 
-  namespace :tasks do
-   root :to => "tasks#index"
-   resources :tasks
+  namespace :user do
+    resources :tasks
   end
 end
