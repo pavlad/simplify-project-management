@@ -1,1 +1,8 @@
-<%= render 'form' %>
+<%= simple_form_for [@client] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :phone %>
+  <%= f.input :website %>
+  <%= f.input :address %>
+  <%= f.button :submit %>
+<% end %>
