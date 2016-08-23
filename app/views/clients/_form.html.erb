@@ -1,38 +1,22 @@
 
 <!-- Modal -->
-<div class="ui long modal create-client-modal">
+<div class="ui long modal create-client-modal" id="modal-test">
   <div class="header">Add a new client</div>
   <div class="content">
-    <form class="ui create-new-client form" action="/clients" method="post">
-      <div class="required field">
-        <label>Client name</label>
-        <input type="text" name="client[name]" placeholder="Great Company">
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="text" name="client[email]" placeholder="name@company.com">
-      </div>
-      <div class="field">
-        <label>Website</label>
-        <input type="text" name="client[website]" placeholder="http://great.co">
-      </div>
-      <div class="field">
-        <label>Phone</label>
-        <input type="text" name="client[phone]" placeholder="+32 11 11 11 11">
-      </div>
-      <div class="field">
-        <label>Address</label>
-        <textarea rows="2" class="client[address]" placeholder="Parvis Sainte-Gudule 5
-        1000 Bruxelles"></textarea>
-      </div>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <div class="ui error message"></div>
-      <div class="right-aligned">
-        <button class="ui button">Cancel</button>
-        <button class="ui inverted button submit-button" type="submit">Create Project</button>
-      </div>
-    </form>
-  </div>
+    <%= simple_form_for [@client] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :phone %>
+      <%= f.input :website %>
+      <%= f.input :address %>
+      <%= f.button :submit %>
+    <%#= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="ui error message"></div>
+    <div class="right-aligned">
+      <button class="ui button">Cancel</button>
+    </div>
+    <% end %>
+</div>
 </div>
 </div>
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
