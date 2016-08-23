@@ -1046,3 +1046,149 @@ body {
   }
 
 }
+
+
+
+
+//Vlad Styles
+
+header .profile {
+  margin-left: 20px;
+}
+
+body {
+  background-color: #EEE;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*h1, h2, h3, p {
+  font-family: 'Roboto', sans-serif;
+  }*/
+
+  h2 {
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+
+h2, h3{
+  margin: 0!important;
+}
+
+  .little-transparent {
+    opacity: 1;
+  }
+
+  .consultant-avatars img {
+    display: inline-block!important;
+    margin-left: -15px!important;
+    transition: margin 100ms ease;
+  }
+
+  .consultant-avatars:hover .consultant-avatar {
+    margin-left:5px!important;
+  }
+
+  .page-content.my-projects {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+/*.box{
+  margin: auto;
+  margin-top: 40px;
+  width: 70%;
+  min-height: 70%;
+  background-color: white;
+  border: 1px solid #EEE;
+  }*/
+
+  .wrapper-main{
+    height: 100%;
+    background-color: white;
+    padding: 35px;
+  }
+
+
+  .project-info{
+    display: flex;
+  }
+
+  .basic-info{
+    flex: 0 0 50%;
+    padding-right: 30px;
+  }
+
+  .project-owners{
+    flex: 0 0 25%;
+  }
+
+  .project-members{
+    flex: 0 0 25%;
+  }
+
+
+  .box {
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 2px;
+    /*  display: inline-block;*/
+    /*  min-height: 70%;*/
+    /*  margin: 1rem;*/
+    position: relative;
+    width: 70%;
+  }
+
+  .graph{
+    height:20px;
+    width: 24%;
+    margin: 0px;
+    display: inline-block;
+  }
+
+
+/*.total-progress{
+
+}
+*/
+
+
+
+.short-info{
+  padding: 0px 50px 30px 50px;
+  min-height: 300px;
+}
+
+a:focus, a:hover{
+  text-decoration: none!important;
+}
+
+
+
+
+.ui.card, .ui.cards>.card{
+  max-width: 80%;
+}
+
+/*borrowed from bootstrap*/
+
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
