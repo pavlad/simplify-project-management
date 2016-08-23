@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:create, :update]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done, :unmark_as_done]
+  before_action :set_project, only: [:create, :update, :new, :edit, :index, :destroy, :mark_as_done, :unmark_as_done]
 
   def index
     @tasks = Task.all
@@ -10,29 +10,45 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @users = User.all
   end
 
   def create
     @task = Task.new(task_params)
+    @task.project_id = params[:project_id]
     @task.save
 
-    redirect_to project_task(@project, @task)
+    redirect_to project_tasks_path(@project)
   end
 
   def new
     @task = Task.new
+    redirect_to project_tasks_path(@project)
   end
 
   def update
     @task.update(task_params)
+    @task.save
 
-    redirect_to project_task(@project, @task)
+    redirect_to project_tasks_path(@project)
   end
 
   def destroy
     @task.destroy
 
-    redirect_to tasks_path
+    redirect_to project_tasks_path(@project)
+  end
+
+  def mark_as_done
+    @task.is_done = true
+    @task.save
+    redirect_to project_tasks_path(@project)
+  end
+
+  def unmark_as_done
+    @task.is_done = false
+    @task.save
+    redirect_to project_tasks_path(@project)
   end
 
   private

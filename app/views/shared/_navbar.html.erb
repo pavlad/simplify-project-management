@@ -1,76 +1,64 @@
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
-  <% end %>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
+  <header class="mdl-layout__header">
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
-
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
-
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">project-demo</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+      mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"id="fixed-header-drawer-exp">
         </div>
       </div>
 
-    <% else %>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">list</i> Projects</a>
+        <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">check_box</i> Tasks</a>
+        <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">business</i> Clients</a>
+        <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">people</i> Consultants</a>
+        <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">timeline</i> Dashboard</a>
+        <a class="ui circular label">22</a>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <!-- Right aligned menu below button -->
 
-    <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="user-menu">
+          <li class="mdl-menu__item">My Profile</li>
+          <li class="mdl-menu__item">Settings</li>
+          <li disabled class="mdl-menu__item">Edit dashboard</li>
+          <li class="mdl-menu__item">Log Out</li>
+        </ul>
+        <div class="ui item right profile">
+          <div class="ui header" id="user-menu">
+            <img class="ui mini circular image" src="./img/lukas.png">
+            <div class="content" style="color:rgba(255, 255, 255, 0.7)">
+              <div class="ui sub header">
+                <h4 class="ui header" style="color:rgba(255, 255, 255, 0.7)">
+                  Lukas Gutwinski
+                  <div class="sub header" style="color:rgba(255, 255, 255, 0.7)">
+                    Awesome Consulting Company
+                  </div>
+                </h4>
+              </div>
+            </div>
+          </div>
+      </nav>
+        </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Menu</span>
+    <nav class="mdl-navigation">
+
+      <a class="mdl-navigation__link" href=""><i class="material-icons">list</i> Projects</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">check_box</i> Tasks</a></a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">business</i> Clients</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">people</i> Consultants</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">timeline</i> Dashboard</a>
+
+    </nav>
   </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
