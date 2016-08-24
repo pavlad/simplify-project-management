@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
     @task = Task.new
     @tasks = Task.all
     @task_count = @project.tasks.count
+    @percentage = @project.completion_percentage
 
   end
 

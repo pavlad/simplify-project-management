@@ -51,7 +51,7 @@
       <div id="p1" class="mdl-progress mdl-js-progress graph"></div>
       <script>
         document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-          this.MaterialProgress.setProgress(40);
+          this.MaterialProgress.setProgress(<%= @percentage %>);
         });
       </script>
     </div>
@@ -108,8 +108,6 @@
           <main class="mdl-layout__content">
             <div class="page-content my-projects">
               <div class="tasks-table" id="task-list">
-              <%= @project.number_of_tasks %>
-              <%= @project.number_of_tasks_done %>
                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                   <thead>
                     <tr>

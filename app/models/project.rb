@@ -16,6 +16,8 @@ class Project < ApplicationRecord
     self.tasks.select{|x| x.is_done}.count
   end
 
+  def completion_percentage
+    (self.number_of_tasks_done.to_f/self.number_of_tasks.to_f)*100
+  end
+
 end
-
-
