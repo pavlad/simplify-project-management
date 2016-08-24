@@ -1,38 +1,49 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:create, :update]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_done]
+  before_action :set_project, only: [:create, :update, :new, :edit, :index, :destroy, :mark_as_done, :unmark_as_done]
 
-  def index
-    @tasks = Task.all
-  end
+  # def index
+  #   @tasks = Task.all
+  # end
 
-  def show
-  end
+  # def show
+  # end
 
-  def edit
-  end
+  # def edit
+  #   @users = User.all
+  # end
 
   def create
     @task = Task.new(task_params)
-    @task.save
-
-    redirect_to project_task(@project, @task)
+    @task.project_id = params[:project_id]
+    if @task.save
+      respond_to do |format|
+        format.html { redirect_to projects_path(project) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    end
   end
 
-  def new
-    @task = Task.new
-  end
 
-  def update
-    @task.update(task_params)
+  # def update
+  #   @task.update(task_params)
+  #   @task.save
+  #   @project.create_activity :update, owner: current_user, project_id: @project.id
+  # end
 
-    redirect_to project_task(@project, @task)
-  end
+  # def destroy
+  #   @task.destroy
+  #   @project.create_activity :destroy, owner: current_user, project_id: @project.id
+  # end
 
-  def destroy
-    @task.destroy
-
-    redirect_to tasks_path
+  def mark_done
+    @task.mark_done
+    if @task.save
+      respond_to do |format|
+        format.html { redirect_to projects_path(project) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    end
   end
 
   private

@@ -1,0 +1,42 @@
+<main class="mdl-layout__content">
+          <div class="page-content my-projects">
+
+            <BR>
+
+            <div class="right-aligned new-client-button">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-client">
+                New Client
+              </button>
+            </div>
+            <BR>
+            <div id="new-client-table">
+              <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @clients.each do |client| %>
+                  <tr>
+                    <td><%= client.name %></td>
+                    <td><%= client.email %></td>
+                    <td><%= client.phone %></td>
+                    <td><%= client.website %></td>
+                    <td><%= client.address %></td>
+                    <td><%= link_to "Edit", edit_client_path(client) %> - <%= link_to "Delete", client_url(client), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+      </main>
+
+      <%= render 'form' %>

@@ -1,281 +1,38 @@
+
 <main class="mdl-layout__content">
-          <div class="page-content my-projects">
+  <div class="page-content my-projects">
 
-            <BR>
-            <BR>
-            <BR>
+    <BR>
+      <BR>
+        <BR>
 
-            <div class="right-aligned new-project-button">
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-project">
-                New Project
-              </button>
-            </div>
-
-            <div id="new-project-table">
-              <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                <thead>
-                  <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Status</th>
-                    <th>Name</th>
-                    <th>Client</th>
-                    <th>Budgeted Days</th>
-                    <th>Progress</th>
-                    <th>Project Lead</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="ui label high-priority-issue">High Priority Issue</a></td>
-                    <td>Sales Plan</td>
-                    <td>Vladimir Pavlyukov</td>
-                    <td>4 days</td>
-                    <td>75%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label issue">Issue</a></td>
-                    <td>Sales Plan</td>
-                    <td>Vladimir Pavlyukov</td>
-                    <td>4 days</td>
-                    <td>90%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label in-progress">In progress</a></td>
-                    <td>Marketing plan</td>
-                    <td>Phanarat Pak</td>
-                    <td>2 days</td>
-                    <td>60%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label in-progress">In progress</a></td>
-                    <td>Marketing plan</td>
-                    <td>Phanarat Pak</td>
-                    <td>10 days</td>
-                    <td>95%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label in-progress">In progress</a></td>
-                    <td>Marketing plan</td>
-                    <td>Phanarat Pak</td>
-                    <td>2 days</td>
-                    <td>20%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label in-progress">In progress</a></td>
-                    <td>Marketing plan</td>
-                    <td>Phanarat Pak</td>
-                    <td>12 days</td>
-                    <td>80%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label in-progress">In progress</a></td>
-                    <td>Product Development</td>
-                    <td>Lukas Gutwinski</td>
-                    <td>7 days</td>
-                    <td>45%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label not-started">Not Started</a></td>
-                    <td>Sales Plan</td>
-                    <td>Vladimir Pavlyukov</td>
-                    <td>4 days</td>
-                    <td>0%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label not-started">Not Started</a></td>
-                    <td>Sales Plan</td>
-                    <td>Vladimir Pavlyukov</td>
-                    <td>8 days</td>
-                    <td>0%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span><span data-title="Vladimir Pavlyukov" data-content="Managing Consultant Supply Chain Management" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></td>
-                  </tr>
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><a class="ui label finished">Finished</a></td>
-                    <td>Sales Plan</td>
-                    <td>Vladimir Pavlyukov</td>
-                    <td>4 days</td>
-                    <td>100%</td>
-                    <td><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="right-aligned new-project-button">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-project">
+              New Project
+            </button>
           </div>
 
-      </main>
+          <div id="new-project-table">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Status</th>
+                  <th>Name</th>
+                  <th>Client</th>
+                  <th>Budgeted Days</th>
+                  <th>Progress</th>
+                  <th>Project Lead</th>
+                </tr>
+              </thead>
+              <tbody>
 
-      <!-- Modal -->
-      <div class="ui long modal create-project-modal">
-        <div class="header">Create a New Project</div>
-        <div class="content">
-          <form class="ui create-new-project form">
-            <div class="two fields">
-              <div class="twelve wide required field">
-                <label>Project Titel</label>
-                <input type="text" name="project-title" placeholder="Awesome Project">
-              </div>
-              <div class="four wide field">
-                <label>Is there a deadline?</label>
-                <div class="ui icon input">
-                  <input type="text" class="deadline-date" value="">
-                  <i class="calendar outline icon"></i>
-                </div>
-              </div>
-            </div>
-            <div class="required field">
-              <label>Client Name</label>
-              <input type="text" name="client-name" placeholder="Worldclass Company">
-            </div>
-            <div class="field">
-              <label>Project Leader(s)</label>
-              <div class="ui fluid multiple search selection dropdown project-leader-select">
-                <input type="hidden" name="consultant">
-                <i class="dropdown icon"></i>
-                <div class="default text">Smart, good-looking consultant</div>
-                <div class="menu">
-                  <div class="item" data-value="lukas">
-                    <img class="ui mini avatar image" src="./img/lukas.png">
-                    Lukas Gutwinski
-                  </div>
-                  <div class="item" data-value="vlad">
-                    <img class="ui mini avatar image" src="./img/lukas.png">
-                    Vladimir Pavlyukov
-                  </div>
-                  <div class="item" data-value="phan">
-                    <img class="ui mini avatar image" src="./img/lukas.png">
-                    Phanarat Pak
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <label>Consultants</label>
-              <div class="ui fluid multiple search selection dropdown project-leader-select">
-                <input type="hidden" name="consultant">
-                <i class="dropdown icon"></i>
-                <div class="default text">Team of great people</div>
-                <div class="menu">
-                  <div class="item" data-value="lukas">
-                    <img class="ui mini avatar image" src="./img/lukas.png">
-                    Lukas Gutwinski
-                  </div>
-                  <div class="item" data-value="vlad">
-                    <img class="ui mini avatar image" src="./img/lukas.png">
-                    Vladimir Pavlyukov
-                  </div>
-                  <div class="item" data-value="phan">
-                    <img class="ui mini avatar image" src="./img/lukas.png">
-                    Phanarat Pak
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <label>Description</label>
-              <textarea rows="2" class="project-description"></textarea>
-            </div>
-            <div class="field">
-              <button class="ui icon button">
-                <i class="attach icon"></i>
-              </button>
-            </div>
-            <div class="ui error message"></div>
-            <div class="right-aligned">
-              <button class="ui button">Cancel</button>
-              <button class="ui inverted button submit-button" type="submit">Create Project</button>
-            </div>
-          </form>
+                <% @projects.each do |p| %>
+                <%= render "project", project: p %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </div>
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
-    <script src="./date/moment.min.js"></script>
-    <script src="./date/daterangepicker.min.js"></script>
 
-    <!-- Modal -->
-    <script type="text/javascript">
-      $(document)
-      .ready(function() {
-
-        $('.project-manager-popup-trigger')
-        .popup()
-      ;
-      });
-
-      $( ".create-project" ).click(function() {
-        $('.create-project-modal')
-      .modal('show')
-      ;
-      });
-
-      $('.project-leader-select')
-        .dropdown({fullTextSearch: true})
-      ;
-
-      $('.ui.create-new-project')
-      .form({
-        fields: {
-          name: {
-            identifier: 'project-title',
-            rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter a name for your project'
-            }
-            ]
-          },
-          username: {
-            identifier: 'client-name',
-            rules: [
-            {
-              type   : 'empty',
-              prompt : 'The project must be linked to a client'
-            }
-            ]
-          }
-        }
-      })
-      ;
-
-      // For responsive table (get table headers)
-
-      var headertext = [];
-      var headers = document.querySelectorAll("thead");
-      var tablebody = document.querySelectorAll("tbody");
-
-      for (var i = 0; i < headers.length; i++) {
-        headertext[i]=[];
-        for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
-          var current = headrow;
-          headertext[i].push(current.textContent);
-        }
-      }
-
-      for (var h = 0, tbody; tbody = tablebody[h]; h++) {
-        for (var i = 0, row; row = tbody.rows[i]; i++) {
-          for (var j = 0, col; col = row.cells[j]; j++) {
-            col.setAttribute("data-th", headertext[h][j]);
-          }
-        }
-      }
-
-    </script>
-
-    <script>
-      $(document).ready(function() {
-                            $('.deadline-date').daterangepicker({
-                                singleDatePicker: true,
-                                locale: {
-                                  format: 'YYYY-MM-DD'
-                                }
-                            });
-                        });
-    </script>
+      </main>
+      <%= render 'form' %>

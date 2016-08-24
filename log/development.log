@@ -1293,3 +1293,4 @@ NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 
 
 Started POST "/__better_errors/7d30fb8e701943cf/variables" for ::1 at 2016-08-22 17:54:28 +0200
 DEPRECATION WARNING: [SIMPLE_FORM] SimpleForm.form_class= is deprecated and will be removed in 4.x. Use SimpleForm.default_form_class= instead (called from block in <top (required)> at /Users/lukgut/code/final_project/config/initializers/simple_form.rb:140)
+DEPRECATION WARNING: [SIMPLE_FORM] SimpleForm.form_class= is deprecated and will be removed in 4.x. Use SimpleForm.default_form_class= instead (called from block in <top (required)> at /Users/lukgut/code/final_project/config/initializers/simple_form.rb:140)

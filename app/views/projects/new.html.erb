@@ -1,0 +1,11 @@
+
+<%= simple_form_for(@project) do |project_f| %>
+  <%= project_f.input :name %>
+  <%= project_f.input :description %>
+  <%= project_f.input :man_days %>
+  <%= project_f.input :project_manager_id, collection:@users, label_method: :email %>
+  <%= project_f.fields_for(:assignments) do |assignment_f| %>
+    <%= assignment_f.input :user_id, collection: @users, label_method: :email, input_html: {multiple:true} %>
+  <% end %>
+  <%= project_f.button :submit %>
+<% end %>

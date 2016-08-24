@@ -1,0 +1,6 @@
+console.log('hello')
+var new_task = $("<%= j render partial: "projects/task", locals: {project: @project, task: @task} %>").hide();
+$('#task-list .list').append(new_task);
+new_task.fadeIn();
+$('#task-form').find('input').val('');
+$('#task-form').find('select').val('');

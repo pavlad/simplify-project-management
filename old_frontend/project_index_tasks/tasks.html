@@ -21,57 +21,7 @@
   <body>
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
-      <header class="mdl-layout__header">
 
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">project-demo</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-          mdl-textfield--floating-label mdl-textfield--align-right">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" name="sample"id="fixed-header-drawer-exp">
-            </div>
-          </div>
-
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">list</i> Projects</a>
-            <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">check_box</i> Tasks</a>
-            <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">business</i> Clients</a>
-            <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">people</i> Consultants</a>
-            <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">timeline</i> Dashboard</a>
-            <a class="ui circular label">22</a>
-
-            <!-- Right aligned menu below button -->
-
-
-            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="user-menu">
-              <li class="mdl-menu__item">My Profile</li>
-              <li class="mdl-menu__item">Settings</li>
-              <li disabled class="mdl-menu__item">Edit dashboard</li>
-              <li class="mdl-menu__item">Log Out</li>
-            </ul>
-            <div class="ui item right profile">
-                <div class="ui header" id="user-menu">
-                    <img class="ui mini circular image" src="./img/lukas.png">
-                    <div class="content" style="color:rgba(255, 255, 255, 0.7)">
-                        <div class="ui sub header">
-                        <h4 class="ui header" style="color:rgba(255, 255, 255, 0.7)">
-                            Lukas Gutwinski
-                            <div class="sub header" style="color:rgba(255, 255, 255, 0.7)">
-                                Awesome Consulting Company
-                            </div>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-          </nav>
-        </div>
-      </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Menu</span>
         <nav class="mdl-navigation">
@@ -86,36 +36,6 @@
       </div>
       <main class="mdl-layout__content">
           <div class="page-content my-projects">
-
-            <BR>
-            <BR>
-            <BR>
-            <div class="ui grid">
-              <div class="eight wide column">
-                <div class="task-filter-contols" style="display:none;">
-                  <button class="ui button">
-                    All
-                  </button>
-                  <button class="ui button">
-                    Next 7 Days
-                  </button>
-                  <button class="ui button task-from-to-filter" id="rangepicker">
-                    From ... To ...
-                  </button>
-                </div>
-              </div>
-              <div class="eight wide column">
-                <div class="right-aligned new-project-button">
-                  <button class="right-aligned ui icon button filter-trigger">
-                    <i class="filter icon"></i>
-                  </button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-project">
-                    New Task
-                  </button>
-                </div>
-              </div>
-            </div>
-
             <div class="tasks-table" id="task-list">
               <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 <thead>
@@ -130,87 +50,6 @@
                   </tr>
                 </thead>
                 <tbody class="list">
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Finish project report</td>
-                    <td class="task-client">Rich Client</td>
-                    <td class="task-project">Awesome Project</td>
-                    <td class="task-start">25.7.2016</td>
-                    <td class="task-end">27.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Go on a drink with client</td>
-                    <td class="task-client">Drunk client</td>
-                    <td class="task-project">Exhausting Project</td>
-                    <td class="task-start">27.7.2016</td>
-                    <td class="task-end">30.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Hand in papers</td>
-                    <td class="task-client">Paper hungry Client</td>
-                    <td class="task-project">Bureaucratic Project</td>
-                    <td class="task-start">11.8.2016</td>
-                    <td class="task-end">12.8.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Do some grocery shopping</td>
-                    <td class="task-client">Shopping Clien</td>
-                    <td class="task-project">Project</td>
-                    <td class="task-start">22.7.2016</td>
-                    <td class="task-end">26.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Design charts and do some stuff</td>
-                    <td class="task-client">Rich Client</td>
-                    <td class="task-project">Awesome Project</td>
-                    <td class="task-start">25.7.2016</td>
-                    <td class="task-end">27.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Meet Larry</td>
-                    <td class="task-client">French Client</td>
-                    <td class="task-project">Liege Project</td>
-                    <td class="task-start">11.7.2016</td>
-                    <td class="task-end">27.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Prepare for livecoding</td>
-                    <td class="task-client">Coder Client</td>
-                    <td class="task-project">Tech Project</td>
-                    <td class="task-start">15.7.2016</td>
-                    <td class="task-end">17.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Do some research online</td>
-                    <td class="task-client">Smart Client</td>
-                    <td class="task-project">Wikipedia Project</td>
-                    <td class="task-start">25.9.2016</td>
-                    <td class="task-end">27.9.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
-                    <td class="task-name">Finish project report</td>
-                    <td class="task-client">Rich Client</td>
-                    <td class="task-project">Awesome Project</td>
-                    <td class="task-start">25.7.2016</td>
-                    <td class="task-end">27.7.2016</td>
-                    <td class="task-consultant"><div class="consultant-avatars"><span data-title="Lukas Gutwinski" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></div></span></td>
-                  </tr>
                   <tr>
                     <td data-label="Status" class="mdl-data-table__cell--non-numeric"><i class="fa fa-check-circle fa-2x task-unchecked mark-as-done-trigger task-status" aria-hidden="true"></i></td>
                     <td class="task-name">Finish project report</td>
