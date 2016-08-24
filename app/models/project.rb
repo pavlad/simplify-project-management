@@ -8,6 +8,14 @@ class Project < ApplicationRecord
   validates :name, presence: true
   accepts_nested_attributes_for :assignments
 
+  def number_of_tasks
+    self.tasks.size
+  end
+
+  def number_of_tasks_done
+    self.tasks.select{|x| x.is_done}.count
+  end
+
 end
 
 

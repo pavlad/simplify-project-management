@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823175320) do
+ActiveRecord::Schema.define(version: 20160823164002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,21 +22,6 @@ ActiveRecord::Schema.define(version: 20160823175320) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_assignments_on_project_id", using: :btree
     t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
-  end
-
-  create_table "attachinary_files", force: :cascade do |t|
-    t.string   "attachinariable_type"
-    t.integer  "attachinariable_id"
-    t.string   "scope"
-    t.string   "public_id"
-    t.string   "version"
-    t.integer  "width"
-    t.integer  "height"
-    t.string   "format"
-    t.string   "resource_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
   create_table "clients", force: :cascade do |t|
