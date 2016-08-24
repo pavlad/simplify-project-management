@@ -9,8 +9,8 @@
       <i class="fa fa-check-circle fa-2x <%= tasktag %> mark-as-done-trigger task-status" aria-hidden="true"></i>
       <% end %>
     </td>
-    <td class="task-name"><%= task.name %></td>
+    <td class="task-name"><%= task.name.nil? ? "Blank" : task.name %></td>
     <td class="task-start">25.7.2016</td>
     <td class="task-end">27.7.2016</td>
-    <td class="task-consultant"><%= task.user.email %></td>
+    <td class="task-consultant"><%= task.user.nil? ? "No mail defined" : task.user.email %></td>
 </tr>
