@@ -1,4 +1,4 @@
-fheader .profile {
+header .profile {
   margin-left: 20px;
 }
 
@@ -77,8 +77,13 @@ body {
 }
 
 .task-unchecked:hover {
-  color: #4CAF50
+  color: #4CAF50;
 }
+
+.task-checked {
+  color: #4CAF50;
+}
+
 
 /*Table Sorting*/
 

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects do
     resources :tasks do
-      get 'mark_as_done', on: :member
-      get 'unmark_as_done', on: :member
+      member do
+        put :mark_done
+      end
     end
     resources :issues
     resources :assignments

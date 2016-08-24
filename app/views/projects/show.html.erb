@@ -119,7 +119,7 @@
                   <tbody class="list">
                     <div id='tasks'>
                       <% @tasks.each do |t| %>
-                      <%= render "task", task: t %>
+                      <%= render partial: "task", locals: {task: t, project: @project } %>
                       <% end %>
                     </div>
                   </tbody>
