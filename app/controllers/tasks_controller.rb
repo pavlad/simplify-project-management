@@ -32,12 +32,14 @@ class TasksController < ApplicationController
   def update
     @task.update(task_params)
     @task.save
+    @project.create_activity :update, owner: current_user, project_id: @project.id
 
     redirect_to project_tasks_path(@project)
   end
 
   def destroy
     @task.destroy
+    @project.create_activity :destroy, owner: current_user, project_id: @project.id
 
     redirect_to project_tasks_path(@project)
   end

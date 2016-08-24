@@ -18,6 +18,8 @@ gem 'autoprefixer-rails'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'postmark-rails'
+gem 'public_activity'
+
 
 group :development, :test do
   gem 'binding_of_caller'
