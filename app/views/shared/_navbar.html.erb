@@ -8,57 +8,64 @@
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
       mdl-textfield--floating-label mdl-textfield--align-right">
-        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample"id="fixed-header-drawer-exp">
-        </div>
+      <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+        <i class="material-icons">search</i>
+      </label>
+      <div class="mdl-textfield__expandable-holder">
+        <input class="mdl-textfield__input" type="text" name="sample"id="fixed-header-drawer-exp">
       </div>
+    </div>
 
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
 
 
-        <%= link_to projects_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">list</i>
-          <span>Projects</span>
-        <% end %>
-        <%= link_to user_tasks_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">check_box</i>
-          <span>Tasks</span>
-        <% end %>
-        <%= link_to clients_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">business</i>
-          <span>Clients</span>
-        <% end %>
-        <%= link_to users_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">people</i>
-          <span>Consultants</span>
-        <% end %>
-        <%= link_to root_url, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">timeline</i>
-          <span>Dashboard</span>
-        <% end %>
+      <%= link_to projects_path, class: "mdl-navigation__link little-transparent" do %>
+      <i class="material-icons">list</i>
+      <span>Projects</span>
+      <% end %>
+      <%= link_to user_tasks_path, class: "mdl-navigation__link little-transparent" do %>
+      <i class="material-icons">check_box</i>
+      <span>Tasks</span>
+      <% end %>
+      <%= link_to clients_path, class: "mdl-navigation__link little-transparent" do %>
+      <i class="material-icons">business</i>
+      <span>Clients</span>
+      <% end %>
+      <%= link_to users_path, class: "mdl-navigation__link little-transparent" do %>
+      <i class="material-icons">people</i>
+      <span>Consultants</span>
+      <% end %>
+      <%= link_to root_url, class: "mdl-navigation__link little-transparent" do %>
+      <i class="material-icons">timeline</i>
+      <span>Dashboard</span>
+      <% end %>
+
+      <% if current_user.nil? %>
+      <%= link_to new_user_session_path, class: "mdl-navigation__link little-transparent" do %>
+      <i class="material-icons">timeline</i>
+      <span>Log in</span>
+      <% end %>
+      <% end %>
 <!--
-        <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">list</i> Projects</a> -->
+  <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">list</i> Projects</a> -->
 <!--         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">check_box</i> Tasks</a>
         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">business</i> Clients</a>
         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">people</i> Consultants</a>
         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">timeline</i> Dashboard</a> -->
+        <% if current_user %>
         <a class="ui circular label">22</a>
 
         <!-- Right aligned menu below button -->
-
 
         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="user-menu">
           <li class="mdl-menu__item">My Profile</li>
           <li class="mdl-menu__item">Settings</li>
           <li disabled class="mdl-menu__item">Edit dashboard</li>
-          <li class="mdl-menu__item">Log Out</li>
+          <li class="mdl-menu__item"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
         </ul>
         <div class="ui item right profile">
           <div class="ui header" id="user-menu">
-            <img class="ui mini circular image" src="./img/lukas.png">
+            <img class="ui mini circular image" src="http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png">
             <div class="content" style="color:rgba(255, 255, 255, 0.7)">
               <div class="ui sub header">
                 <h4 class="ui header" style="color:rgba(255, 255, 255, 0.7)">
@@ -71,32 +78,33 @@
               </div>
             </div>
           </div>
-      </nav>
-        </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Menu</span>
-    <nav class="mdl-navigation">
+          <% end %>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Menu</span>
+      <nav class="mdl-navigation">
 
         <%= link_to projects_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">list</i>
-          <span>Projects</span>
+        <i class="material-icons">list</i>
+        <span>Projects</span>
         <% end %>
         <%= link_to user_tasks_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">check_box</i>
-          <span>Tasks</span>
+        <i class="material-icons">check_box</i>
+        <span>Tasks</span>
         <% end %>
         <%= link_to clients_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">business</i>
-          <span>Clients</span>
+        <i class="material-icons">business</i>
+        <span>Clients</span>
         <% end %>
         <%= link_to users_path, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">people</i>
-          <span>Consultants</span>
+        <i class="material-icons">people</i>
+        <span>Consultants</span>
         <% end %>
         <%= link_to root_url, class: "mdl-navigation__link little-transparent" do %>
-          <i class="material-icons">timeline</i>
-          <span>Dashboard</span>
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+        <span>Dashboard</span>
         <% end %>
-    </nav>
-  </div>
+      </nav>
+    </div>

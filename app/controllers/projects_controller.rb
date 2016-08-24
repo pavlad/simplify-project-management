@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id, deliverables: [], project_files: [])
+    params.require(:project).permit(:name, :description, :man_days, :project_manager_id, :user_id, deliverables: [], project_files: [])
   end
 
   def assignments_params
