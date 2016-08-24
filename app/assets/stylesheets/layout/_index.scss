@@ -1,4 +1,4 @@
-header .profile {
+fheader .profile {
   margin-left: 20px;
 }
 
@@ -24,6 +24,10 @@ body {
 .mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp.is-upgraded,
 .mdl-data-table.mdl-js-data-table.mdl-shadow--2dp {
   width: 100%;
+}
+
+#tasks-panel .mdl-layout__container {
+  position:relative
 }
 
 .new-project-button {
