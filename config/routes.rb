@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects do
+    resources :deliverables, only: :destroy
+    resources :project_files, only: :destroy
     resources :tasks do
       get 'mark_as_done', on: :member
       get 'unmark_as_done', on: :member
@@ -22,4 +25,6 @@ Rails.application.routes.draw do
   scope "settings" do
     root :to => "user_management#index"
   end
+
+
 end

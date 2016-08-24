@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_action :find_project, only: [:show, :update, :destroy]
 
   def index
@@ -41,6 +42,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project.update(project_params)
+    redirect_to project_path(@project)
   end
 
   def destroy
@@ -54,7 +56,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id)
+    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id, deliverables: [], project_files: [])
   end
 
   def assignments_params
