@@ -46,7 +46,9 @@
           <% @pending_user_invitations.each do |user| %>
             <tr>
               <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
-              <td><%= time_ago_in_words(user.invitation_created_at.to_time) %> ago</td>
+              <% if user.invitation_created_at %>
+                <td><%= time_ago_in_words(user.invitation_created_at.to_time) %> ago</td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

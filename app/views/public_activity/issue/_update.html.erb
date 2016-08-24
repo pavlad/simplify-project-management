@@ -1,0 +1,5 @@
+<% if a.trackable %>
+  Issue "<%= a.trackable.name %>" was updated by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<% else %>
+  Issue which has since been removed was updated by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<% end %>

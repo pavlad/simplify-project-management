@@ -1,0 +1,5 @@
+<% if a.trackable %>
+  Task "<%= a.trackable.name %>" was unmarked as done by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<% else %>
+  Task which has since been removed was unmarked as done by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<% end %>

@@ -1,1 +1,5 @@
-<%= a.trackable.title %> was added.
+<% if a.trackable %>
+  Task "<%= a.trackable.name %>" was added by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<% else %>
+  Task was added by <%= a.owner.first_name %> <%= a.owner.last_name %>which has since been removed <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<% end %>
