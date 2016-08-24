@@ -24,17 +24,16 @@ class TasksController < ApplicationController
     end
   end
 
-  # def new
-  #   @task = Task.new
-  # end
 
   # def update
   #   @task.update(task_params)
   #   @task.save
+  #   @project.create_activity :update, owner: current_user, project_id: @project.id
   # end
 
   # def destroy
   #   @task.destroy
+  #   @project.create_activity :destroy, owner: current_user, project_id: @project.id
   # end
 
   def mark_done

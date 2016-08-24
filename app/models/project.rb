@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   belongs_to :project_manager, class_name: "User", foreign_key: :project_manager_id
   validates :name, presence: true
   accepts_nested_attributes_for :assignments
+  include PublicActivity::Model
 
 end
 

@@ -1,0 +1,5 @@
+<% if a.trackable %>
+  Issue "<%= a.trackable.name %>" was added by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.trackable.created_at.to_time) %> ago.
+<% else %>
+  Issue was added by <%= a.owner.first_name %> <%= a.owner.last_name %>which has since been removed <%= time_ago_in_words(a.trackable.created_at.to_time) %> ago.
+<% end %>

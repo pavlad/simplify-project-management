@@ -1,0 +1,8 @@
+<div>
+  <% if a.trackable %>
+    <% consultant = User.where(id: a.assignment_consultant_id).first %>
+    <%= consultant.first_name %> <%= consultant.last_name %>  was assigned to the project by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.trackable.created_at.to_time) %> ago.
+  <% else %>
+    User, who has since been removed, was assigned to project by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.trackable.created_at.to_time) %> ago.
+  <% end %>
+</div>
