@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :update, :destroy]
+  before_action :load_activities, only: [:show]
 
   def index
     @projects = Project.all
@@ -14,7 +15,6 @@ class ProjectsController < ApplicationController
     @tasks = Task.all
     @task_count = @project.tasks.count
     @percentage = @project.completion_percentage
-
   end
 
   def new
@@ -35,19 +35,26 @@ class ProjectsController < ApplicationController
       @project.assignments.build(user_id: user_id)
     end
     @project.save
-
+    @project.create_activity :create, owner: current_user, project_id: @project.id
+    @project.assignments.each do |consultant|
+      @project.create_activity :assign, owner: current_user, project_id: @project.id, assignment_consultant_id: consultant.user_id
+    end
     redirect_to projects_path
   end
 
   def edit
+
   end
 
   def update
     @project.update(project_params)
+    @project.create_activity :update, owner: current_user, project_id: @project.id
+    redirect_to project_path(@project)
   end
 
   def destroy
     @project.destroy
+    @project.create_activity :destroy, owner: current_user, project_id: @project.id
   end
 
   private
@@ -57,11 +64,15 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id)
+    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id, deliverables: [], project_files: [])
   end
 
   def assignments_params
     params.require(:project).permit!
+  end
+
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').where(project_id: @project.id)
   end
 
 end
