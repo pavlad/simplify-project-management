@@ -26,6 +26,10 @@ body {
   width: 100%;
 }
 
+#tasks-panel .mdl-layout__container {
+  position:relative
+}
+
 .new-project-button {
   margin-bottom: 15px;
 }
@@ -73,8 +77,13 @@ body {
 }
 
 .task-unchecked:hover {
-  color: #4CAF50
+  color: #4CAF50;
 }
+
+.task-checked {
+  color: #4CAF50;
+}
+
 
 /*Table Sorting*/
 

@@ -69,11 +69,10 @@ body {
 
 .task-unchecked {
   color: rgba(0,0,0,0.16);
-  transition: color 150ms;
 }
 
-.task-unchecked:hover {
-  color: #4CAF50
+.task-checked {
+  color: rgba(0,0,0,0.16);
 }
 
 /*Table Sorting*/
