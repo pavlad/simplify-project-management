@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
   def show
     @consultants = @project.users
     @task = Task.new
+    @tasks = Task.all
   end
 
   def new

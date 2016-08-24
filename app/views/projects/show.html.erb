@@ -29,7 +29,7 @@
         </div>
       </div>
 
-        <!-- end of test -->
+      <!-- end of test -->
       <div class="project-members">
         <h3>Consultants</h3>
         <div class="ui list">
@@ -82,70 +82,112 @@
           </div>
         </div>
       </div>
-        <!-- end activity code -->
+      <!-- end activity code -->
       <div class="mdl-tabs__panel" id="tasks-panel">
         <!-- tasks -->
-        <div id='tasks'>
-          <%= render 'tasks' %>
+
+
+
+
+
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
+
+          <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+
+              <a class="mdl-navigation__link" href=""><i class="material-icons">list</i> Projects</a>
+              <a class="mdl-navigation__link" href=""><i class="material-icons">check_box</i> Tasks</a></a>
+              <a class="mdl-navigation__link" href=""><i class="material-icons">business</i> Clients</a>
+              <a class="mdl-navigation__link" href=""><i class="material-icons">people</i> Consultants</a>
+              <a class="mdl-navigation__link" href=""><i class="material-icons">timeline</i> Dashboard</a>
+
+            </nav>
+          </div>
+          <main class="mdl-layout__content">
+            <div class="page-content my-projects">
+              <div class="tasks-table" id="task-list">
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                  <thead>
+                    <tr>
+                      <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="task-status">Done</span></th>
+                      <th><span class="sort" data-sort="task-name">Task</span></th>
+                      <th><span class="sort" data-sort="task-start">Start</span></th>
+                      <th><span class="sort" data-sort="task-end">End</span></th>
+                      <th><span class="sort" data-sort="task-consultant">Assigned to</span></th>
+                    </tr>
+                  </thead>
+                  <tbody class="list">
+                    <div id='tasks'>
+                      <% @tasks.each do |t| %>
+                      <%= render partial: "task", locals: {task: t, project: @project } %>
+                      <% end %>
+                    </div>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </main>
+          <!-- end tasks -->
+          <!-- task form -->
+          <div id="task-form">
+            <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
+            <%= task_f.input :name %>
+            <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
+            <%= task_f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
+            <% end %>
+          </div>
+
         </div>
-        <!-- end tasks -->
-        <!-- task form -->
-        <div id="task-form">
-        <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
-          <%= task_f.input :name %>
-          <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
-          <%= task_f.button :submit %>
-        <% end %>
+        <div class="mdl-tabs__panel" id="deliverables-panel">
+          <p>Deliverables here</p>
         </div>
 
+        <div class="mdl-tabs__panel" id="files-panel">
+          <!-- begin list -->
+
+          <!-- end table -->
+
+          <table class="ui celled striped table">
+
+            <tbody>
+              <tr>
+                <td>
+                  <i class="file icon"></i> Project_request.docx
+                </td>
+                <td>Project request by client</td>
+                <td class="right aligned collapsing">10 hours ago</td>
+                <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
       </div>
-      <div class="mdl-tabs__panel" id="deliverables-panel">
-        <p>Deliverables here</p>
-      </div>
-
-      <div class="mdl-tabs__panel" id="files-panel">
-        <!-- begin list -->
-
-        <!-- end table -->
-
-        <table class="ui celled striped table">
-
-          <tbody>
-            <tr>
-              <td>
-                <i class="file icon"></i> Project_request.docx
-              </td>
-              <td>Project request by client</td>
-              <td class="right aligned collapsing">10 hours ago</td>
-              <td><i class="fa fa-download" aria-hidden="true"></i></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-
-
     </div>
   </div>
-</div>
 
-<!-- end of content -->
-<!-- begin scripts -->
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+  <!-- end of content -->
+  <!-- begin scripts -->
+  <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
 
-<!-- end scripts -->
-<!-- Modal -->
-<script type="text/javascript">
-  $( ".create-project" ).click(function() {
-    $('.create-project-modal')
-    .modal('show')
+  <!-- end scripts -->
+  <!-- Modal -->
+  <script type="text/javascript">
+    $( ".create-project" ).click(function() {
+      $('.create-project-modal')
+      .modal('show')
+      ;
+    });
+
+    $('.project-leader-select')
+    .dropdown({fullTextSearch: true})
     ;
-  });
 
-  $('.project-leader-select')
-  .dropdown({fullTextSearch: true})
-  ;
-
-</script>
+  </script>
 
