@@ -128,15 +128,6 @@
             </div>
 
           </main>
-          <!-- end tasks -->
-          <!-- task form -->
-          <div id="task-form">
-            <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
-            <%= task_f.input :name %>
-            <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
-            <%= task_f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
-            <% end %>
-          </div>
 
         </div>
         <!-- end tasks -->
