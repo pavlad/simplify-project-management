@@ -7,8 +7,10 @@ class Project < ApplicationRecord
   belongs_to :project_manager, class_name: "User", foreign_key: :project_manager_id
   validates :name, presence: true
   accepts_nested_attributes_for :assignments
+
   has_attachments :deliverables, maximum: 20
   has_attachments :project_files, maximum: 20
+  include PublicActivity::Model
 end
 
 

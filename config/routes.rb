@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     resources :deliverables, only: :destroy
     resources :project_files, only: :destroy
     resources :tasks do
-      get 'mark_as_done', on: :member
-      get 'unmark_as_done', on: :member
+      member do
+        put :mark_done
+      end
     end
     resources :issues
     resources :assignments

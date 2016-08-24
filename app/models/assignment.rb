@@ -4,5 +4,7 @@ class Assignment < ApplicationRecord
 
   validates_uniqueness_of :user_id, scope: [:project_id]
   accepts_nested_attributes_for :user
+  include PublicActivity::Model
+  tracked
 
 end
