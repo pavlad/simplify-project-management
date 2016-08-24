@@ -13,6 +13,8 @@ class ProjectsController < ApplicationController
     @consultants = @project.users
     @task = Task.new
     @tasks = Task.all
+    @task_count = @project.tasks.count
+    @percentage = @project.completion_percentage
   end
 
   def new

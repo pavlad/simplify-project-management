@@ -38,6 +38,7 @@ class TasksController < ApplicationController
 
   def mark_done
     @task.mark_done
+    @project = Project.find(params[:project_id])
     if @task.save
       respond_to do |format|
         format.html { redirect_to projects_path(project) }
