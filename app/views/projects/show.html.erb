@@ -20,14 +20,13 @@
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= @project.project_manager.email unless @project.project_manager.nil? %></a>
-              <div class="description">Co-founder</div>
+              <a class="header"><%= @project.project_manager.full_name unless @project.project_manager.nil? %></a>
+              <div class="description"><%= @project.project_manager.job_title%></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- end of test -->
       <div class="project-members">
         <h3>Consultants</h3>
         <div class="ui list">
@@ -35,8 +34,8 @@
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= c.email %></a>
-              <div class="description">Co-founder</div>
+              <a class="header"><%= c.full_name %></a>
+              <div class="description"><%= c.job_title %></div>
             </div>
           </div>
           <% end %>
@@ -44,8 +43,7 @@
       </div>
     </div>
 
-
-    <div class="total-progress text-center" style="padding: 15px 5px 15px 5px;">
+    <div class="total-progress text-center" style="padding: 15px 20px 15px 20px;">
       <div id="p1" class="mdl-progress mdl-js-progress graph"></div>
       <script>
         document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
@@ -55,200 +53,54 @@
     </div>
   </div>
 
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Menu</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href=""><i class="material-icons">list</i> Projects</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">check_box</i> Tasks</a></a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">business</i> Clients</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">people</i> Consultants</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">timeline</i> Dashboard</a>
+    </nav>
+  </div>
 
+  <!-- these are the famous tabs -->
   <div class="box short-info">
     <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
       <div class="mdl-tabs__tab-bar" style="margin-bottom: 20px;">
-        <a href="#project-panel" class="mdl-tabs__tab is-active">Activity</a>
+        <a href="#activity-panel" class="mdl-tabs__tab is-active">Activity</a>
         <a href="#tasks-panel" class="mdl-tabs__tab">Tasks</a>
         <a href="#deliverables-panel" class="mdl-tabs__tab">Deliverables</a>
         <a href="#files-panel" class="mdl-tabs__tab">Project files</a>
         <a href="#issues-panel" class="mdl-tabs__tab">Issues</a>
       </div>
-
-      <div class="mdl-tabs__panel is-active" id="project-panel">
-        <!-- begin activity code -->
-        <%= render_activities @activities %>
-        <div class="ui list">
-          <div class="item">
-            <img class="ui avatar image" src="img/lukas.png">
-            <div class="content">
-              <a class="header">Lukas Gutwinski</a>
-              <div class="description">Has tagged the task <a><b>Marketing plan</b></a> as done just now.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end activity code -->
-      <div class="mdl-tabs__panel" id="tasks-panel">
-        <!-- tasks -->
-
-
-
-
-
-
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
-
-          <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Menu</span>
-            <nav class="mdl-navigation">
-
-              <a class="mdl-navigation__link" href=""><i class="material-icons">list</i> Projects</a>
-              <a class="mdl-navigation__link" href=""><i class="material-icons">check_box</i> Tasks</a></a>
-              <a class="mdl-navigation__link" href=""><i class="material-icons">business</i> Clients</a>
-              <a class="mdl-navigation__link" href=""><i class="material-icons">people</i> Consultants</a>
-              <a class="mdl-navigation__link" href=""><i class="material-icons">timeline</i> Dashboard</a>
-
-            </nav>
-          </div>
-          <main class="mdl-layout__content">
-            <div class="page-content my-projects">
-              <div class="tasks-table" id="task-list">
-                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                  <thead>
-                    <tr>
-                      <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="task-status">Done</span></th>
-                      <th><span class="sort" data-sort="task-name">Task</span></th>
-                      <th><span class="sort" data-sort="task-start">Start</span></th>
-                      <th><span class="sort" data-sort="task-end">End</span></th>
-                      <th><span class="sort" data-sort="task-consultant">Assigned to</span></th>
-                    </tr>
-                  </thead>
-                  <tbody class="list">
-                    <div id='tasks'>
-                      <% @tasks.each do |t| %>
-                      <%= render partial: "task", locals: {task: t, project: @project } %>
-                      <% end %>
-                    </div>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-          </main>
-          <!-- end tasks -->
-          <!-- task form -->
-          <div id="task-form">
-            <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
-            <%= task_f.input :name %>
-            <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
-            <%= task_f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
-            <% end %>
-          </div>
-          </div>
-
-        <div class="mdl-tabs__panel" id="issues-panel">
-          <div>
-            Issues:
-            <% @project.issues.each do |issue| %>
-            <div>
-              name: <%= issue.name%> <br>
-              priority: <%= issue.label%> <br>
-              description: <%= issue.description%> <br>
-              resolved?: <%= issue.is_resolved%> <br>
-              <%= link_to (mark_as_resolved_project_issue_path(@project.id, issue)), method: :put do %>
-              <i class="fa fa-check-circle fa-2x mark-as-done-trigger task-status" aria-hidden="true"></i>
-              <% end %>
-              <div id="task-form">
-              <%= simple_form_for([@project,issue]) do |f| %>
-                <%= f.text_field :comment %>
-                <%= f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
-                <% end %>
-              </div>
-              <br>
-              <br>
-            </div>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="mdl-tabs__panel" id="files-panel">
-          <!-- begin list -->
-      </div>
-      <div class="mdl-tabs__panel" id="deliverables-panel">
-        <table class="ui celled striped table">
-          <tbody>
-            <% @project.deliverables.each do |deliverable| %>
-            <tr>
-              <td>
-                <i class="file icon"></i> <%= deliverable.public_id %>
-              </td>
-              <td class="right aligned collapsing"><%= deliverable.created_at %></td>
-              <td>
-                <%= link_to "http://res.cloudinary.com/banana-cake/image/upload/#{deliverable.path}" do %>
-                <i class="fa fa-download" aria-hidden="true"></i>
-                <% end %>
-                <%= link_to project_deliverable_path(@project, deliverable.id), method: :delete do %>
-                <i class="fa fa-close" aria-hidden="true"></i>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= simple_form_for(@project) do |project_f| %>
-        <%= project_f.attachinary_file_field :deliverables, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false } %>
-        <%= project_f.button :submit %>
-        <% end %>
-      </div>
-      <div class="mdl-tabs__panel" id="files-panel">
-        <!-- begin list -->
-
-
-        <!-- end table -->
-
-        <table class="ui celled striped table">
-          <tbody>
-
-            <% @project.project_files.each do |project_file| %>
-            <tr>
-              <td>
-                <i class="file icon"></i> <%= project_file.public_id %>
-              </td>
-              <td class="right aligned collapsing"><%= project_file.created_at %></td>
-              <td>
-                <%= link_to "http://res.cloudinary.com/banana-cake/image/upload/#{project_file.path}" do %>
-                <i class="fa fa-download" aria-hidden="true"></i>
-                <% end %>
-                <%= link_to project_project_file_path(@project, project_file.id), method: :delete do %>
-                <i class="fa fa-close" aria-hidden="true"></i>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= simple_form_for(@project) do |project_f| %>
-        <%= project_f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false } %>
-        <%= project_f.button :submit %>
-        <% end %>
-      </div>
-
+      <%= render "tab_activity" %>
+      <%= render "tab_issues" %>
+      <%= render "tab_tasks" %>
+      <%= render "tab_deliverables" %>
+      <%= render "tab_project-files" %>
     </div>
   </div>
+  <!-- end of the famous tabs -->
+</div>
 
-  <!-- end of content -->
-  <!-- begin scripts -->
-  <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
 
-  <!-- end scripts -->
-  <!-- Modal -->
-  <script type="text/javascript">
-    $( ".create-project" ).click(function() {
-      $('.create-project-modal')
-      .modal('show')
-      ;
-    });
-
-    $('.project-leader-select')
+<!-- Modal -->
+<script type="text/javascript">
+  $( ".create-project" ).click(function() {
+    $('.create-project-modal')
+    .modal('show')
+    ;
+  });
+</script>
+<script>
+  $('.project-leader-select')
     .dropdown({fullTextSearch: true})
     ;
-
-  </script>
+</script>
 
   <%= content_for(:after_js) do %>
     <script type="text/javascript">$('.editable').editable()</script>
   <% end %>
-

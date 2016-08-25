@@ -1,0 +1,29 @@
+<div class="mdl-tabs__panel" id="tasks-panel">
+  <div class="tasks-table" id="task-list">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="task-status">Done</span></th>
+          <th><span class="sort" data-sort="task-name">Task</span></th>
+          <th><span class="sort" data-sort="task-start">Start</span></th>
+          <th><span class="sort" data-sort="task-end">End</span></th>
+          <th><span class="sort" data-sort="task-consultant">Assigned to</span></th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <div id='tasks'>
+          <% @tasks.each do |t| %>
+          <%= render partial: "task", locals: {task: t, project: @project } %>
+          <% end %>
+        </div>
+      </tbody>
+    </table>
+  </div>
+  <div id="task-form">
+    <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
+    <%= task_f.input :name %>
+    <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
+    <%= task_f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
+    <% end %>
+  </div>
+</div>
