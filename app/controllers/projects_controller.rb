@@ -48,8 +48,13 @@ class ProjectsController < ApplicationController
 
   def update
     @project.update(project_params)
+    if @project.save
+      respond_to do |format|
+        format.html { redirect_to projects_path(project) }
+        format.json { render json: @project }
+      end
+    end
     @project.create_activity :update, owner: current_user, project_id: @project.id
-    redirect_to project_path(@project)
   end
 
   def destroy
