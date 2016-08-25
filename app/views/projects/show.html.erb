@@ -8,7 +8,7 @@
         </h2>
         <h3>
           <ul class="list-inline">
-            <li><i class="fa fa-clock-o" aria-hidden="true"></i> 20 Days</li>
+            <li><i class="fa fa-clock-o" aria-hidden="true"></i><%= " #{@project.man_days} man-days" %></li>
             <li><i class="fa fa-building" aria-hidden="true"></i> Microsoft Inc.</li>
             <li><i class="fa fa-tag" aria-hidden="true"></i> Corporate</li>
           </ul>
@@ -22,8 +22,8 @@
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= @project.project_manager.email unless @project.project_manager.nil? %></a>
-              <div class="description">Co-founder</div>
+              <a class="header"><%= @project.project_manager.full_name unless @project.project_manager.nil? %></a>
+              <div class="description"><%= @project.project_manager.job_title%></div>
             </div>
           </div>
         </div>
@@ -37,8 +37,8 @@
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= c.email %></a>
-              <div class="description">Co-founder</div>
+              <a class="header"><%= c.full_name %></a>
+              <div class="description"><%= c.job_title %></div>
             </div>
           </div>
           <% end %>

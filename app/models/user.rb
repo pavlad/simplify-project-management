@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :assignments
   has_many :projects, through: :assignments
   has_many :lead_projects, class_name: "Project", foreign_key: :project_manager_id
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
