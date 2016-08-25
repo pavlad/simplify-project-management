@@ -24,6 +24,8 @@ gem 'devise_invitable', '~> 1.7.0'
 gem 'postmark-rails'
 gem 'public_activity'
 gem "chartkick"
+gem 'jquery-ui-rails'
+gem 'x-editable-rails'
 
 
 group :development, :test do

@@ -5,7 +5,7 @@
   <%= f.input :email %>
   <%= f.input :mobile_phone %>
   <%= f.input :phone %>
-  <%= f.input :description %>
+  <%= f.input :description, input_html: { rows: 2 }%>
   <%= f.input :is_owner %>
   <%= f.button :submit %>
 <% end %>
