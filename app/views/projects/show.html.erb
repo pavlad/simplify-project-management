@@ -65,6 +65,7 @@
         <a href="#tasks-panel" class="mdl-tabs__tab">Tasks</a>
         <a href="#deliverables-panel" class="mdl-tabs__tab">Deliverables</a>
         <a href="#files-panel" class="mdl-tabs__tab">Project files</a>
+        <a href="#issues-panel" class="mdl-tabs__tab">Issues</a>
       </div>
 
       <div class="mdl-tabs__panel is-active" id="project-panel">
@@ -128,18 +129,44 @@
             </div>
 
           </main>
+          <!-- end tasks -->
+          <!-- task form -->
+          <div id="task-form">
+            <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
+            <%= task_f.input :name %>
+            <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
+            <%= task_f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
+            <% end %>
+          </div>
+          </div>
 
-        </div>
-        <!-- end tasks -->
-        <!-- task form -->
-        <div id="task-form">
-          <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
-          <%= task_f.input :name %>
-          <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
-          <%= task_f.button :submit %>
-          <% end %>
+        <div class="mdl-tabs__panel" id="issues-panel">
+          <div>
+            Issues:
+            <% @project.issues.each do |issue| %>
+            <div>
+              name: <%= issue.name%> <br>
+              priority: <%= issue.label%> <br>
+              description: <%= issue.description%> <br>
+              resolved?: <%= issue.is_resolved%> <br>
+              <%= link_to (mark_as_resolved_project_issue_path(@project.id, issue)), method: :put do %>
+              <i class="fa fa-check-circle fa-2x mark-as-done-trigger task-status" aria-hidden="true"></i>
+              <% end %>
+              <div id="task-form">
+              <%= simple_form_for([@project,issue]) do |f| %>
+                <%= f.text_field :comment %>
+                <%= f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
+                <% end %>
+              </div>
+              <br>
+              <br>
+            </div>
+            <% end %>
+          </div>
         </div>
 
+        <div class="mdl-tabs__panel" id="files-panel">
+          <!-- begin list -->
       </div>
       <div class="mdl-tabs__panel" id="deliverables-panel">
         <table class="ui celled striped table">
@@ -169,9 +196,6 @@
       </div>
       <div class="mdl-tabs__panel" id="files-panel">
         <!-- begin list -->
-
-
-
 
 
         <!-- end table -->
