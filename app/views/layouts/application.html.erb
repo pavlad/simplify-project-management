@@ -16,6 +16,10 @@
     <%= render "shared/navbar" %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://www.google.com/jsapi" %>
+    <%= yield(:after_js) %>
     <%= cloudinary_js_config %>
   </body>
 </html>
+
+

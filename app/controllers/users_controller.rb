@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    @projects = @user.projects
+  end
+
   def update
     @user.update(user_params)
 
