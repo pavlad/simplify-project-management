@@ -23,6 +23,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'postmark-rails'
 gem 'public_activity'
+gem "chartkick"
 gem 'jquery-ui-rails'
 gem 'x-editable-rails'
 
