@@ -12,7 +12,9 @@ class ProjectsController < ApplicationController
   def show
     @consultants = @project.users
     @task = Task.new
-    @tasks = Task.all
+    @tasks = @project.tasks
+    @task_count = @project.tasks.count
+    @percentage = @project.completion_percentage
   end
 
   def new
@@ -47,6 +49,7 @@ class ProjectsController < ApplicationController
   def update
     @project.update(project_params)
     @project.create_activity :update, owner: current_user, project_id: @project.id
+    redirect_to project_path(@project)
   end
 
   def destroy
@@ -61,7 +64,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name,  :description, :man_days, :project_manager_id)
+    params.require(:project).permit(:name, :description, :man_days, :project_manager_id, :user_id, deliverables: [], project_files: [])
   end
 
   def assignments_params

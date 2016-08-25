@@ -22,7 +22,7 @@
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= @project.project_manager.email %></a>
+              <a class="header"><%= @project.project_manager.email unless @project.project_manager.nil? %></a>
               <div class="description">Co-founder</div>
             </div>
           </div>
@@ -51,7 +51,7 @@
       <div id="p1" class="mdl-progress mdl-js-progress graph"></div>
       <script>
         document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-          this.MaterialProgress.setProgress(40);
+          this.MaterialProgress.setProgress(<%= @project.completion_percentage %>);
         });
       </script>
     </div>
@@ -70,9 +70,7 @@
 
       <div class="mdl-tabs__panel is-active" id="project-panel">
         <!-- begin activity code -->
-
         <%= render_activities @activities %>
-
         <div class="ui list">
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
@@ -141,10 +139,6 @@
             <% end %>
           </div>
           </div>
-        </div>
-        <div class="mdl-tabs__panel" id="deliverables-panel">
-          <p>Deliverables here</p>
-        </div>
 
         <div class="mdl-tabs__panel" id="issues-panel">
           <div>
@@ -173,27 +167,66 @@
 
         <div class="mdl-tabs__panel" id="files-panel">
           <!-- begin list -->
-
-          <!-- end table -->
-
-          <table class="ui celled striped table">
-
-            <tbody>
-              <tr>
-                <td>
-                  <i class="file icon"></i> Project_request.docx
-                </td>
-                <td>Project request by client</td>
-                <td class="right aligned collapsing">10 hours ago</td>
-                <td><i class="fa fa-download" aria-hidden="true"></i></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-
-
       </div>
+      <div class="mdl-tabs__panel" id="deliverables-panel">
+        <table class="ui celled striped table">
+          <tbody>
+            <% @project.deliverables.each do |deliverable| %>
+            <tr>
+              <td>
+                <i class="file icon"></i> <%= deliverable.public_id %>
+              </td>
+              <td class="right aligned collapsing"><%= deliverable.created_at %></td>
+              <td>
+                <%= link_to "http://res.cloudinary.com/banana-cake/image/upload/#{deliverable.path}" do %>
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to project_deliverable_path(@project, deliverable.id), method: :delete do %>
+                <i class="fa fa-close" aria-hidden="true"></i>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= simple_form_for(@project) do |project_f| %>
+        <%= project_f.attachinary_file_field :deliverables, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false } %>
+        <%= project_f.button :submit %>
+        <% end %>
+      </div>
+      <div class="mdl-tabs__panel" id="files-panel">
+        <!-- begin list -->
+
+
+        <!-- end table -->
+
+        <table class="ui celled striped table">
+          <tbody>
+
+            <% @project.project_files.each do |project_file| %>
+            <tr>
+              <td>
+                <i class="file icon"></i> <%= project_file.public_id %>
+              </td>
+              <td class="right aligned collapsing"><%= project_file.created_at %></td>
+              <td>
+                <%= link_to "http://res.cloudinary.com/banana-cake/image/upload/#{project_file.path}" do %>
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to project_project_file_path(@project, project_file.id), method: :delete do %>
+                <i class="fa fa-close" aria-hidden="true"></i>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= simple_form_for(@project) do |project_f| %>
+        <%= project_f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false } %>
+        <%= project_f.button :submit %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 

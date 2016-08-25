@@ -4,6 +4,6 @@
   <td><%= project.name %></td>
   <td><%= project.name %></td>
   <td>75%</td>
-  <td><div class="consultant-avatars"><span data-title="<%= project.project_manager.email%>" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div></td>
+  <td><div class="consultant-avatars"><span data-title="<%= project.project_manager.email unless project.project_manager.nil? %>" data-content="Senior Consultant Operational Excellence" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div></td>
   <td><%= link_to 'details', project_path(project) %></td>
 </tr>

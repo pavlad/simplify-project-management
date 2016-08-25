@@ -11,6 +11,8 @@
       <%= project_f.fields_for(:assignments) do |assignment_f| %>
         <%= assignment_f.input :user_id, collection: @users, label_method: :email, input_html: {multiple:true} %>
       <% end %>
+    <%= project_f.attachinary_file_field :deliverables, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false }, label: 'Project files' %>
+    <%= project_f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false }, label: 'Deliverables' %>
     <%= project_f.button :submit %>
     <% end %>
   </div>

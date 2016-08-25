@@ -7,3 +7,6 @@ $taskicon = $("#task-<%= j @task.id.to_s %>").find('i');
   $taskicon.removeClass('task-checked').addClass('task-unchecked');
   $taskicon.addClass('task-unchecked');
 <% end %>
+
+var completion_rate = <%= @project.completion_percentage %> ;
+$('#p1 .bar1').css('width', completion_rate + "%");
