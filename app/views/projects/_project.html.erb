@@ -4,6 +4,6 @@
   <td>Client</td>
   <td><%= project.man_days %></td>
   <td><%= project.completion_percentage %></td>
-  <td><div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name" unless project.project_manager.nil? %>" data-content="#{project.project_manager.title}" class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div></td>
+  <td><div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name unless project.project_manager.nil? %>" data-content=<%= project.project_manager.job_title%> class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div></td>
   <td><%= link_to 'details', project_path(project) %></td>
 </tr>

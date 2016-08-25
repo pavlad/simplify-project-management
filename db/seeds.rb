@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Task.destroy_all
+Assignment.destroy_all
+Project.destroy_all
 User.destroy_all
 job_titles = ["Analyst","Senior Analyst","Consultant","Senior Consultant","Manager","Partner"]
 
