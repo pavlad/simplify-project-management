@@ -21,6 +21,10 @@ class ClientsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html { redirect_to clients_path() }
+      format.js
+    end
   end
 
   def update
