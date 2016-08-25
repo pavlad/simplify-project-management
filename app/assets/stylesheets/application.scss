@@ -1,12 +1,12 @@
 // External libraries
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "editable/jquery-editable";
+// @import "editable/jquery-editable";
 
 // Your CSS
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
-@import "layout/navbar"
-
+@import "layout/navbar";
+@import "algolia"
