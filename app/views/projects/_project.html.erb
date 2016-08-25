@@ -6,7 +6,7 @@
   <td><%= project.completion_percentage %></td>
   <td>
     <div class="consultant-avatars">
-      <span data-title="<%= project.project_manager.full_name unless project.project_manager.nil? %>" data-content=<%= project.project_manager.job_title%>  class="project-manager-popup-trigger">
+      <span data-title="<%= project.project_manager.full_name unless project.project_manager.nil? %>" data-content=<%= project.project_manager.job_title unless project.project_manager.nil? %>  class="project-manager-popup-trigger">
         <img class="ui mini circular image" src=  "./img/lukas.png">
     </div>
   </td>
