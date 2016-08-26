@@ -1,5 +1,5 @@
 .algolia-autocomplete {
-  width: 200px;
+  width: 250px;
   color: #777777;
 }
 .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
@@ -14,7 +14,8 @@
   width: 100%;
   background-color: #fff;
   border: 1px solid #999;
-  border-top: none;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
   cursor: pointer;
