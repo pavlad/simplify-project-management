@@ -9,6 +9,12 @@ class User < ApplicationRecord
   has_many :projects, through: :assignments
   has_many :lead_projects, class_name: "Project", foreign_key: :project_manager_id
 
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :first_name, :last_name, :email, :job_title, :mobile_phone, :phone, :description
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -46,3 +52,4 @@ class User < ApplicationRecord
   end
 
 end
+

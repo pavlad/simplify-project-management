@@ -6,46 +6,46 @@
       <%= link_to content_tag(:span, 'project-demo'), root_url, class: "mdl-layout-title", id: 'nav-title' %>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-      mdl-textfield--floating-label mdl-textfield--align-right">
-      <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-        <i class="material-icons">search</i>
-      </label>
-      <div class="mdl-textfield__expandable-holder">
-        <input class="mdl-textfield__input" type="text" name="sample"id="fixed-header-drawer-exp">
+
+      <div class="ui search">
+        <div class="ui icon input">
+        <input class="prompt" id="demo-search" type="text" placeholder="Search countries...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
       </div>
-    </div>
-
-    <nav class="mdl-navigation mdl-layout--large-screen-only">
 
 
-      <%= link_to projects_path, class: "mdl-navigation__link little-transparent" do %>
-      <i class="material-icons">list</i>
-      <span>Projects</span>
-      <% end %>
-      <%= link_to user_tasks_path, class: "mdl-navigation__link little-transparent" do %>
-      <i class="material-icons">check_box</i>
-      <span>Tasks</span>
-      <% end %>
-      <%= link_to clients_path, class: "mdl-navigation__link little-transparent" do %>
-      <i class="material-icons">business</i>
-      <span>Clients</span>
-      <% end %>
-      <%= link_to users_path, class: "mdl-navigation__link little-transparent" do %>
-      <i class="material-icons">people</i>
-      <span>Consultants</span>
-      <% end %>
-      <%= link_to root_url, class: "mdl-navigation__link little-transparent" do %>
-      <i class="material-icons">timeline</i>
-      <span>Dashboard</span>
-      <% end %>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
 
-      <% if current_user.nil? %>
-      <%= link_to new_user_session_path, class: "mdl-navigation__link little-transparent" do %>
-      <i class="material-icons">timeline</i>
-      <span>Log in</span>
-      <% end %>
-      <% end %>
+
+        <%= link_to projects_path, class: "mdl-navigation__link little-transparent" do %>
+        <i class="material-icons">list</i>
+        <span>Projects</span>
+        <% end %>
+        <%= link_to user_tasks_path, class: "mdl-navigation__link little-transparent" do %>
+        <i class="material-icons">check_box</i>
+        <span>Tasks</span>
+        <% end %>
+        <%= link_to clients_path, class: "mdl-navigation__link little-transparent" do %>
+        <i class="material-icons">business</i>
+        <span>Clients</span>
+        <% end %>
+        <%= link_to users_path, class: "mdl-navigation__link little-transparent" do %>
+        <i class="material-icons">people</i>
+        <span>Consultants</span>
+        <% end %>
+        <%= link_to root_url, class: "mdl-navigation__link little-transparent" do %>
+        <i class="material-icons">timeline</i>
+        <span>Dashboard</span>
+        <% end %>
+
+        <% if current_user.nil? %>
+        <%= link_to new_user_session_path, class: "mdl-navigation__link little-transparent" do %>
+        <i class="material-icons">timeline</i>
+        <span>Log in</span>
+        <% end %>
+        <% end %>
 <!--
   <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">list</i> Projects</a> -->
 <!--         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">check_box</i> Tasks</a>
@@ -59,7 +59,7 @@
 
         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="user-menu">
           <li class="mdl-menu__item">My Profile</li>
-          <li class="mdl-menu__item">Settings</li>
+          <li class="mdl-menu__item"><%= link_to 'Settings', settings_user_management_path %></li>
           <li disabled class="mdl-menu__item">Edit dashboard</li>
           <li class="mdl-menu__item"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
         </ul>
@@ -108,3 +108,7 @@
         <% end %>
       </nav>
     </div>
+
+
+
+    <%= render "shared/algolia_scripts" %>

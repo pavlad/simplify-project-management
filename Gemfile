@@ -26,6 +26,9 @@ gem 'public_activity'
 gem "chartkick"
 gem 'jquery-ui-rails'
 gem 'x-editable-rails'
+gem "algoliasearch-rails"
+
+
 
 
 group :development, :test do

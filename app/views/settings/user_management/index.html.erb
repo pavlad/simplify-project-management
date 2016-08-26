@@ -1,0 +1,82 @@
+<div class="ui container">
+  <h1>User Management</h1>
+  <h2>Users</h2>
+  <div id="user-management-table">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Name</th>
+          <th>Admin</th>
+          <th>Last Login</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
+            <td>
+              <% if user.is_owner %>
+                Yes
+              <% else %>
+                No
+              <% end %>
+            </td>
+            <td>
+            <% if user.last_sign_in_at %>
+              <%= time_ago_in_words(user.last_sign_in_at) %> ago
+            <% else %>
+              No attempt yet
+            <% end %>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <h2>Pending Invitations</h2>
+  <% unless @pending_user_invitations.empty? %>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th>Invitation Sent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending_user_invitations.each do |user| %>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
+              <% if user.invitation_created_at %>
+                <td><%= time_ago_in_words(user.invitation_created_at.to_time) %> ago</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    <% unless @is_client_users.empty? %>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th>Accessable Projects</th>
+            <th>Invitation Sent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending_user_invitations.each do |user| %>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
+              <td>Project A | Client B</td>
+              <td><%= time_ago_in_words(user.user.last_sign_in_at) %> ago</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+    <%= render "devise/invitations/create" %>
+
+
+</div>
+
