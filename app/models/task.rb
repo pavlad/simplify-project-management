@@ -18,4 +18,15 @@ class Task < ApplicationRecord
     end
   end
 
+  def has_date?
+    self.start_date == nil || self.end_date == nil ? false : true
+  end
+
+  def color
+    if self.is_done
+      return "#177F75"
+    else
+      return "#B6212D"
+    end
+  end
 end
