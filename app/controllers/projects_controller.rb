@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
     @project.update(project_params)
     if @project.save
       respond_to do |format|
-        format.html { redirect_to projects_path(project) }
+        format.html { redirect_to project_path(@project) }
         format.json { render json: @project }
       end
     end
