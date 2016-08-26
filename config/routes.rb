@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   namespace :user do
     resources :tasks
   end
-  scope "settings" do
-    root :to => "user_management#index"
+  namespace "settings" do
+    root to: "user_management#index", as: "user_management"
+
   end
 
 

@@ -6,6 +6,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+        format.html { redirect_to users_path() }
+        format.js
+      end
+  end
+
+  def show
+    @projects = @user.projects
   end
 
   def update

@@ -1,0 +1,23 @@
+<div class="ui container">
+  <div class="consultant-projects">
+    <% @projects.each do |project| %>
+      <div class="project-timeline">
+        <%= link_to project_path(project) do %>
+        <%= project.name %>
+        <% end %>
+        <div class='consultant-tasks-timeline'>
+          <%= timeline @user.find_tasks_in_array(project), colors: @user.get_color_tasks(project)%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    $('g').each(function(index){
+      $('rect:last-child', this).hide();
+    })
+  });
+</script>
+ -->

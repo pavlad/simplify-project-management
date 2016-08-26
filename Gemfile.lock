@@ -65,6 +65,12 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    algoliasearch (1.11.0)
+      httpclient (~> 2.8.2)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.15.0)
+      algoliasearch (~> 1.11.0)
+      json (>= 1.5.1)
     arel (7.1.1)
     autoprefixer-rails (6.4.0.2)
       execjs
@@ -78,6 +84,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (9.0.5)
+    chartkick (2.0.2)
     cloudinary (1.1.0)
       aws_cf_signer
       rest-client
@@ -109,6 +116,7 @@ GEM
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httpclient (2.8.2.2)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -252,10 +260,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algoliasearch-rails
   attachinary!
   autoprefixer-rails
   better_errors
   binding_of_caller
+  chartkick
   cloudinary (= 1.1.0)
   coffee-rails
   devise!

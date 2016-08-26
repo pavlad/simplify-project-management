@@ -1,9 +1,13 @@
 <tr>
   <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="ui label high-priority-issue">High Priority Issue</a></td>
   <td><%= project.name %></td>
-  <td>Client</td>
-  <td><%= project.man_days %></td>
-  <td><%= project.completion_percentage %></td>
-  <td><div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name unless project.project_manager.nil? %>" data-content=<%= project.project_manager.job_title%> class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div></td>
+  <td><%= project.client ? project.client.name : "-" %> </td>
+  <td><%= project.man_days ? project.man_days : "-" %></td>
+  <td><%= "#{project.completion_percentage.to_i}%" %></td>
+  <td>
+  <% if project.project_manager %>
+    <div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name if project.project_manager %>" data-content=<%= project.project_manager.job_title if project.project_manager.job_title %> class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div>
+  <% end %>
+  </td>
   <td><%= link_to 'details', project_path(project) %></td>
 </tr>

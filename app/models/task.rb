@@ -4,6 +4,12 @@ class Task < ApplicationRecord
   validates :name, presence: true
   include PublicActivity::Model
 
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :name, :comment
+  end
+
   def mark_done
     if self.is_done
       self.is_done = false
@@ -12,4 +18,15 @@ class Task < ApplicationRecord
     end
   end
 
+  def has_date?
+    self.start_date == nil || self.end_date == nil ? false : true
+  end
+
+  def color
+    if self.is_done
+      return "#177F75"
+    else
+      return "#B6212D"
+    end
+  end
 end
