@@ -17,4 +17,4 @@ config/locales/application.yml
 db/.DS_Store
 config/application.yml
 log/development.log
-/Users/vladimirpavlyukov/code/simplify-project-management/config/initializers/algoliasearch.rb
+config/initializers/algoliasearch.rb
