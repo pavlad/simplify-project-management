@@ -25,9 +25,23 @@ class User < ApplicationRecord
     array = []
     normal_array = project.tasks.where(project.users == self)
     normal_array.each do |task|
-      array << [task.name, task.start_date, task.end_date]
+      if task.has_date?
+        array << [task.name, task.start_date, task.end_date]
+      end
     end
-    array << ['timeline', first_date, last_date]
+    array << ["Total time", first_date, last_date]
+    return array
+  end
+
+  def get_color_tasks(project)
+    array = []
+    normal_array = project.tasks.where(project.users == self)
+    normal_array.each do |task|
+      if task.has_date?
+        array << task.color
+      end
+    end
+    array << "#ffffff"
     return array
   end
 
