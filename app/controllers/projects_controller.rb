@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     @project = Project.new
     @users = User.all
+    @clients = Client.all
     @project.assignments.build
   end
 
@@ -31,7 +32,7 @@ class ProjectsController < ApplicationController
     #   assign = @project.assignments.build(user_id: user_id)
     #   assign.save!
     # end
-    assignments_params[:assignments_attributes]["0"][:user_id].drop(1).each do |user_id|
+    assignments_params[:user_ids].drop(1).each do |user_id|
       @project.assignments.build(user_id: user_id)
     end
     @project.save
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
     @project.assignments.each do |consultant|
       @project.create_activity :assign, owner: current_user, project_id: @project.id, assignment_consultant_id: consultant.user_id
     end
-    redirect_to projects_path
+    redirect_to project_path(@project)
   end
 
   def edit
@@ -69,7 +70,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :man_days, :project_manager_id, :user_id, deliverables: [], project_files: [])
+    params.require(:project).permit(:name, :description, :man_days, :project_manager_id, :client_id, :user_id, deliverables: [], project_files: [])
   end
 
   def assignments_params

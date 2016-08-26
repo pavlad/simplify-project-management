@@ -7,7 +7,13 @@
         <h3>
           <ul class="list-inline">
             <li><i class="fa fa-clock-o" aria-hidden="true"></i> <%= editable @project, :man_days %> Days</li>
-            <li><i class="fa fa-building" aria-hidden="true"></i> Microsoft Inc.</li>
+            <li><i class="fa fa-building" aria-hidden="true"></i>
+              <% if @project.client %>
+                <%= @project.client.name %>
+              <% else %>
+                -
+              <% end %>
+            </li>
             <li><i class="fa fa-tag" aria-hidden="true"></i> Corporate</li>
           </ul>
         </h3>
@@ -18,11 +24,13 @@
         <h3>Project Leader</h3>
         <div class="ui list">
           <div class="item">
+          <% if @project.project_manager %>
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= @project.project_manager.full_name unless @project.project_manager.nil? %></a>
-              <div class="description"><%= @project.project_manager.job_title%></div>
+              <a class="header"><%= @project.project_manager.full_name if @project.project_manager.full_name %></a>
+              <div class="description"><%= @project.project_manager.job_title if @project.project_manager.job_title %></div>
             </div>
+          <% end %>
           </div>
         </div>
       </div>
@@ -34,8 +42,8 @@
           <div class="item">
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
-              <a class="header"><%= c.full_name %></a>
-              <div class="description"><%= c.job_title %></div>
+              <a class="header"><%= c.full_name if c.full_name %></a>
+              <div class="description"><%= c.job_title if c.job_title %></div>
             </div>
           </div>
           <% end %>

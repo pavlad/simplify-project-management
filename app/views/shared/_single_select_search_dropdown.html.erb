@@ -1,0 +1,6 @@
+<div class="field">
+  <%= f.label field_name %>
+  <%= f.select(field_name, options_for_select(collection_name.collect{|x| [x.send(attribute_name),x.id,class:'item']}),{prompt: prompt_message}, class:'ui fluid search selection dropdown')%>
+</div>
+
+<script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
