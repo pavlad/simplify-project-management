@@ -12,6 +12,10 @@ class UsersController < ApplicationController
       end
   end
 
+  def show
+    @projects = @user.projects
+  end
+
   def update
     @user.update(user_params)
 

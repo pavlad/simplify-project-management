@@ -3,6 +3,12 @@ class Issue < ApplicationRecord
   validates :name, presence: true
   include PublicActivity::Model
 
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :name, :label, :comment, :description
+  end
+
   def mark_as_resolved
     if self.is_resolved
       self.is_resolved = false

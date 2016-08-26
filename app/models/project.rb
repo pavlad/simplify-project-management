@@ -12,6 +12,12 @@ class Project < ApplicationRecord
   include PublicActivity::Model
   accepts_nested_attributes_for :assignments
 
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :name, :description
+  end
+
   def number_of_tasks
     self.tasks.size
   end
@@ -25,3 +31,8 @@ class Project < ApplicationRecord
   end
 
 end
+
+
+
+
+

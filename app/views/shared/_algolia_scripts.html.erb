@@ -1,0 +1,49 @@
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/hogan.js/3.0/hogan.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+  <script>
+    var client = algoliasearch("3WLRVR1MO5", "7d734c3a438aad21c219e5e73cb2cde3");
+    var teams = client.initIndex('Project');
+    var players = client.initIndex('User');
+
+  // Mustache templating by Hogan.js (http://mustache.github.io/)
+  var templateDropdown = Hogan.compile(
+    '<div class="left-container">' +
+    '<div class="aa-dataset-project">' +
+    '{{{ _highlightResult.name.value }}}' +
+    '</div>' +
+    '</div>' +
+    '<div class="right-container">' +
+    '<div class="aa-dataset-user">' +
+    '{{{ _highlightResult.first_name.value }}} {{{ _highlightResult.last_name.value }}} - '+
+    '{{{ _highlightResult.job_title.value }}}' +
+    '</div>' +
+    '</div>');
+
+  // autocomplete.js initialization
+  autocomplete('#demo-search', {hint: false}, [
+  {
+    source: autocomplete.sources.hits(teams, {hitsPerPage: 3}),
+    templates: {
+      header: '<div class="category">Projects</div>',
+      suggestion: function(hit) {
+          // render the hit using Hogan.js
+          return templateDropdown.render(hit);
+        }
+      }
+    },
+    {
+      source: autocomplete.sources.hits(players, {hitsPerPage: 5}),
+      templates: {
+        header: '<div class="category">Consultants</div>',
+        suggestion: function(hit) {
+          // render the hit using Hogan.js
+          return templateDropdown.render(hit);
+        }
+      }
+    }
+
+    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+      console.log(suggestion, dataset);
+    });
+  </script>
