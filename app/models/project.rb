@@ -15,7 +15,7 @@ class Project < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :description
+    attribute :name, :description, :id
   end
 
   def number_of_tasks
