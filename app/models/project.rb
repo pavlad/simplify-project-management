@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   has_many :tasks
   has_many :assignments
   has_many :users, through: :assignments
+  belongs_to :client
   belongs_to :project_manager, class_name: "User", foreign_key: :project_manager_id
   validates :name, presence: true
   has_attachments :deliverables, maximum: 20
