@@ -1,0 +1,55 @@
+#timeline .box {
+  margin-top: 0px;
+}
+
+.timeline-content {
+    position: relative;
+    margin-left: 0;
+    padding: 1.6em;
+    width: 45%;
+}
+
+.timeline-block:nth-child(even) .timeline-content {
+  float: right;
+}
+
+.timeline-block {
+  position: relative;
+  margin: 20px 0;
+}
+
+#timeline {
+  position: relative;
+}
+
+#timeline::before {
+  /* this is the vertical line */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-block::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.timeline-circle {
+  position: absolute;
+  top: 0;
+  background-color: #3F51B5;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  left: 50%;
+  margin-left: -15px;
+      box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+
+}
