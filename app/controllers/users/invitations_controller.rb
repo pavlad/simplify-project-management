@@ -21,7 +21,7 @@ class Users::InvitationsController < Devise::InvitationsController
   protected
 
   def update_sanitized_params
-    devise_parameter_sanitizer.for(:accept_invitation) do |u|
+    devise_parameter_sanitizer.permit(:accept_invitation) do |u|
       u.permit(:first_name, :last_name, :password, :password_confirmation, :invitation_token)
     end
   end

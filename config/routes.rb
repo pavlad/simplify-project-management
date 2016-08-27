@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
-  devise_for :users, controllers: { registrations: "users/registrations" }
-  devise_for :users, controllers: { invitations: "users/invitations" }
-  root to: 'pages#home'
+  devise_for :users, controllers: { registrations: "users/registrations", invitations: "users/invitations" }
+  root to: 'projects#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects do
     resources :deliverables, only: :destroy
