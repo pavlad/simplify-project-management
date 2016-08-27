@@ -60,12 +60,16 @@
         <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
         <p><%= timeline.date %></p>
         <p><%= truncate(timeline.description, length: 400) %></p>
-        <p><%= link_to "Edit", edit_timeline_path(timeline) %> | <%= link_to "Delete", timeline_path(timeline), method: :delete %></p>
+        <p><%= link_to "Edit", edit_timeline_path(timeline), remote: true %> | <%= link_to "Delete", timeline_path(timeline), method: :delete %></p>
       </div>
     </div>
   <% end %>
 </div>
 
-
-
-<%= link_to "Add a new update", new_timeline_path %>
+<%= link_to "Add a new update", new_project_timeline_path %>
+<%= render 'form' %>
+      <div class="ui long modal edit-modal">
+  <div class="header">Edit Consultant</div>
+        <div class="content">
+        </div>
+  </div>
