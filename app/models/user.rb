@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :invitable
   # belongs_to :company
   has_many :tasks
+  has_many :timelines
   has_many :assignments
   has_many :projects, through: :assignments
   has_many :lead_projects, class_name: "Project", foreign_key: :project_manager_id
