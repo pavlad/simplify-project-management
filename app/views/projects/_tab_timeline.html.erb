@@ -1,5 +1,6 @@
-<div class="" id="timeline-panel">
-<div class="timeline">
-<%= timeline @project.timeline_tasks, colors: @project.color_tasks %>
-</div>
+<div class="mdl-tabs__panel" id="timeline-panel">
+  <%= link_to "timeline", project_render_timeline_path(@project), remote: true %>
+  <div class="timeline">
+  <%= timeline @project.timeline_tasks, colors: @project.color_tasks %>
+  </div>
 </div>

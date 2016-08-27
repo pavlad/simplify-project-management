@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :assignments
+    get '/render_timeline', to: 'projects#render_timeline', as: "render_timeline"
   end
   resources :users do
     get 'projects', on: :member

@@ -64,6 +64,14 @@ class ProjectsController < ApplicationController
     @project.create_activity :destroy, owner: current_user, project_id: @project.id
   end
 
+  def render_timeline
+    @project = Project.find(8)
+    respond_to do |format|
+      format.html { redirect_to project_path(params[:project_id]) }
+      format.js
+    end
+  end
+
   private
 
   def find_project
