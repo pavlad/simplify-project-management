@@ -3,7 +3,7 @@ class TimelinesController < ApplicationController
   before_action :set_project, only: [:new, :create, :index, :edit, :update, :destroy]
 
   def index
-    @timelines = Timeline.all
+    @timelines = Timeline.where(project_id: params[:project_id])
   end
 
   def new
