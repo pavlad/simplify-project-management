@@ -22,7 +22,7 @@
   <div id="task-form">
     <%= simple_form_for([@project,@task], remote: true) do |task_f| %>
     <%= task_f.input :name %>
-    <%= task_f.input :user_id, collection:@consultants, label_method: :email %>
+    <%= render partial: 'shared/single_select_search_dropdown', locals: {field_name: :user_id, collection_name: @users, f: task_f, attribute_name: :full_name, prompt_message: 'Select Consultant'} %>
     <%= task_f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
     <% end %>
   </div>
