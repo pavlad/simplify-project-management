@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :deliverables, only: :destroy
     resources :project_files, only: :destroy
+    resources :timelines, except: [:show]
     resources :tasks do
       member do
         put :mark_done
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   end
   resources :clients
 
-  resources :timelines, except: [:show]
+
 
   namespace :user do
     resources :tasks

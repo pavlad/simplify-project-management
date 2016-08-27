@@ -3,7 +3,7 @@
   <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
   <p><%= timeline.date %></p>
   <p><%= timeline.description %></p>
-  <p><%= link_to "Edit", edit_timeline_path(timeline) %> | <%= link_to "Delete", timeline_path(timeline), method: :delete %></p>
+  <p><%= link_to "Edit", edit_project_timeline_path(@project, timeline) %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
 <% end %>
 
-<%= link_to "Add a new update", new_timeline_path %>
+<%= link_to "Add a new update", new_project_timeline_path %>

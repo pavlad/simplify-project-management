@@ -1,5 +1,6 @@
 class TimelinesController < ApplicationController
   before_action :set_timeline, only: [:edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :index, :edit]
 
   def index
     @timelines = Timeline.all
@@ -14,7 +15,7 @@ class TimelinesController < ApplicationController
     @timeline.user = current_user
     @timeline.save
 
-    redirect_to timelines_path
+    redirect_to project_timelines_path
   end
 
   def edit
@@ -22,12 +23,12 @@ class TimelinesController < ApplicationController
 
   def update
     @timeline = Timeline.update(timeline_params)
-    redirect_to timelines_path
+    redirect_to project_timelines_path
   end
 
   def destroy
     @timeline.destroy
-    redirect_to timelines_path
+    redirect_to project_timelines_path
   end
 
   private
@@ -38,6 +39,10 @@ class TimelinesController < ApplicationController
 
   def set_timeline
     @timeline = Timeline.find(params[:id])
+  end
+
+  def set_project
+    @project = Project.find(params[:project_id])
   end
 
 end
