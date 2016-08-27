@@ -1,6 +1,66 @@
-<%= simple_form_for [@project, @timeline] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :date %>
-  <%= f.button :submit %>
-<% end %>
+
+<!-- Modal -->
+<div class="ui long modal create-timeline-modal">
+  <div class="header">Edit update</div>
+  <div class="content">
+    <form class="ui create-new-timeline form" action="/projects/<%= params[:project_id] %>/timelines" method="post">
+      <div class="required field">
+        <label>Title</label>
+        <input type="text" name="timeline[title]" placeholder="">
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <textarea rows="2" class="timeline[description]" placeholder=""></textarea>
+      </div>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="ui error message"></div>
+      <div class="right-aligned">
+        <button class="ui button">Cancel</button>
+        <button class="ui inverted button submit-button" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+
+<!-- Modal -->
+<script type="text/javascript">
+  $(document)
+  .ready(function() {
+
+    $('.project-manager-popup-trigger')
+    .popup()
+    ;
+  });
+
+  $( ".create-timeline" ).click(function() {
+    $('.create-timeline-modal')
+    .modal('show')
+    ;
+  });
+
+// For responsive table (get table headers)
+
+var headertext = [];
+var headers = document.querySelectorAll("thead");
+var tablebody = document.querySelectorAll("tbody");
+
+for (var i = 0; i < headers.length; i++) {
+  headertext[i]=[];
+  for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
+    var current = headrow;
+    headertext[i].push(current.textContent);
+  }
+}
+
+for (var h = 0, tbody; tbody = tablebody[h]; h++) {
+  for (var i = 0, row; row = tbody.rows[i]; i++) {
+    for (var j = 0, col; col = row.cells[j]; j++) {
+      col.setAttribute("data-th", headertext[h][j]);
+    }
+  }
+}
+
+</script>
