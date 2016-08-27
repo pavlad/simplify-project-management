@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
   resources :clients
 
+  resources :timelines, except: [:show]
+
   namespace :user do
     resources :tasks
   end
@@ -31,6 +33,4 @@ Rails.application.routes.draw do
     root to: "user_management#index", as: "user_management"
 
   end
-
-
 end

@@ -1,0 +1,9 @@
+<% @timelines.each do |timeline| %>
+  <h3><%= timeline.title %></h3>
+  <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
+  <p><%= timeline.date %></p>
+  <p><%= timeline.description %></p>
+  <p><%= link_to "Edit", edit_timeline_path(timeline) %> | <%= link_to "Delete", timeline_path(timeline), method: :delete %></p>
+<% end %>
+
+<%= link_to "Add a new update", new_timeline_path %>
