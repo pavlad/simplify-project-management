@@ -1,15 +1,20 @@
+
+<div class="right-aligned new-timeline-button">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-timeline">
+    New Client
+  </button>
+</div>
+
 <% @timelines.each do |timeline| %>
-  <h3><%= timeline.title %></h3>
-  <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
-  <p><%= timeline.date %></p>
-  <p><%= timeline.description %></p>
-  <p><%= link_to "Edit", edit_project_timeline_path(@project, timeline), remote:true %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
+<h3><%= timeline.title %></h3>
+<p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
+<p><%= timeline.date %></p>
+<p><%= timeline.description %></p>
+<p><%= link_to "Edit", edit_project_timeline_path(@project, timeline), remote:true %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
 <% end %>
 
-<%= link_to "Add a new update", new_project_timeline_path %>
 <%= render 'form' %>
-      <div class="ui long modal edit-modal">
+<div class="ui long modal edit-modal">
   <div class="header">Edit Consultant</div>
-        <div class="content">
-        </div>
-  </div>
+  <div class="content"></div>
+</div>
