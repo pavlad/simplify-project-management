@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :lead_projects, class_name: "Project", foreign_key: :project_manager_id
   validates :first_name, presence: true
   validates :last_name, presence: true
+  has_attachment :avatar, dependent: :destroy
+
 
   include AlgoliaSearch
 
