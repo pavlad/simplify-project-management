@@ -1,6 +1,6 @@
 class TimelinesController < ApplicationController
   before_action :set_timeline, only: [:edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create, :index, :edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :index, :edit, :update, :destroy, :invite_client]
 
   def index
     @timelines = Timeline.where(project_id: params[:project_id])
@@ -34,6 +34,11 @@ class TimelinesController < ApplicationController
 
   def destroy
     @timeline.destroy
+    redirect_to project_timelines_path(@project)
+  end
+
+  def invite_client
+    User.invite!(email: params["timeline"][:email], is_client: true)
     redirect_to project_timelines_path(@project)
   end
 

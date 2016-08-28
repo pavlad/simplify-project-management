@@ -33,42 +33,28 @@
       </tbody>
     </table>
   </div>
-  <h2>Pending Invitations</h2>
-  <% unless @pending_user_invitations.empty? %>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-        <thead>
-          <tr>
-            <th class="mdl-data-table__cell--non-numeric">Name</th>
-            <th>Invitation Sent</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @pending_user_invitations.each do |user| %>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
-              <% if user.invitation_created_at %>
-                <td><%= time_ago_in_words(user.invitation_created_at.to_time) %> ago</td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
     <% unless @is_client_users.empty? %>
+    <h2>Clients</h2>
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
           <tr>
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th>Accessable Projects</th>
-            <th>Invitation Sent</th>
+            <th>Last Login</th>
           </tr>
         </thead>
         <tbody>
-          <% @pending_user_invitations.each do |user| %>
+          <% @is_client_users.each do |user| %>
             <tr>
               <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
               <td>Project A | Client B</td>
-              <td><%= time_ago_in_words(user.user.last_sign_in_at) %> ago</td>
+              <td>
+              <% if user.last_sign_in_at %>
+                <%= time_ago_in_words(user.last_sign_in_at) %> ago
+              <% else %>
+                No attempt yet
+              <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
