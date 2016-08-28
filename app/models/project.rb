@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   # belongs_to :client
   has_many :issues
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   has_many :assignments
   has_many :users, through: :assignments
   belongs_to :client
