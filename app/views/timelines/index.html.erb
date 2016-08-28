@@ -1,25 +1,18 @@
-<div class="right-aligned new-timeline-button">
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-timeline">
-    New Client
-  </button>
-</div>
-<div class="ui container" id="timeline">
-  <div class="box">
+<div class="ui container">
+  <div class="timeline-header box">
     <div class="project-info" style="padding: 20px;">
 
       <div class="basic-info">
         <h2><%= editable @project, :name %></h2>
         <h3>
           <ul class="list-inline">
-            <li><i class="fa fa-clock-o" aria-hidden="true"></i> <%= editable @project, :man_days %> Days</li>
             <li><i class="fa fa-building" aria-hidden="true"></i>
               <% if @project.client %>
-                <%= @project.client.name %>
+              <%= @project.client.name %>
               <% else %>
-                -
+              -
               <% end %>
             </li>
-            <li><i class="fa fa-tag" aria-hidden="true"></i> Corporate</li>
           </ul>
         </h3>
         <p><%= editable @project, :description, type: :textarea %></p>
@@ -29,33 +22,52 @@
         <h3>Project Leader</h3>
         <div class="ui list">
           <div class="item">
-          <% if @project.project_manager %>
+            <% if @project.project_manager %>
             <img class="ui avatar image" src="img/lukas.png">
             <div class="content">
               <a class="header"><%= @project.project_manager.full_name if @project.project_manager.full_name %></a>
               <div class="description"><%= @project.project_manager.job_title if @project.project_manager.job_title %></div>
             </div>
-          <% end %>
+            <% end %>
           </div>
         </div>
       </div>
-
-
-
-  <% @timelines.each do |timeline| %>
-    <div class="timeline-block">
-      <div class="timeline-circle">
-
       </div>
-      <div class="timeline-content box">
-        <h3><%= timeline.title %></h3>
-        <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
-        <p><%= timeline.date %></p>
-        <p><%= truncate(timeline.description, length: 400) %></p>
-        <p><%= link_to "Edit", edit_project_timeline_path(@project, timeline), remote: true %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
+       <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar" style="margin-bottom: 20px;">
+        <a href="#timeline-panel" class="mdl-tabs__tab is-active">Timeline</a>
+        <a href="#tasks-panel" class="mdl-tabs__tab">Tasks</a>
+        <a href="#files-panel" class="mdl-tabs__tab">Files</a>
+        <a href="#settings-panel" class="mdl-tabs__tab">Settings</a>
       </div>
     </div>
-  <% end %>
+  </div>
+
+  <div class="right-aligned new-timeline-button">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored create-timeline">
+      New Update
+    </button>
+  </div>
+  <div class="mdl-tabs__panel is-active" id="timeline-panel">
+    <div id="timeline">
+      <% @timelines.each do |timeline| %>
+      <div class="timeline-block">
+        <div class="timeline-circle">
+
+        </div>
+        <div class="timeline-content box">
+          <h3><%= timeline.title %></h3>
+          <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
+          <p><%= timeline.date %></p>
+          <p><%= truncate(timeline.description, length: 400) %></p>
+          <p><%= link_to "Edit", edit_project_timeline_path(@project, timeline), remote: true %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="mdl-tabs__panel" id="tasks-panel">
+  </div>
 </div>
 
 

@@ -14,7 +14,8 @@ class TimelinesController < ApplicationController
     @timeline = Timeline.new(timeline_params)
     @timeline.user = current_user
     @timeline.date = Date.today
-    @timeline.save
+    @timeline.project_id = params[:project_id]
+    @timeline.save!
 
     redirect_to project_timelines_path
   end
