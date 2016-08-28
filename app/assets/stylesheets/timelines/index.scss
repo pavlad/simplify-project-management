@@ -57,3 +57,24 @@
       box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 
 }
+
+.timeline-tabs.box {
+  width: 100%;
+  min-height: 400px;
+  padding: 20px;
+}
+
+.timeline-tabs-settings.box {
+  width: 100%;
+  min-height: 400px;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+.timeline-page .mdl-tabs__panel {
+  display: none;
+}
+
+.timeline-page .mdl-tabs__panel.is-active {
+  display: block;
+}
