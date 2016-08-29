@@ -46,12 +46,11 @@ class TasksController < ApplicationController
         format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
     end
-    # STILL HAVE TO FIGURE OUT WHY THIS IS NOT WORKING
-    # if @task.is_done
-    #   @task.create_activity :marked_as_done, owner: current_user, project_id: @project.id
-    # else
-    #   @task.create_activity :unmarked_as_done, owner: current_user, project_id: @project.id
-    # end
+    if @task.is_done
+      @task.create_activity :marked_as_done, owner: current_user, project_id: @project.id
+    else
+      @task.create_activity :unmarked_as_done, owner: current_user, project_id: @project.id
+    end
   end
 
   private

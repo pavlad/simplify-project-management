@@ -1,5 +1,5 @@
 <% if a.trackable %>
-  Task "<%= a.trackable.name %>" was marked as done by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+  <%= render partial: '/public_activity/task/task_template', locals: {text: "Task " + content_tag(:strong, a.trackable.name) + " was marked as done by", user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
 <% else %>
-  Task which has since been removed was marked as done by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+  <%= render partial: '/public_activity/task/task_template', locals: {text: "Task which has since been removed was marked as done by", user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
 <% end %>
