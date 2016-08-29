@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @consultants = @project.users
     @users = User.all
     @task = Task.new
     @tasks = @project.tasks
