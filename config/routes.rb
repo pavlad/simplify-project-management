@@ -27,13 +27,17 @@ Rails.application.routes.draw do
   end
   resources :clients
 
-
-
   namespace :user do
     resources :tasks
   end
   namespace "settings" do
     root to: "user_management#index", as: "user_management"
-
   end
+
+  resources :dashboard, only: [:index] do
+    collection do
+      get 'overview'
+    end
+  end
+
 end

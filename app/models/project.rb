@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  after_initialize :default_values
   # belongs_to :client
   has_many :issues
   has_many :tasks, dependent: :destroy
@@ -50,4 +51,17 @@ class Project < ApplicationRecord
     end
     return array
   end
+
+  def has_issues?
+    return self.issues.count != 0
+  end
+
+  private
+
+
+  def default_values
+    self.active ||= true
+  end
+
 end
+

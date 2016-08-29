@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  after_initialize :default_value
+
   belongs_to :project
   belongs_to :user
   validates :name, presence: true
@@ -28,5 +30,10 @@ class Task < ApplicationRecord
     else
       return "#B6212D"
     end
+  end
+
+  private
+  def default_value
+    self.is_done ||= false
   end
 end
