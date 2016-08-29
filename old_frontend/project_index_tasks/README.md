@@ -1,1 +1,0 @@
-# lewagon-project-mgmt
