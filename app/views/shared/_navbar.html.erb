@@ -9,7 +9,7 @@
 
       <div class="ui search">
         <div class="ui icon input">
-        <input class="prompt" id="demo-search" type="text" placeholder="Search countries...">
+        <input class="prompt" id="demo-search" type="text" placeholder="Search projects...">
           <i class="search icon"></i>
         </div>
         <div class="results"></div>
@@ -42,7 +42,7 @@
 
         <% if current_user.nil? %>
         <%= link_to new_user_session_path, class: "mdl-navigation__link little-transparent" do %>
-        <i class="material-icons">timeline</i>
+        <i class="material-icons">input</i>
         <span>Log in</span>
         <% end %>
         <% end %>

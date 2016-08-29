@@ -1,8 +1,8 @@
 <div>
   <% if a.trackable %>
     <% consultant = User.where(id: a.assignment_consultant_id).first %>
-    <%= consultant.first_name %> <%= consultant.last_name %>  was assigned to the project by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+    <%= render partial: '/public_activity/project/project_template', locals: {text: content_tag(:strong, consultant.full_name) + " was assigned to the project by", user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
   <% else %>
-    User, who has since been removed, was assigned to project by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+    <%= render partial: '/public_activity/project/project_template', locals: {text: "Consultant who has since been removed was assigned to the project by", user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
   <% end %>
 </div>

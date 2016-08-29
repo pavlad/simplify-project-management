@@ -1,5 +1,5 @@
 <% if a.trackable %>
-  Issue "<%= a.trackable.name %>" was added by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+  <%= render partial: '/public_activity/issue/issue_template', locals: {text: 'Issue ' + content_tag(:strong, a.trackable.name) + ' was added by', user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
 <% else %>
-  Issue was added by <%= a.owner.first_name %> <%= a.owner.last_name %>which has since been removed <%= time_ago_in_words(a.created_at.to_time) %> ago.
+  <%= render partial: '/public_activity/issue/issue_template', locals: {text: 'Issue which has since been removed was added by', user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
 <% end %>

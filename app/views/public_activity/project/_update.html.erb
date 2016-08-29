@@ -1,3 +1,1 @@
-<div>
-  Project details were edited by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
-</div>
+<%= render partial: '/public_activity/project/project_template', locals: {text: 'Project details were edited by', user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
