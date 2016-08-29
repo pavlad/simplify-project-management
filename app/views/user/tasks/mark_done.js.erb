@@ -1,0 +1,9 @@
+$taskicon = $("#task-<%= j @task.id.to_s %>").find('i');
+
+<% if @task.is_done == true %>
+  $taskicon.removeClass('task-unchecked').addClass('task-checked');
+  $taskicon.addClass('task-checked');
+<% else %>
+  $taskicon.removeClass('task-checked').addClass('task-unchecked');
+  $taskicon.addClass('task-unchecked');
+<% end %>
