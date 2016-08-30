@@ -7,3 +7,14 @@
   text-align: center;
   padding: 20px 0;
 }
+
+
+#consultant-dashboard-list {
+  min-height: 557px;
+}
+
+#consultant-dashboard-list th,
+#project-dashboard-list th {
+  cursor: pointer;
+  user-select: none;
+}

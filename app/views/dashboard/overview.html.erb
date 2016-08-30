@@ -12,22 +12,25 @@
   </div>
   <div class="content">
     <div id="new-project-table" class="project-table">
+    <div id="project-dashboard-list">
       <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
           <tr>
-            <th class="mdl-data-table__cell--non-numeric">Status</th>
-            <th>Name</th>
-            <th>Client</th>
-            <th>Progress</th>
+            <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="project-status">Status</span></th>
+            <th><span class="sort" data-sort="project-name">Name</span></th>
+            <th><span class="sort" data-sort="project-client">Client</span></th>
+            <th><span class="sort" data-sort="project-progress">Progress</span></th>
             <th>Links</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="list">
           <% @projects.each do |project| %>
           <%= render partial: 'project', locals: { project: project} %>
           <% end %>
         </tbody>
       </table>
+      <ul class="pagination"></ul>
+      </div>
     </div>
   </div>
 </div>
@@ -45,21 +48,24 @@
   </div>
   <div class="content">
     <div id="new-project-table" class="project-table">
+    <div id="consultant-dashboard-list">
      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
       <thead>
         <tr>
-          <th class="mdl-data-table__cell--non-numeric">Status</th>
-          <th>Name</th>
-          <th>Total tasks</th>
-          <th>Tasks done</th>
+          <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="consultant-status">Status</span></th>
+          <th><span class="sort" data-sort="consultant-name">Name</span></th>
+          <th><span class="sort" data-sort="consultant-total-tasks">Total tasks</span></th>
+          <th><span class="sort" data-sort="consultant-tasks-done">Tasks done</span></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="list">
         <% @consultants.each do |consultant| %>
         <%= render partial: 'consultant', locals: { consultant: consultant} %>
         <% end %>
       </tbody>
     </table>
+    <ul class="pagination"></ul>
+  </div>
   </div>
 </div>
 </div>
@@ -96,6 +102,31 @@
   </div>
 </div>
 
+<%= content_for(:after_js) do %>
+  <!-- list.js -->
+   <script>
+      var options = {
+        valueNames: [ 'project-status', 'project-name', 'project-client', 'project-progress'],
+        page: 10,
+        plugins: [
+          ListPagination({})
+        ]
+      };
 
+      var projectDashboardList = new List('project-dashboard-list', options);
+    </script>
 
+    <script>
+      var options = {
+        valueNames: [ 'consultant-status', 'consultant-name', 'consultant-total-tasks', 'consultant-tasks-done'],
+        page: 10,
+        plugins: [
+          ListPagination({})
+        ]
+      };
+
+      var projectList = new List('consultant-dashboard-list', options);
+    </script>
+
+<% end %>
 
