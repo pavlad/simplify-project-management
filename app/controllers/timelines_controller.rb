@@ -38,7 +38,8 @@ class TimelinesController < ApplicationController
   end
 
   def invite_client
-    User.invite!(email: params["timeline"][:email], is_client: true)
+    invited_client = User.invite!(email: params["timeline"][:email], is_client: true)
+    @project.assignments.create(user_id: invited_client.id)
     redirect_to project_timelines_path(@project)
   end
 

@@ -9,7 +9,7 @@
 
       <div class="ui search">
         <div class="ui icon input">
-        <input class="prompt" id="demo-search" type="text" placeholder="Search countries...">
+        <input class="prompt" id="demo-search" type="text" placeholder="Search projects...">
           <i class="search icon"></i>
         </div>
         <div class="results"></div>
@@ -42,7 +42,7 @@
 
         <% if current_user.nil? %>
         <%= link_to new_user_session_path, class: "mdl-navigation__link little-transparent" do %>
-        <i class="material-icons">timeline</i>
+        <i class="material-icons">input</i>
         <span>Log in</span>
         <% end %>
         <% end %>
@@ -65,7 +65,7 @@
         </ul>
         <div class="ui item right profile">
           <div class="ui header" id="user-menu">
-            <img class="ui mini circular image" src="http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png">
+            <img class="ui mini circular image" src="http://res.cloudinary.com/banana-cake/image/upload/<%= current_user.avatar.path unless current_user.avatar.nil? %>">
             <div class="content" style="color:rgba(255, 255, 255, 0.7)">
               <div class="ui sub header">
                 <h4 class="ui header" style="color:rgba(255, 255, 255, 0.7)">

@@ -32,6 +32,14 @@ class Project < ApplicationRecord
     (self.number_of_tasks_done.to_f/self.number_of_tasks.to_f)*100
   end
 
+  def clients
+    self.users.where(is_client: true)
+  end
+
+  def consultants
+    self.users.where.not(is_client: true)
+  end
+
   def timeline_tasks
     array = []
     self.tasks.each do |task|

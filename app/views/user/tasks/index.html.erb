@@ -1,0 +1,44 @@
+<main class="mdl-layout__content">
+  <div class="page-content my-projects">
+  <br>
+    <div class="mdl-tabs__panel" id="tasks-panel">
+      <div class="tasks-table" id="task-list">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="task-status">Done</span></th>
+              <th><span class="sort" data-sort="task-name">Task</span></th>
+              <th><span class="sort" data-sort="task-start">Start</span></th>
+              <th><span class="sort" data-sort="task-end">End</span></th>
+              <th><span class="sort" data-sort="task-consultant">Assigned to</span></th>
+            </tr>
+          </thead>
+          <tbody class="list">
+            <div id='tasks'>
+              <% @tasks.each do |task| %>
+              <tr id="task-<%= task.id %>">
+                <% if task.is_done %>
+                <% tasktag = 'task-checked' %>
+                <% else %>
+                <% tasktag = 'task-unchecked' %>
+                <% end %>
+                <td class="mdl-data-table__cell--non-numeric">
+                  <%= link_to (user_task_mark_done_path(task.id)), remote: true, method: :put do %>
+                  <i class="fa fa-check-circle fa-2x <%= tasktag %> mark-as-done-trigger task-status" aria-hidden="true"></i>
+                  <% end %>
+                </td>
+                <td class="task-name"><%= task.name.nil? ? "Blank" : task.name %></td>
+                <td class="task-start"><%= task.start_date unless task.start_date.nil? %></td>
+                <td class="task-end"><%= task.end_date unless task.end_date.nil? %></td>
+                <td class="task-consultant"><%= task.user.nil? ? "No user defined" : task.user.full_name %></td>
+              </tr>
+
+              <% end %>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+

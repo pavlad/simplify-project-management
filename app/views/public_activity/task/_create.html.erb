@@ -1,5 +1,5 @@
 <% if a.trackable %>
-  Task "<%= a.trackable.name %>" was added by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+  <%= render partial: '/public_activity/task/task_template', locals: {text: "New task " + content_tag(:strong, a.trackable.name) + " was added to the project by", user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
 <% else %>
-  Task was added by <%= a.owner.first_name %> <%= a.owner.last_name %>which has since been removed <%= time_ago_in_words(a.created_at.to_time) %> ago.
+  <%= render partial: '/public_activity/task/task_template', locals: {text: "New task which since been removed was added to the project by", user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>
 <% end %>

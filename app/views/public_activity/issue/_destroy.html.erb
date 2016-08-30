@@ -1,1 +1,1 @@
-Issue was deleted by <%= a.owner.first_name %> <%= a.owner.last_name %> <%= time_ago_in_words(a.created_at.to_time) %> ago.
+<%= render partial: '/public_activity/issue/issue_template', locals: {text: 'Issue was deleted by ', user: a.owner.full_name, date: time_ago_in_words(a.created_at.to_time)} %>

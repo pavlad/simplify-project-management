@@ -40,6 +40,7 @@
           <tr>
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th>Accessable Projects</th>
+            <th>Company</th>
             <th>Last Login</th>
           </tr>
         </thead>
@@ -47,7 +48,16 @@
           <% @is_client_users.each do |user| %>
             <tr>
               <td class="mdl-data-table__cell--non-numeric"><%= user.email %></td>
-              <td>Project A | Client B</td>
+              <% user.projects.each do |project| %>
+                <td><%= project.name %></td>
+                <td>
+                  <% if project.client %>
+                    <%= project.client.name %>
+                  <% else %>
+                    -
+                  <% end %>
+                </td>
+              <% end %>
               <td>
               <% if user.last_sign_in_at %>
                 <%= time_ago_in_words(user.last_sign_in_at) %> ago

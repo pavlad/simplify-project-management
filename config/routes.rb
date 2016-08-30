@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   resources :clients
 
   namespace :user do
-    resources :tasks
+    resources :tasks do
+      put 'mark_done'
+    end
   end
   namespace "settings" do
     root to: "user_management#index", as: "user_management"

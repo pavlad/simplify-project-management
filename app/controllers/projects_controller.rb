@@ -11,12 +11,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @consultants = @project.users
     @users = User.all
     @task = Task.new
     @tasks = @project.tasks
     @task_count = @project.tasks.count
     @percentage = @project.completion_percentage
+    @issue = Issue.new
   end
 
   def new
@@ -36,12 +36,13 @@ class ProjectsController < ApplicationController
     assignments_params[:user_ids].drop(1).each do |user_id|
       @project.assignments.build(user_id: user_id)
     end
-    @project.save
-    @project.create_activity :create, owner: current_user, project_id: @project.id
-    @project.assignments.each do |consultant|
-      @project.create_activity :assign, owner: current_user, project_id: @project.id, assignment_consultant_id: consultant.user_id
+    if @project.save
+      @project.create_activity :create, owner: current_user, project_id: @project.id
+      @project.assignments.each do |consultant|
+        @project.create_activity :assign, owner: current_user, project_id: @project.id, assignment_consultant_id: consultant.user_id
+      end
+      redirect_to project_path(@project)
     end
-    redirect_to project_path(@project)
   end
 
   def edit
