@@ -64,6 +64,20 @@ class Project < ApplicationRecord
     return self.issues.count != 0
   end
 
+  def issue_type
+    hash = {
+      "Low Priority"=>     1,
+      "Medium Priority"=>  2,
+      "High Priority"=>    3
+    }
+    if self.issues.count == 0
+      return "No Issue"
+    else
+      value = self.issues.map{|issue| hash[issue.label] }.max
+      return hash.index(value)
+    end
+  end
+
   private
 
 

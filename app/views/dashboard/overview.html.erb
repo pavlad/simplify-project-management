@@ -1,8 +1,74 @@
 <div id="overview-projects" class="box">
-<div class="information">
-  <p>Number of projects currently going on: <%= @projects.count %> </p>
-  <p>Number of projects with issues: <%= @project_with_issues %> </p>
+  <div class="information">
+    <div class="box-title">
+      <h2> Projects overview </h2>
+    </div>
+    <div class="wrapper-cards">
+      <%= render partial: 'card', locals: {number: @projects.count, unit: "Active Projects"} %>
+      <%= render partial: 'card', locals: {number: @project_with_issues, unit: "Projects with issues"} %>
+      <%= render partial: 'card', locals: {number: @total_tasks, unit: "Total tasks"} %>
+      <%= render partial: 'card', locals: {number: @total_undone_tasks, unit: "Unfinished tasks"} %>
+    </div>
+  </div>
+  <div class="content">
+    <div id="new-project-table" class="project-table">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Status</th>
+            <th>Name</th>
+            <th>Client</th>
+            <th>Progress</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project| %>
+          <%= render partial: 'project', locals: { project: project} %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+<div id="overview-consultants" class="box">
+  <div class="information">
+    <div class="box-title">
+      <h2> Consultants overview </h2>
+    </div>
+    <div class="wrapper-cards">
+      <%= render partial: 'card', locals: {number: @consultants.count, unit: "Total consultants"} %>
+      <%= render partial: 'card', locals: {number: @consultants_with_tasks, unit: "Occupied consultants"} %>
+      <%= render partial: 'card', locals: {number: @average_tasks, unit: "Average tasks"} %>
+    </div>
+  </div>
+  <div class="content">
+    <div id="new-project-table" class="project-table">
+     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Status</th>
+          <th>Name</th>
+          <th>Total tasks</th>
+          <th>Tasks done</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @consultants.each do |consultant| %>
+        <%= render partial: 'consultant', locals: { consultant: consultant} %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<div id="overview-projects" class="box">
+  <div class="information">
+    <p>Number of consultants: <%= @consultants.count %></p>
+    <p>Number of consultants with tasks: <%= @consultants_with_tasks %> </p>
+  </div>
   <div class="ui accordion">
     <div class="title">
       <i class="dropdown icon"></i>
@@ -15,16 +81,13 @@
             <tr>
               <th class="mdl-data-table__cell--non-numeric">Status</th>
               <th>Name</th>
-              <th>Client</th>
-              <th>Budgeted Days</th>
-              <th>Progress</th>
-              <th>Project Lead</th>
-              <th>Links</th>
+              <th>Total tasks</th>
+              <th>Tasks done</th>
             </tr>
           </thead>
           <tbody>
-            <% @projects.each do |project| %>
-            <%= render partial: '../views/projects/project', locals: { project: project} %>
+            <% @consultants.each do |consultant| %>
+            <%= render partial: 'consultant', locals: { consultant: consultant} %>
             <% end %>
           </tbody>
         </table>
@@ -32,51 +95,6 @@
     </div>
   </div>
 </div>
-
-<div id="overview-projects" class="box">
-<div class="information">
-  <p>Number of consultants: <%= @consultants.count %></p>
-  <p>Number of consultants with tasks: <%= @consultants_with_tasks %> </p>
-</div>
-  <div class="ui accordion">
-    <div class="title">
-      <i class="dropdown icon"></i>
-      What are the projects?
-    </div>
-    <div class="content">
-      <div id="new-project-table" class="transition hidden">
-        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">Status</th>
-              <th>Name</th>
-              <th>Client</th>
-              <th>Budgeted Days</th>
-              <th>Progress</th>
-              <th>Project Lead</th>
-              <th>Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @projects.each do |project| %>
-            <%= render partial: '../views/projects/project', locals: { project: project} %>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= content_for(:after_js) do %>
-<script type="text/javascript">
-  $('.ui.accordion')
-  .accordion()
-  ;
-</script>
-<% end %>
-
-
 
 
 

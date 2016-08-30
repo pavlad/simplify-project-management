@@ -1,5 +1,5 @@
 <tr>
-  <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="ui label high-priority-issue">High Priority Issue</a></td>
+  <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="ui label high-priority-issue"><%= project.issue_type%></a></td>
   <td><%= project.name %></td>
   <td><%= project.client ? project.client.name : "-" %> </td>
   <td><%= project.man_days ? project.man_days : "-" %></td>

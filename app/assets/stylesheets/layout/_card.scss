@@ -1,0 +1,23 @@
+.card-phan {
+  height: 150px;
+  display:flex;
+  flex-direction: column;
+  background-color: #EFEFEF;
+  justify-content: space-around;
+  padding-left: 10px;
+  border: white 1px solid;
+  flex: 1 1 20%;
+}
+
+.card-unit {
+  font-size: 16px;
+  color: #505050;
+  font-weight: 600;
+  }
+
+.card-number {
+  font-size: 24px;
+  color: #4C6991;
+  font-weight: 500
+}
+
