@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @projects = @user.projects
+    @projects = @user.projects.select{|project| project.has_consultant(@user)}
   end
 
   def update
