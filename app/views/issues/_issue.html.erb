@@ -1,0 +1,21 @@
+<% if issue.is_resolved %>
+<% issuetag = 'task-checked' %>
+<% else %>
+<% issuetag = 'task-unchecked' %>
+<% end %>
+<div class="ui card" style="width: 100%; max-width: 100%;" id="issue-<%= issue.id %>">
+  <div class="content">
+    <div class="header">
+      <%= issue.name %> - <%= issue.label.nil? ? "Blank" : issue.label %>
+    </div>
+    <div class="meta">2 days ago</div>
+    <div class="description">
+      <p><%= issue.description.nil? ? "Blank" : issue.description %></p>
+    </div>
+  </div>
+  <div class="extra content">
+    <%= link_to (mark_as_resolved_project_issue_path(project.id, issue)), remote: true, method: :put do %>
+    <i class="fa fa-check-circle fa-2x <%= issuetag %> mark-as-done-trigger issue-status" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>

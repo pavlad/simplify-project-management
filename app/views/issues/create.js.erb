@@ -1,0 +1,5 @@
+var new_issue = $("<%= j render partial: "issue", locals: {project: @project, issue: @issue} %>").hide();
+$('#issues').append(new_issue);
+new_issue.fadeIn();
+$('#issue-form').find('input').val('');
+$('#issue-form').find('select').val('');
