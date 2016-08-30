@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  after_initialize :default_values
   # belongs_to :client
   has_many :issues
   has_many :tasks, dependent: :destroy
@@ -58,4 +59,31 @@ class Project < ApplicationRecord
     end
     return array
   end
+
+  def has_issues?
+    return self.issues.count != 0
+  end
+
+  def issue_type
+    hash = {
+      "Low Priority"=>     1,
+      "Medium Priority"=>  2,
+      "High Priority"=>    3
+    }
+    if self.issues.count == 0
+      return "No Issue"
+    else
+      value = self.issues.map{|issue| hash[issue.label] }.max
+      return hash.index(value)
+    end
+  end
+
+  private
+
+
+  def default_values
+    self.active ||= true
+  end
+
 end
+

@@ -27,6 +27,7 @@ gem "chartkick"
 gem 'jquery-ui-rails'
 gem 'x-editable-rails'
 gem "algoliasearch-rails"
+gem 'chartjs-ror'
 
 
 

@@ -1,12 +1,18 @@
+
 <%= simple_form_for [@user] do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
+  <p>This is your current avatar:</p>
+  <% unless @user.avatar.nil? %>
+    <img class="ui mini circular image" src="http://res.cloudinary.com/banana-cake/image/upload/<%= @user.avatar.path %>">
+  <% end %>
+  <br>
+  <%= f.attachinary_file_field :avatar, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false} %>
   <%= f.input :job_title %>
   <%= f.input :email %>
   <%= f.input :mobile_phone %>
   <%= f.input :phone %>
   <%= f.input :description, input_html: { rows: 2 }%>
   <%= f.input :is_owner %>
-  <%= f.input :avatar, as: :attachinary %>
   <%= f.button :submit %>
 <% end %>

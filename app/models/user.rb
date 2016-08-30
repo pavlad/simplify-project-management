@@ -60,5 +60,26 @@ class User < ApplicationRecord
     return array
   end
 
+  def has_tasks?
+    return self.tasks.select{|task| task.is_done == false}.count > 0
+  end
+
+  def status
+    self.has_tasks? ? "Busy" : "On the bench"
+  end
+
+  def status_class
+    self.has_tasks? ? "ui green label" : "ui yellow label"
+  end
+
+  def tasks_count
+    return self.tasks.count
+  end
+
+  def tasks_done_count
+    return self.tasks.select{|task| task.is_done}.count
+  end
+
+
 end
 
