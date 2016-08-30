@@ -10,4 +10,3 @@
 //= require attachinary
 //= require editable/jquery-editable-poshytip
 //= require editable/rails
-
