@@ -24,7 +24,7 @@
   <div id="issues-form">
     <%= simple_form_for([@project, @issue]) do |f| %>
     <%= f.input :name %>
-    <%= f.input :label, collection: ['High Priority Issue','Issue'] %>
+    <%= f.input :label, collection: ["Low Priority","Medium Priority","High Priority"] %>
     <%= f.input :description %>
     <%= f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
     <% end %>
