@@ -1,0 +1,1 @@
+<%= select field_name, "", options_for_select(collection_name.collect{|x| [x.send(attribute_name),x.id,class:'item']}), {}, {class: 'ui fluid search selection dropdown'} %>

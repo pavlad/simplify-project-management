@@ -4,6 +4,7 @@
   <div class="header">Add a new project</div>
   <div class="content">
     <%= simple_form_for(@project) do |f| %>
+    <div class="ui error message"></div>
     <%= f.input :name %>
     <%= render partial: 'shared/single_select_search_dropdown', locals: {field_name: :client_id, collection_name: @clients, f: f, attribute_name: :name, prompt_message: 'Select Client'} %>
     <%= f.input :description, input_html: { rows: 2 }%>

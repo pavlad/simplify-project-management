@@ -9,28 +9,31 @@
   </div>
   <BR>
     <div id="new-user-table">
+    <div id="consultant-list">
       <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
         <thead>
           <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Job Title</th>
-            <th>Email</th>
+            <th><span class="sort" data-sort="consultant-first_name">First Name</span></th>
+            <th><span class="sort" data-sort="consultant-last_name">Last Name</span></th>
+            <th><span class="sort" data-sort="consultant-job_title">Job Title</span></th>
+            <th><span class="sort" data-sort="consultant-email">Email</span></th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="list">
           <% @users.each do |user| %>
           <tr>
-            <td><%= user.first_name %></td>
-            <td><%= user.last_name %></td>
-            <td><%= user.job_title %></td>
-            <td><%= user.email %></td>
+            <td class="consultant-first_name"><%= user.first_name %></td>
+            <td class="consultant-last_name"><%= user.last_name %></td>
+            <td class="consultant-job_title"><%= user.job_title %></td>
+            <td class="consultant-email"><%= user.email %></td>
             <td><%= link_to "Edit", edit_user_path(user), remote: true %> - <%= link_to "Delete", user_path(user), method: :delete %> - <%= link_to "Details", user_path(user.id) %> </td>
           </tr>
           <% end %>
         </tbody>
       </table>
+      <ul class="pagination"></ul>
+      </div>
     </div>
   </div>
 </main>
@@ -42,7 +45,20 @@
 </div>
 
 
+<%= content_for(:after_js) do %>
+  <!-- list.js -->
+   <script>
+      var options = {
+        valueNames: [ 'consultant-first_name', 'consultant-last_name', 'consultant-job_title', 'consultant-email'],
+        page: 10,
+        plugins: [
+          ListPagination({})
+        ]
+      };
 
+      var clientList = new List('consultant-list', options);
+    </script>
+<% end %>
 
 
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
