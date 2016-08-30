@@ -64,6 +64,16 @@ class Project < ApplicationRecord
     return self.issues.count != 0
   end
 
+  def has_consultant(consultant)
+    ans = false
+    self.tasks.each do |task|
+      if task.user == consultant
+        ans = true
+      end
+    end
+    return ans
+  end
+
   def issue_type
     hash = {
       "Low Priority"=>     1,
@@ -76,6 +86,20 @@ class Project < ApplicationRecord
       value = self.issues.map{|issue| hash[issue.label] }.max
       return hash.index(value)
     end
+  end
+
+  def has_issues?
+    return self.issues.select{|issue| issue.is_resolved == false}.count > 0
+  end
+
+  def status_class
+    hash = {
+      "No Issue"=>        "ui green label",
+      "Low Priority"=>    "ui yellow label",
+      "Medium Priority"=> "ui orange label",
+      "High Priority"=>   "ui red label"
+    }
+    return hash[self.issue_type]
   end
 
   private

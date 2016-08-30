@@ -1,5 +1,5 @@
-<tr>
-  <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="ui label high-priority-issue"><%= project.issue_type%></a></td>
+<tr data-link="<%= project_path(project) %>" class="cursor-pointer">
+  <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="<%="#{project.status_class}"%>"><%= project.issue_type %></a></td>
   <td><%= project.name %></td>
   <td><%= project.client ? project.client.name : "-" %> </td>
   <td><%= project.man_days ? project.man_days : "-" %></td>
@@ -9,5 +9,4 @@
     <div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name if project.project_manager %>" data-content=<%= project.project_manager.job_title if project.project_manager.job_title %> class="project-manager-popup-trigger"><img class="ui mini circular image" src="./img/lukas.png"></span></div>
   <% end %>
   </td>
-  <td><%= link_to 'details', project_path(project) %></td>
 </tr>

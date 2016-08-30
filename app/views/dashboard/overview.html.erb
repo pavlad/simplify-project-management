@@ -15,11 +15,10 @@
       <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
           <tr>
-            <th class="mdl-data-table__cell--non-numeric">Status</th>
-            <th>Name</th>
-            <th>Client</th>
-            <th>Progress</th>
-            <th>Links</th>
+            <th class="mdl-data-table__cell--non-numeric ">Status</th>
+            <th >Name</th>
+            <th >Client</th>
+            <th >Progress</th>
           </tr>
         </thead>
         <tbody>
@@ -64,37 +63,7 @@
 </div>
 </div>
 
-<div id="overview-projects" class="box">
-  <div class="information">
-    <p>Number of consultants: <%= @consultants.count %></p>
-    <p>Number of consultants with tasks: <%= @consultants_with_tasks %> </p>
-  </div>
-  <div class="ui accordion">
-    <div class="title">
-      <i class="dropdown icon"></i>
-      What are the projects?
-    </div>
-    <div class="content">
-      <div id="new-project-table" class="transition hidden">
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">Status</th>
-              <th>Name</th>
-              <th>Total tasks</th>
-              <th>Tasks done</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @consultants.each do |consultant| %>
-            <%= render partial: 'consultant', locals: { consultant: consultant} %>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 
