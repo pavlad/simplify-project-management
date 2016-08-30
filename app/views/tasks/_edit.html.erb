@@ -1,0 +1,11 @@
+<%= simple_form_for [@project, @task] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= render partial: 'shared/single_select_search_dropdown', locals: {field_name: :user_id, collection_name: @users, f: f, attribute_name: :full_name, prompt_message: 'Select Consultant'} %>
+  <%= f.button :submit %>
+<% end %>
+
+<script type="text/javascript">
+  $('.ui.dropdown').dropdown();
+</script>

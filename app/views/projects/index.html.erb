@@ -13,25 +13,28 @@
           </div>
 
           <div id="new-project-table">
-            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <div id="project-list">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
-                  <th class="mdl-data-table__cell--non-numeric">Status</th>
-                  <th>Name</th>
-                  <th>Client</th>
-                  <th>Budgeted Days</th>
-                  <th>Progress</th>
-                  <th>Project Lead</th>
+                  <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="project-status">Status</span></th>
+                  <th><span class="sort" data-sort="project-name">Name</span></th>
+                  <th><span class="sort" data-sort="project-client">Client</span></th>
+                  <th><span class="sort" data-sort="project-budget">Budgeted Days</span></th>
+                  <th><span class="sort" data-sort="project-progress">Progress</span></th>
+                  <th><span class="sort" data-sort="project-project-lead">Project Lead</span></th>
                   <th>Links</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="list">
 
                 <% @projects.each do |p| %>
                 <%= render "project", project: p %>
                 <% end %>
               </tbody>
             </table>
+            <ul class="pagination"></ul>
+          </div>
           </div>
         </div>
 
@@ -44,8 +47,11 @@
   </div>
 </div>
 
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+
+<%= content_for(:after_js) do %>
+  <script type="text/javascript">
+    $('.ui.create-project-modal')
+  </script>
 
 <script type="text/javascript">
   $('.ui.create-project-modal')
@@ -63,5 +69,18 @@
           }
       })
       ;
-</script>
+  </script>
+  <!-- list.js -->
+   <script>
+      var options = {
+        valueNames: [ 'project-status', 'project-name', 'project-client', 'project-budget', 'project-progress', 'project-project-lead'],
+        page: 10,
+        plugins: [
+          ListPagination({})
+        ]
+      };
+
+      var projectList = new List('project-list', options);
+    </script>
+<% end %>
       <%= render 'form' %>
