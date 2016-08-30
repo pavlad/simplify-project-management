@@ -6,11 +6,99 @@
 #activity-panel .ui.feed>.event>.content .user {
   font-weight: 400;
 }
-
 td .label {
   width:120px;
   text-align:center;
 }
 .cursor-pointer {
   cursor: pointer;
+  }
+
+.popup .inline.fields {
+  margin-bottom: 0!important;
+}
+
+.editable-text-popup,
+.editable-number-popup {
+  min-width: 286px!important;
+}
+
+.editable-description-popup {
+  min-width: 600px!important;
+}
+
+.editable-title:hover,
+.editable-description:hover,
+.editable-number:hover {
+  background-color: #E1F5FE;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.task-consultant .editable-consultant-task:hover,
+.task-name .editable-title:hover,
+.editable-task-name-task:hover,
+.editable-start-date-task:hover,
+.editable-end-date-task:hover {
+  text-decoration: underline;
+  color: #3F51B5;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.editable-title,
+.editable-number,
+.editable-description,
+.editable-consultant,
+.task-consultant {
+   transition: background-color 0.3s;
+}
+
+.editable-description {
+  white-space: pre;
+}
+
+.project-owners:hover .add-project-lead {
+  opacity: 1
+}
+
+.task-consultant .editable-consultant-task,
+.task-name .editable-title {
+  float: right;
+}
+
+.add-consultants,
+.add-project-lead {
+  opacity: 0;
+  transition: all 0.4s;
+  margin-top: 10px!important;
+}
+
+.project-members:hover .add-consultants {
+  opacity: 1
+}
+
+.editable-consultant-popup .ui.fluid.search.selection.dropdown{
+  min-width: 200px;
+}
+
+.ui.popup.editable-consultant-popup {
+  min-width: 311px;
+}
+
+#tasks-panel a {
+  font-weight: 400;
+  color: rgba(0,0,0,.87);
+}
+
+//list.js
+#tasks-panel a:hover {
+  color: #3F51B5;
+}
+
+#new-project-table th,
+#new-client-table th,
+#new-user-table th {
+  cursor: pointer;
+  user-select: none;
 }

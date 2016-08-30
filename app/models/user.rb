@@ -32,6 +32,10 @@ class User < ApplicationRecord
     self.tasks.order(:end_date).select{|task| task.has_date?}.last.end_date
   end
 
+  def self.consultants
+    self.where.not(is_client: true)
+  end
+
   def find_tasks_in_array(project)
     array = []
     normal_array = project.tasks.select{ |task| task.user = self}

@@ -50,14 +50,9 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project.update(project_params)
-    if @project.save
-      respond_to do |format|
-        format.html { redirect_to project_path(@project) }
-        format.json { render json: @project }
-      end
+    if @project.update(project_params)
+      @project.create_activity :update, owner: current_user, project_id: @project.id
     end
-    @project.create_activity :update, owner: current_user, project_id: @project.id
   end
 
   def destroy

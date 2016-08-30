@@ -9,10 +9,6 @@ class TasksController < ApplicationController
   # def show
   # end
 
-  # def edit
-  #   @users = User.all
-  # end
-
   def create
     @task = Task.new(task_params)
     @task.project_id = params[:project_id]
@@ -25,12 +21,20 @@ class TasksController < ApplicationController
     @task.create_activity :create, owner: current_user, project_id: @project.id
   end
 
+  def edit
+    @users = User.consultants
+    respond_to do |format|
+      format.html { redirect_to project_path(@project) }
+      format.js
+    end
+  end
 
-  # def update
-  #   @task.update(task_params)
-  #   @task.save
-  #   @project.create_activity :update, owner: current_user, project_id: @project.id
-  # end
+
+  def update
+    @task.update(task_params)
+    @task.save
+    @project.create_activity :update, owner: current_user, project_id: @project.id
+  end
 
   # def destroy
   #   @task.destroy

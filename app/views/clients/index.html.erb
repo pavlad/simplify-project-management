@@ -10,30 +10,33 @@
             </div>
             <BR>
             <div id="new-client-table">
+              <div id="client-list">
               <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Website</th>
-                    <th>Address</th>
+                    <th><span class="sort" data-sort="client-name">Name</span></th>
+                    <th><span class="sort" data-sort="client-email">EMail</span></th>
+                    <th><span class="sort" data-sort="client-phone">Phone</span></th>
+                    <th><span class="sort" data-sort="client-website">Website</span></th>
+                    <th><span class="sort" data-sort="client-address">Address</span></th>
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="list">
                 <% @clients.each do |client| %>
                   <tr>
-                    <td><%= client.name %></td>
-                    <td><%= client.email %></td>
-                    <td><%= client.phone %></td>
-                    <td><a href = "<%= client.website %>" target="_blank"><%= client.website %></a></td>
-                    <td><%= client.address %></td>
+                    <td class="client-name"><%= client.name %></td>
+                    <td class="client-email"><%= client.email %></td>
+                    <td class="client-phone"><%= client.phone %></td>
+                    <td class="client-website"><a href = "<%= client.website %>" target="_blank"><%= client.website %></a></td>
+                    <td class="client-address"><%= client.address %></td>
                     <td><%= link_to "Edit", edit_client_path(client), remote:true %> - <%= link_to "Delete", client_url(client), method: :delete, data: { confirm: "Are you sure?" } %></td>
                   </tr>
                   <% end %>
                 </tbody>
               </table>
+              <ul class="pagination"></ul>
+            </div>
             </div>
           </div>
 
@@ -47,8 +50,65 @@
         </div>
   </div>
 </div>
+<th><span class="sort" data-sort="client-name">Name</span></th>
+                    <th><span class="sort" data-sort="client-email">EMail</span></th>
+                    <th><span class="sort" data-sort="client-phone">Phone</span></th>
+                    <th><span class="sort" data-sort="client-website">Website</span></th>
+                    <th><span class="sort" data-sort="client-address">Address</span></th>
+<%= content_for(:after_js) do %>
+  <!-- list.js -->
+   <script>
+      var options = {
+        valueNames: [ 'client-name', 'client-email', 'client-phone', 'client-website', 'client-address'],
+        page: 10,
+        plugins: [
+          ListPagination({})
+        ]
+      };
 
+      var clientList = new List('client-list', options);
+    </script>
 
+    <!-- Modal -->
+<script type="text/javascript">
+  $(document)
+  .ready(function() {
 
+    $('.project-manager-popup-trigger')
+    .popup()
+    ;
+  });
+
+  $( ".create-client" ).click(function() {
+    $('.create-client-modal')
+    .modal('show')
+    ;
+  });
+
+// For responsive table (get table headers)
+
+var headertext = [];
+var headers = document.querySelectorAll("thead");
+var tablebody = document.querySelectorAll("tbody");
+
+for (var i = 0; i < headers.length; i++) {
+  headertext[i]=[];
+  for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
+    var current = headrow;
+    headertext[i].push(current.textContent);
+  }
+}
+
+for (var h = 0, tbody; tbody = tablebody[h]; h++) {
+  for (var i = 0, row; row = tbody.rows[i]; i++) {
+    for (var j = 0, col; col = row.cells[j]; j++) {
+      col.setAttribute("data-th", headertext[h][j]);
+    }
+  }
+}
+
+</script>
+
+<% end %>
 
 
