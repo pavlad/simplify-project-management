@@ -139,6 +139,7 @@
   <div class="content"></div>
 </div>
 
+<%= content_for(:after_js) do %>
 <script type="text/javascript">
   $(".mdl-tabs__tab").click(function() {
 
@@ -150,3 +151,21 @@
     $(this).addClass("active");
   });
 </script>
+
+<script type="text/javascript">
+  $(document)
+  .ready(function() {
+
+    $('.project-manager-popup-trigger')
+    .popup()
+    ;
+  });
+
+  $( ".create-timeline" ).click(function() {
+    $('.create-timeline-modal')
+    .modal('show')
+    ;
+  });
+
+</script>
+<% end %>
