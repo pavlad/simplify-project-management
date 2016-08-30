@@ -56,5 +56,10 @@ class User < ApplicationRecord
     return array
   end
 
+  def has_tasks?
+    return self.tasks.count != 0
+  end
+
+
 end
 

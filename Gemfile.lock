@@ -84,6 +84,8 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (9.0.5)
+    chartjs-ror (3.0.2)
+      rails (>= 3.1)
     chartkick (2.0.2)
     cloudinary (1.1.0)
       aws_cf_signer
@@ -265,6 +267,7 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
+  chartjs-ror
   chartkick
   cloudinary (= 1.1.0)
   coffee-rails
