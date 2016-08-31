@@ -1,27 +1,32 @@
 <div class="mdl-tabs__panel" id="files-panel">
-  <table class="ui celled striped table">
-    <tbody>
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <tbody class="project-files">
+      <div id='project-files'>
 
       <% @project.project_files.each do |project_file| %>
       <tr>
         <td>
           <i class="file icon"></i> <%= project_file.public_id %>
         </td>
-        <td class="right aligned collapsing"><%= project_file.created_at %></td>
+        <td class="right aligned collapsing"><%= project_file.created_at.to_datetime.strftime("%A, %d %B %Y") %></td>
         <td>
           <%= link_to "http://res.cloudinary.com/banana-cake/image/upload/#{project_file.path}" do %>
-          <i class="fa fa-download" aria-hidden="true"></i>
+          <i class="fa fa-download fa-2x" aria-hidden="true"></i>
           <% end %>
           <%= link_to project_project_file_path(@project, project_file.id), method: :delete do %>
-          <i class="fa fa-close" aria-hidden="true"></i>
+          <i class="fa fa-close fa-2x" aria-hidden="true"></i>
           <% end %>
         </td>
       </tr>
       <% end %>
+
+      </div>
     </tbody>
   </table>
+
+
   <%= simple_form_for(@project) do |project_f| %>
   <%= project_f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false } %>
-  <%= project_f.button :submit %>
+  <%= project_f.button :submit, "Upload" %>
   <% end %>
 </div>

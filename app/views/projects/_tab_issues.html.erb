@@ -7,12 +7,12 @@
       <% else %>
       <% issuetag = 'task-unchecked' %>
       <% end %>
-      <div class="ui card" style="width: 100%; max-width: 100%;" id="issue-<%= issue.id %>">
+      <div class="ui card" id="issue-<%= issue.id %>">
         <div class="content">
           <div class="header">
             <%= issue.name %> - <%= issue.label.nil? ? "Blank" : issue.label %>
           </div>
-          <div class="meta">2 days ago</div>
+          <div class="meta"><%= issue.created_at.to_datetime.strftime("%A, %d %B %Y") %></div>
           <div class="description">
             <p><%= issue.description.nil? ? "Blank" : issue.description %></p>
           </div>
@@ -25,14 +25,14 @@
       </div>
       <% end %>
     </div>
+  </div>
 
-    <div id="issue-form">
-      <%= simple_form_for([@project, @issue], remote: true) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :label, collection: ['High Priority Issue','Issue'] %>
-      <%= f.input :description %>
-      <%= f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
-      <% end %>
-    </div>
+  <div id="issue-form">
+    <%= simple_form_for([@project, @issue], remote: true) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :label, collection: ['Low Priority','Medium Priority', 'High Priority'] %>
+    <%= f.input :description %>
+    <%= f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
+    <% end %>
   </div>
 </div>
