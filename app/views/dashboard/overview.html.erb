@@ -6,14 +6,38 @@
     <div class="active-items">
       <div class="icon"><i class="material-icons">timeline</i></div>
       <h3 class="stat numbers">
-        1000
-        <div class="numbers-title">active projects</div>
+        <%= @projects.count %>
+        <div class="numbers-title">Active Projects</div>
       </h3>
     </div>
     </div>
-    <div class="column project-with-issues mdl-shadow--2dp">dsfsdffs</div>
-    <div class="column unfinished-tasks mdl-shadow--2dp">dsfsdffds</div>
-    <div class="column overdue-projects mdl-shadow--2dp">sfddsf</div>
+    <div class="column project-with-issues mdl-shadow--2dp">
+      <div class="active-items">
+      <div class="icon"><i class="material-icons">error_outline</i></div>
+      <h3 class="stat numbers">
+        <%= @project_with_issues %>
+        <div class="numbers-title">Projects with Issues</div>
+      </h3>
+    </div>
+    </div>
+    <div class="column unfinished-tasks mdl-shadow--2dp">
+      <div class="active-items">
+      <div class="icon"><i class="material-icons">list</i></div>
+      <h3 class="stat numbers">
+        <%= @total_undone_tasks %>
+        <div class="numbers-title">Unfinished Tasks</div>
+      </h3>
+    </div>
+    </div>
+    <div class="column overdue-projects mdl-shadow--2dp">
+      <div class="active-items">
+      <div class="icon"><i class="material-icons">alarm</i></div>
+      <h3 class="stat numbers">
+        <%= @overdue_projects_count %>
+        <div class="numbers-title">Overdue Projects</div>
+      </h3>
+    </div>
+    </div>
   </div>
 
 
@@ -43,15 +67,38 @@
   </div>
 </div>
 
-<div id="overview-consultants" class="box">
+<div id="overview-consultants" class="ui container">
   <div class="information">
-    <div class="box-title">
-      <h2> Consultants overview </h2>
+    <div class="information">
+  <div class="ui equal width grid dashboard-stats"">
+    <div class="column project-with-issues mdl-shadow--2dp">
+      <div class="active-items">
+      <div class="icon"><i class="material-icons">people</i></div>
+      <h3 class="stat numbers">
+        <%= @consultants.count %>
+        <div class="numbers-title">Total Consultants</div>
+      </h3>
     </div>
-    <div class="wrapper-cards">
-      <%= render partial: 'card', locals: {number: @consultants.count, unit: "Total consultants"} %>
-      <%= render partial: 'card', locals: {number: @consultants_with_tasks, unit: "Occupied consultants"} %>
-      <%= render partial: 'card', locals: {number: @average_tasks, unit: "Average tasks per consultant"} %>
+    </div>
+    <div class="column unfinished-tasks mdl-shadow--2dp">
+      <div class="active-items">
+      <div class="icon"><i class="material-icons">work</i></div>
+      <h3 class="stat numbers">
+        <%= @consultants_with_tasks %>
+        <div class="numbers-title">Occupied Consultants</div>
+      </h3>
+    </div>
+    </div>
+    <div class="column active-projects mdl-shadow--2dp">
+      <div class="active-items">
+      <div class="icon"><i class="material-icons">check_circle</i></div>
+      <h3 class="stat numbers">
+        <%= @average_tasks %>
+        <div class="numbers-title">Average Tasks per Consultant</div>
+      </h3>
+    </div>
+    </div>
+
     </div>
   </div>
   <div class="content">
