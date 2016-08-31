@@ -30,8 +30,6 @@ gem "algoliasearch-rails"
 gem 'chartjs-ror'
 
 
-
-
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

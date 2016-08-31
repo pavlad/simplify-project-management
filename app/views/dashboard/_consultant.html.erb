@@ -1,4 +1,4 @@
-<tr>
+<tr data-link="<%= user_path(consultant) %>" class="cursor-pointer">
   <td data-label="Status" class="mdl-data-table__cell--non-numeric consultant-status"><a class="<%="#{consultant.status_class}"%>"><%= consultant.status %></a></td>
   <td class="consultant-name"><%= consultant.full_name %></td>
   <td class="consultant-total-tasks"><%= consultant.tasks_count %></td>

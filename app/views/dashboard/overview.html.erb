@@ -1,13 +1,15 @@
+<% content_for :title, "Dashboard" %>
 <div id="overview-projects" class="box">
   <div class="information">
     <div class="box-title">
       <h2> Projects overview </h2>
+      <div><%= nil %></div>
     </div>
     <div class="wrapper-cards">
       <%= render partial: 'card', locals: {number: @projects.count, unit: "Active Projects"} %>
       <%= render partial: 'card', locals: {number: @project_with_issues, unit: "Projects with issues"} %>
-      <%= render partial: 'card', locals: {number: @total_tasks, unit: "Total tasks"} %>
       <%= render partial: 'card', locals: {number: @total_undone_tasks, unit: "Unfinished tasks"} %>
+      <%= render partial: 'card', locals: {number: @overdue_projects_count, unit: "Overdue Projects"} %>
     </div>
   </div>
   <div class="content">
@@ -43,7 +45,7 @@
     <div class="wrapper-cards">
       <%= render partial: 'card', locals: {number: @consultants.count, unit: "Total consultants"} %>
       <%= render partial: 'card', locals: {number: @consultants_with_tasks, unit: "Occupied consultants"} %>
-      <%= render partial: 'card', locals: {number: @average_tasks, unit: "Average tasks"} %>
+      <%= render partial: 'card', locals: {number: @average_tasks, unit: "Average tasks per consultant"} %>
     </div>
   </div>
   <div class="content">
@@ -70,37 +72,7 @@
 </div>
 </div>
 
-<div id="overview-projects" class="box">
-  <div class="information">
-    <p>Number of consultants: <%= @consultants.count %></p>
-    <p>Number of consultants with tasks: <%= @consultants_with_tasks %> </p>
-  </div>
-  <div class="ui accordion">
-    <div class="title">
-      <i class="dropdown icon"></i>
-      What are the projects?
-    </div>
-    <div class="content">
-      <div id="new-project-table" class="transition hidden">
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">Status</th>
-              <th>Name</th>
-              <th>Total tasks</th>
-              <th>Tasks done</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @consultants.each do |consultant| %>
-            <%= render partial: 'consultant', locals: { consultant: consultant} %>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <%= content_for(:after_js) do %>
   <!-- list.js -->
