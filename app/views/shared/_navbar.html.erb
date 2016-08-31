@@ -53,7 +53,7 @@
         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">people</i> Consultants</a>
         <a class="mdl-navigation__link" href="" class="little-transparent"><i class="material-icons">timeline</i> Dashboard</a> -->
         <% if current_user %>
-        <a class="ui circular label">22</a>
+<!--         <a class="ui circular label">22</a> -->
 
         <!-- Right aligned menu below button -->
 
@@ -65,7 +65,9 @@
         </ul>
         <div class="ui item right profile">
           <div class="ui header" id="user-menu">
-            <img class="ui mini circular image" src="http://res.cloudinary.com/banana-cake/image/upload/<%= current_user.avatar.path unless current_user.avatar.nil? %>">
+
+            <%= cl_image_tag current_user.avatar_id, attachinary_presets %>
+
             <div class="content" style="color:rgba(255, 255, 255, 0.7)">
               <div class="ui sub header">
                 <h4 class="ui header" style="color:rgba(255, 255, 255, 0.7)">

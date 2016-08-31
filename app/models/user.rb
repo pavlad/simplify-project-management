@@ -36,6 +36,14 @@ class User < ApplicationRecord
     self.where.not(is_client: true)
   end
 
+  def avatar_id
+    if self.avatar
+      self.avatar.public_id
+    else
+      "default-avatar"
+    end
+  end
+
   def find_tasks_in_array(project)
     array = []
     normal_array = project.tasks.select{ |task| task.user = self}

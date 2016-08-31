@@ -11,11 +11,13 @@
     <%= f.input :man_days %>
     <%= render partial: 'shared/single_select_search_dropdown', locals: {field_name: :project_manager_id, collection_name: @users, f: f, attribute_name: :full_name, prompt_message: 'Select Consultant'} %>
 
-      <%= f.fields_for(:assignments) do |assignment_f| %>
-       <%= render partial: 'shared/multiple_select_search_dropdown', locals: {field_name: :user_ids, field_title: 'Consultants', collection_name: @users, f: f, attribute_name: :full_name, prompt_message: 'Select Consultants'} %>
-      <% end %>
-    <%= f.attachinary_file_field :deliverables, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false }, label: 'Project files' %>
-    <%= f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false }, label: 'Deliverables' %>
+    <%= f.fields_for(:assignments) do |assignment_f| %>
+    <%= render partial: 'shared/multiple_select_search_dropdown', locals: {field_name: :user_ids, field_title: 'Consultants', collection_name: @users, f: f, attribute_name: :full_name, prompt_message: 'Select Consultants'} %>
+    <% end %>
+    <p><strong>Upload project files here</strong></p>
+    <%= f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false }, label: 'Project files' %>
+    <br>
+    <br>
     <%= f.button :submit %>
     <% end %>
   </div>

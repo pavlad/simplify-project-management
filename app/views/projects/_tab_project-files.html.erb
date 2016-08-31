@@ -27,6 +27,7 @@
 
   <%= simple_form_for(@project) do |project_f| %>
   <%= project_f.attachinary_file_field :project_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false } %>
+  <br>
   <%= project_f.button :submit, "Upload" %>
   <% end %>
 </div>

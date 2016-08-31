@@ -9,14 +9,14 @@
   // Mustache templating by Hogan.js (http://mustache.github.io/)
   var templateDropdown = Hogan.compile(
     '<div class="container">' +
-    '<div class="aa-dataset-project">' +
-    '{{{ _highlightResult.name.value }}}' +
-    '</div>' +
+    '<a href="http://localhost:3000/projects/{{ id }}"><div class="aa-dataset-project">' +
+    '{{{ _highlightResult.name.value }}} {{{ _highlightResult.id.value }}}'+
+    '</div></a>' +
     '</div>' +
     '<div class="container">' +
-    '<div class="aa-dataset-user">' +
+    '<a href="http://localhost:3000/users"><div class="aa-dataset-user">' +
     '{{{ _highlightResult.first_name.value }}} {{{ _highlightResult.last_name.value }}}'+
-    '</div>' +
+    '</div></a>' +
     '</div>');
 
   // autocomplete.js initialization
