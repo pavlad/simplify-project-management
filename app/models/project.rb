@@ -102,6 +102,30 @@ class Project < ApplicationRecord
     return hash[self.issue_type]
   end
 
+  def has_tasks_with_date
+    ans = false
+    self.tasks.each do |task|
+      ans = true if task.has_date?
+    end
+    return ans
+  end
+
+  def last_date
+    if self.has_tasks_with_date
+      return self.tasks.order(:end_date).select{|task| task.has_date?}.last.end_date
+    end
+  end
+
+  def overdue?
+    if self.has_tasks_with_date
+      self.last_date < Time.now ? true : false
+    else
+      return false
+    end
+  end
+
+
+
   private
 
 
