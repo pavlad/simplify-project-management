@@ -13,7 +13,7 @@ class TimelinesController < ApplicationController
   def create
     @timeline = Timeline.new(timeline_params)
     @timeline.user = current_user
-    @timeline.date = Date.today
+    @timeline.date = Date.parse(timeline_params[:date])
     @timeline.project_id = params[:project_id]
     @timeline.save!
 
@@ -28,7 +28,9 @@ class TimelinesController < ApplicationController
   end
 
   def update
-    @timeline = Timeline.update(timeline_params)
+    my_params = timeline_params
+    my_params[:date] = Date.parse(timeline_params[:date])
+    @timeline = Timeline.update(my_params)
     redirect_to project_timelines_path(@project)
   end
 

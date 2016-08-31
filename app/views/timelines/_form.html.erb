@@ -12,6 +12,10 @@
         <label>Description</label>
         <textarea rows="2" name="timeline[description]" placeholder=""></textarea>
       </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="text" name="timeline[date]" placeholder="" id="timeline_date">
+      </div>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <div class="ui error message"></div>
       <div class="right-aligned">

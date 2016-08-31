@@ -255,8 +255,6 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    x-editable-rails (1.5.5)
-      railties
 
 PLATFORMS
   ruby
@@ -296,7 +294,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
-  x-editable-rails
 
 RUBY VERSION
    ruby 2.3.1p112

@@ -142,6 +142,8 @@
 </div>
 
 
+
+<%= content_for(:after_js) do %>
 <!-- Modal -->
 <script type="text/javascript">
   $( ".create-project" ).click(function() {
@@ -155,10 +157,7 @@
     .dropdown({fullTextSearch: true})
     ;
 </script>
-
-  <%= content_for(:after_js) do %>
     <script type="text/javascript">
-      $('.editable').editable();
       $('.ui.dropdown').dropdown();
     </script>
     <script type="text/javascript">
@@ -245,4 +244,12 @@
     </script>
 
     <script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
+    <script type="text/javascript">
+      $('#task_start_date').daterangepicker({
+                                singleDatePicker: true,
+                                locale: {
+                                  format: 'YYYY-MM-DD'
+                                }
+                            });
+    </script>
   <% end %>

@@ -4,9 +4,8 @@
 //= require highcharts
 //= require Chart.bundle
 //= require chartkick
+//= require moment.min.js
 //= require_tree .
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require editable/jquery-editable-poshytip
-//= require editable/rails

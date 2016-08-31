@@ -1,6 +1,15 @@
 <%= simple_form_for [@project, @timeline] do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :date %>
+  <%= f.input :date, as: :string, input_html: { value: localize(f.object.date, format: "%-d/%m/%Y"), class: "timeline-datepicker" }%>
   <%= f.button :submit %>
 <% end %>
+
+<script type="text/javascript">
+  $('.timeline-datepicker').daterangepicker({
+    singleDatePicker: true,
+    locale: {
+      format: 'YYYY-MM-DD'
+    }
+  });
+</script>

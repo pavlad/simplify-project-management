@@ -31,9 +31,13 @@ class TasksController < ApplicationController
 
 
   def update
-    @task.update(task_params)
+    my_params = task_params
+    my_params[:start_date] = Date.parse(task_params[:start_date])
+    my_params[:end_date] = Date.parse(task_params[:end_date])
+    @task.update(my_params)
     @task.save
     @project.create_activity :update, owner: current_user, project_id: @project.id
+    redirect_to project_path(@project)
   end
 
   # def destroy
