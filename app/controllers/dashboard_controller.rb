@@ -8,8 +8,8 @@ class DashboardController < ApplicationController
     @projects = active_projects
     @number_of_active_projects = @projects.count
     @project_with_issues = projects_with_issues(@projects)
-    @total_tasks = total_tasks(@projects)
-    @total_undone_tasks = @total_tasks - total_tasks_done(@projects)
+    @total_undone_tasks = total_tasks(@projects) - total_tasks_done(@projects)
+    @overdue_projects_count = overdue_projects_count(@projects)
 
     # consultants overview
 
@@ -39,6 +39,10 @@ class DashboardController < ApplicationController
 
   def total_tasks_done(projects)
     projects.map{ |project| project.number_of_tasks_done}.inject(0){|sum,x| sum + x }
+  end
+
+  def overdue_projects_count(projects)
+    projects.select{|project| project.overdue?}.count
   end
 
 

@@ -1,13 +1,15 @@
+<% content_for :title, "Dashboard" %>
 <div id="overview-projects" class="box">
   <div class="information">
     <div class="box-title">
       <h2> Projects overview </h2>
+      <div><%= nil %></div>
     </div>
     <div class="wrapper-cards">
       <%= render partial: 'card', locals: {number: @projects.count, unit: "Active Projects"} %>
       <%= render partial: 'card', locals: {number: @project_with_issues, unit: "Projects with issues"} %>
-      <%= render partial: 'card', locals: {number: @total_tasks, unit: "Total tasks"} %>
       <%= render partial: 'card', locals: {number: @total_undone_tasks, unit: "Unfinished tasks"} %>
+      <%= render partial: 'card', locals: {number: @overdue_projects_count, unit: "Overdue Projects"} %>
     </div>
   </div>
   <div class="content">
@@ -39,7 +41,7 @@
     <div class="wrapper-cards">
       <%= render partial: 'card', locals: {number: @consultants.count, unit: "Total consultants"} %>
       <%= render partial: 'card', locals: {number: @consultants_with_tasks, unit: "Occupied consultants"} %>
-      <%= render partial: 'card', locals: {number: @average_tasks, unit: "Average tasks"} %>
+      <%= render partial: 'card', locals: {number: @average_tasks, unit: "Average tasks per consultant"} %>
     </div>
   </div>
   <div class="content">
