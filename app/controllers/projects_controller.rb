@@ -52,6 +52,7 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       @project.create_activity :update, owner: current_user, project_id: @project.id
+      redirect_to project_path(@project)
     end
   end
 

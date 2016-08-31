@@ -30,7 +30,7 @@
   <div id="issue-form">
     <%= simple_form_for([@project, @issue], remote: true) do |f| %>
     <%= f.input :name %>
-    <%= f.input :label, collection: ['Low Priority','Medium Priority', 'High Priority'] %>
+    <%= f.input :label, collection: ['Low Priority','Medium Priority', 'High Priority'], input_html: { class: "ui fluid selection dropdown" } %>
     <%= f.input :description %>
     <%= f.button :submit, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'%>
     <% end %>

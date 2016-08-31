@@ -1228,17 +1228,32 @@ a:focus, a:hover{
   max-width: 100%;
 }
 
-.mdl-data-table {
+// .mdl-data-table {
+//   box-shadow: none;
+//   margin-bottom: 20px;
+// }
+
+// .striped.table {
+//   border-radius: none;
+// }
+
+// .mdl-data-table td {
+//   text-align: left;
+// }
+
+#tasks-panel .tasks-table table,
+#files-panel table {
   box-shadow: none;
   margin-bottom: 20px;
 }
 
-.striped.table {
-  border-radius: none;
+.project-files td {
+  text-align: left!important;
 }
 
-.mdl-data-table td {
-  text-align: left;
+.project-files td .fa {
+  float: right;
+  margin-left: 10px;
 }
 
 #issue-list {

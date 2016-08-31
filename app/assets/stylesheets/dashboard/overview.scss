@@ -22,3 +22,91 @@ td .label {
   width:120px;
   text-align:center;
 }
+
+
+.information .card-phan {
+  background-color: #FFF;
+}
+
+.information {
+  margin-top: 25px;
+}
+
+.dashboard-stats {
+  text-align: center;
+  color: rgba(256, 256, 256, 0.9);
+  margin-bottom: 15px!important;
+}
+
+.dashboard-stats .column {
+  margin: 16px!important;
+}
+
+.dashboard-stats .active-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 110px;
+  .numbers {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  .numbers-title {
+    font-size: 13px;
+    line-height: 1;
+  }
+}
+
+.dashboard-stats .column {
+  padding: 0!important;
+}
+
+.dashboard-stats .stat {
+  flex: 2 0 0!important;
+  flex-grow: 1;
+}
+
+.dashboard-stats .icon {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-flex: 1 !important;
+    -ms-flex: 1 0 0 !important;
+    flex: 1 0 0 !important;
+}
+
+.dashboard-stats .active-projects {
+  background-color: #5d9cec;
+}
+
+.dashboard-stats .active-projects .icon {
+  background-color: #2f80e7;
+}
+
+.dashboard-stats .project-with-issues {
+  background-color: #7266ba;
+}
+
+.dashboard-stats .project-with-issues .icon {
+  background-color: #564aa3;
+}
+
+.dashboard-stats .unfinished-tasks {
+  background-color: #37bc9b;
+}
+
+.dashboard-stats .unfinished-tasks .icon {
+  background-color: #2b957a;
+}
+
+.dashboard-stats .overdue-projects {
+  background-color: #FF9800;
+}
+
+
+.dashboard-stats .overdue-projects .icon {
+  background-color: #e68900;
+}
