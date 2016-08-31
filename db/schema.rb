@@ -57,11 +57,6 @@ ActiveRecord::Schema.define(version: 20160829095114) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
-  create_table "client_project_access", id: false, force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "user_id",    null: false
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string   "name"
     t.string   "address"

@@ -27,8 +27,7 @@ gem "chartkick"
 gem 'jquery-ui-rails'
 gem "algoliasearch-rails"
 gem 'chartjs-ror'
-
-
+gem "pundit"
 
 
 group :development, :test do

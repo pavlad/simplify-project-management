@@ -1210,4 +1210,52 @@ a:focus, a:hover{
   height: 150px;
   width: 220px;
   border: 5px dashed lightgray;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+
+.attachinary_container{
+  visibility: hidden;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+.ui.card{
+  border-radius: 0px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 100%;
+}
+
+// .mdl-data-table {
+//   box-shadow: none;
+//   margin-bottom: 20px;
+// }
+
+// .striped.table {
+//   border-radius: none;
+// }
+
+// .mdl-data-table td {
+//   text-align: left;
+// }
+
+#tasks-panel .tasks-table table,
+#files-panel table {
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+.project-files td {
+  text-align: left!important;
+}
+
+.project-files td .fa {
+  float: right;
+  margin-left: 10px;
+}
+
+#issue-list {
+  padding-bottom: 30px;
 }

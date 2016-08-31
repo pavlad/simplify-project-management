@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :invitable
+  :recoverable, :rememberable, :trackable, :validatable, :invitable
   # belongs_to :company
   has_many :tasks
   has_many :timelines
@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :lead_projects, class_name: "Project", foreign_key: :project_manager_id
   validates :first_name, presence: true
   validates :last_name, presence: true
-  has_attachment :avatar, dependent: :destroy
+  has_attachment :avatar, dependent: :destroy, default_url: "default_avatar.png"
 
 
   include AlgoliaSearch
@@ -25,32 +25,40 @@ class User < ApplicationRecord
   end
 
   def first_date
-    self.tasks.order(:start_date).first.start_date
+    self.tasks.order(:start_date).select{|task| task.has_date?}.first.start_date
   end
 
   def last_date
-    self.tasks.order(:end_date).last.end_date
+    self.tasks.order(:end_date).select{|task| task.has_date?}.last.end_date
   end
 
   def self.consultants
     self.where.not(is_client: true)
   end
 
+  def avatar_id
+    if self.avatar
+      self.avatar.public_id
+    else
+      "default-avatar"
+    end
+  end
+
   def find_tasks_in_array(project)
     array = []
-    normal_array = project.tasks.where(project.users == self)
+    normal_array = project.tasks.select{ |task| task.user == self}
     normal_array.each do |task|
       if task.has_date?
         array << [task.name, task.start_date, task.end_date]
       end
     end
-    array << ["Total time", first_date, last_date]
+    array << ["Total time", self.first_date, self.last_date]
     return array
   end
 
   def get_color_tasks(project)
     array = []
-    normal_array = project.tasks.where(project.users == self)
+    normal_array = project.tasks.select{ |task| task.user == self}
     normal_array.each do |task|
       if task.has_date?
         array << task.color

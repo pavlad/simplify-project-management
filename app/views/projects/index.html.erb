@@ -1,88 +1,83 @@
-
+<% content_for :title, "List of projects" %>
 <main class="mdl-layout__content">
   <div class="page-content my-projects">
+  <BR>
+      <div class="right-aligned new-project-button">
+        <button class="mdl-button  mdl-button--raised mdl-button--colored create-project">
+          New Project
+        </button>
+      </div>
 
-    <BR>
-      <BR>
-        <BR>
+      <div id="new-project-table">
+        <div id="project-list">
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="project-status">Status</span></th>
+                <th><span class="sort" data-sort="project-name">Name</span></th>
+                <th><span class="sort" data-sort="project-client">Client</span></th>
+                <th><span class="sort" data-sort="project-budget">Budgeted Days</span></th>
+                <th><span class="sort" data-sort="project-progress">Progress</span></th>
+                <th><span class="sort" data-sort="project-project-lead">Project Lead</span></th>
+              </tr>
+            </thead>
+            <tbody class="list">
 
-          <div class="right-aligned new-project-button">
-            <button class="mdl-button  mdl-button--raised mdl-button--colored create-project">
-              New Project
-            </button>
-          </div>
-
-          <div id="new-project-table">
-          <div id="project-list">
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="project-status">Status</span></th>
-                  <th><span class="sort" data-sort="project-name">Name</span></th>
-                  <th><span class="sort" data-sort="project-client">Client</span></th>
-                  <th><span class="sort" data-sort="project-budget">Budgeted Days</span></th>
-                  <th><span class="sort" data-sort="project-progress">Progress</span></th>
-                  <th><span class="sort" data-sort="project-project-lead">Project Lead</span></th>
-                  <th>Links</th>
-                </tr>
-              </thead>
-              <tbody class="list">
-
-                <% @projects.each do |p| %>
-                <%= render "project", project: p %>
-                <% end %>
-              </tbody>
-            </table>
-            <ul class="pagination"></ul>
-          </div>
-          </div>
+              <% @projects.each do |p| %>
+              <%= render "project", project: p %>
+              <% end %>
+            </tbody>
+          </table>
+          <ul class="pagination"></ul>
         </div>
+      </div>
+    </div>
 
-      </main>
+  </main>
 
-      <div class="ui long modal edit-modal">
-  <div class="header">Edit Consultant</div>
-        <div class="content">
-        </div>
+  <div class="ui long modal edit-modal">
+    <div class="header">Edit Consultant</div>
+    <div class="content">
+    </div>
   </div>
 </div>
 
 
 <%= content_for(:after_js) do %>
-  <script type="text/javascript">
-    $('.ui.create-project-modal')
-  </script>
+<script type="text/javascript">
+  $('.ui.create-project-modal')
+</script>
 
 <script type="text/javascript">
   $('.ui.create-project-modal')
-      .form({
-        fields: {
-          name: {
-            identifier: 'project[name]',
-            rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter a name for your project'
-            }
-            ]
-          }
-          }
-      })
-      ;
-  </script>
-  <!-- list.js -->
-   <script>
-      var options = {
-        valueNames: [ 'project-status', 'project-name', 'project-client', 'project-budget', 'project-progress', 'project-project-lead'],
-        page: 10,
-        plugins: [
-          ListPagination({})
+  .form({
+    fields: {
+      name: {
+        identifier: 'project[name]',
+        rules: [
+        {
+          type   : 'empty',
+          prompt : 'Please enter a name for your project'
+        }
         ]
-      };
+      }
+    }
+  })
+  ;
+</script>
+<!-- list.js -->
+<script>
+  var options = {
+    valueNames: [ 'project-status', 'project-name', 'project-client', 'project-budget', 'project-progress', 'project-project-lead'],
+    page: 10,
+    plugins: [
+    ListPagination({})
+    ]
+  };
 
-      var projectList = new List('project-list', options);
-    </script>
-    <!-- Modal -->
+  var projectList = new List('project-list', options);
+</script>
+<!-- Modal -->
 <script type="text/javascript">
   $(document)
   .ready(function() {
@@ -124,4 +119,4 @@ for (var h = 0, tbody; tbody = tablebody[h]; h++) {
 
 <script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
 <% end %>
-      <%= render 'form' %>
+<%= render 'form' %>

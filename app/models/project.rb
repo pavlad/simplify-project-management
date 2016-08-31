@@ -64,6 +64,16 @@ class Project < ApplicationRecord
     return self.issues.count != 0
   end
 
+  def has_consultant(consultant)
+    ans = false
+    self.tasks.each do |task|
+      if task.user == consultant && task.has_date?
+        ans = true
+      end
+    end
+    return ans
+  end
+
   def issue_type
     hash = {
       "Low Priority"=>     1,
@@ -77,6 +87,44 @@ class Project < ApplicationRecord
       return hash.index(value)
     end
   end
+
+  def has_issues?
+    return self.issues.select{|issue| issue.is_resolved == false}.count > 0
+  end
+
+  def status_class
+    hash = {
+      "No Issue"=>        "ui green label",
+      "Low Priority"=>    "ui yellow label",
+      "Medium Priority"=> "ui orange label",
+      "High Priority"=>   "ui red label"
+    }
+    return hash[self.issue_type]
+  end
+
+  def has_tasks_with_date
+    ans = false
+    self.tasks.each do |task|
+      ans = true if task.has_date?
+    end
+    return ans
+  end
+
+  def last_date
+    if self.has_tasks_with_date
+      return self.tasks.order(:end_date).select{|task| task.has_date?}.last.end_date
+    end
+  end
+
+  def overdue?
+    if self.has_tasks_with_date
+      self.last_date < Time.now ? true : false
+    else
+      return false
+    end
+  end
+
+
 
   private
 
