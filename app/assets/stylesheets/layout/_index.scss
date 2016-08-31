@@ -1210,4 +1210,36 @@ a:focus, a:hover{
   height: 150px;
   width: 220px;
   border: 5px dashed lightgray;
+  padding: 15px;
+}
+
+
+.attachinary_container{
+  visibility: hidden;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+.ui.card{
+  border-radius: 0px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.mdl-data-table {
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+.striped.table {
+  border-radius: none;
+}
+
+.mdl-data-table td {
+  text-align: left;
+}
+
+#issue-list {
+  padding-bottom: 30px;
 }
