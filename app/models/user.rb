@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :lead_projects, class_name: "Project", foreign_key: :project_manager_id
   validates :first_name, presence: true
   validates :last_name, presence: true
-  has_attachment :avatar, dependent: :destroy
+  has_attachment :avatar, dependent: :destroy, default_url: "default_avatar.png"
 
 
   include AlgoliaSearch
@@ -46,7 +46,7 @@ class User < ApplicationRecord
 
   def find_tasks_in_array(project)
     array = []
-    normal_array = project.tasks.select{ |task| task.user = self}
+    normal_array = project.tasks.select{ |task| task.user == self}
     normal_array.each do |task|
       if task.has_date?
         array << [task.name, task.start_date, task.end_date]
@@ -58,7 +58,7 @@ class User < ApplicationRecord
 
   def get_color_tasks(project)
     array = []
-    normal_array = project.tasks.select{ |task| task.user = self}
+    normal_array = project.tasks.select{ |task| task.user == self}
     normal_array.each do |task|
       if task.has_date?
         array << task.color

@@ -28,6 +28,7 @@ gem 'jquery-ui-rails'
 gem 'x-editable-rails'
 gem "algoliasearch-rails"
 gem 'chartjs-ror'
+gem "pundit"
 
 
 group :development, :test do

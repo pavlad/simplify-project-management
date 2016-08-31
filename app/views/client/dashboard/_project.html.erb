@@ -1,0 +1,8 @@
+<tr data-link="<%= project_timelines_path(project) %>" class="cursor-pointer">
+  <td data-label="Status" class="mdl-data-table__cell--non-numeric"><a class="<%="#{project.status_class}"%>"><%= project.issue_type %></a></td>
+  <td><%= project.name %></td>
+  <td><%= project.client ? project.client.name : "-" %> </td>
+  <td><%= project.tasks.size == 0 ? "-" : "#{project.completion_percentage.to_i}%" %></td>
+</tr>
+
+

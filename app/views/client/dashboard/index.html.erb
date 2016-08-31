@@ -1,0 +1,34 @@
+<% content_for :title, "Dashboard" %>
+<div id="overview-projects" class="box">
+  <div class="information">
+    <div class="box-title">
+      <h2> Your projects </h2>
+      <div><%= nil %></div>
+    </div>
+    <div class="wrapper-cards">
+      <%#= render partial: 'card', locals: {number: @number_of_active_projects, unit: "Active Projects"} %>
+      <%#= render partial: 'card', locals: {number: @project_with_issues, unit: "Projects with issues"} %>
+      <%#= render partial: 'card', locals: {number: @total_undone_tasks, unit: "Unfinished tasks"} %>
+      <%#= render partial: 'card', locals: {number: @overdue_projects_count, unit: "Overdue Projects"} %>
+    </div>
+  </div>
+  <div class="content">
+    <div id="new-project-table" class="project-table">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric ">Status</th>
+            <th >Name</th>
+            <th >Client</th>
+            <th >Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project| %>
+          <%= render partial: 'project', locals: { project: project} %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

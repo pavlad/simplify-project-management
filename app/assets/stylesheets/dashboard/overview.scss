@@ -8,6 +8,16 @@
   padding: 20px 0;
 }
 
+#consultant-dashboard-list {
+  min-height: 557px;
+}
+
+#consultant-dashboard-list th,
+#project-dashboard-list th {
+  cursor: pointer;
+  user-select: none;
+}
+
 td .label {
   width:120px;
   text-align:center;

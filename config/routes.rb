@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   devise_for :users, controllers: { registrations: "users/registrations", invitations: "users/invitations" }
-  root to: 'dashboard#overview'
+  root :to => 'passthrough#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects do
     resources :deliverables, only: :destroy
@@ -40,6 +40,10 @@ Rails.application.routes.draw do
     collection do
       get 'overview'
     end
+  end
+
+  namespace :client do
+    resources :dashboard, only: [:index]
   end
 
 end
