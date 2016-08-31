@@ -1,16 +1,23 @@
 <% content_for :title, "Dashboard" %>
-<div id="overview-projects" class="box">
+<div id="overview-projects" class="ui container">
   <div class="information">
-    <div class="box-title">
-      <h2> Projects overview </h2>
-      <div><%= nil %></div>
+  <div class="ui equal width grid dashboard-stats"">
+    <div class="column active-projects mdl-shadow--2dp">
+    <div class="active-items">
+      <div class="icon"><i class="material-icons">timeline</i></div>
+      <h3 class="stat numbers">
+        1000
+        <div class="numbers-title">active projects</div>
+      </h3>
     </div>
-    <div class="wrapper-cards">
-      <%= render partial: 'card', locals: {number: @projects.count, unit: "Active Projects"} %>
-      <%= render partial: 'card', locals: {number: @project_with_issues, unit: "Projects with issues"} %>
-      <%= render partial: 'card', locals: {number: @total_undone_tasks, unit: "Unfinished tasks"} %>
-      <%= render partial: 'card', locals: {number: @overdue_projects_count, unit: "Overdue Projects"} %>
     </div>
+    <div class="column project-with-issues mdl-shadow--2dp">dsfsdffs</div>
+    <div class="column unfinished-tasks mdl-shadow--2dp">dsfsdffds</div>
+    <div class="column overdue-projects mdl-shadow--2dp">sfddsf</div>
+  </div>
+
+
+
   </div>
   <div class="content">
     <div id="new-project-table" class="project-table">
@@ -22,7 +29,6 @@
             <th><span class="sort" data-sort="project-name">Name</span></th>
             <th><span class="sort" data-sort="project-client">Client</span></th>
             <th><span class="sort" data-sort="project-progress">Progress</span></th>
-            <th>Links</th>
           </tr>
         </thead>
         <tbody class="list">
