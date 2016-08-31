@@ -65,7 +65,8 @@
         </ul>
         <div class="ui item right profile">
           <div class="ui header" id="user-menu">
-            <%= cl_image_tag current_user.avatar.public_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%>
+            <%= cl_image_tag current_user.avatar_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%>
+
             <div class="content" style="color:rgba(255, 255, 255, 0.7)">
               <div class="ui sub header">
                 <h4 class="ui header" style="color:rgba(255, 255, 255, 0.7)">
