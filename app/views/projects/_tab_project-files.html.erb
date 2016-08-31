@@ -11,10 +11,10 @@
         <td class="right aligned collapsing"><%= project_file.created_at.to_datetime.strftime("%A, %d %B %Y") %></td>
         <td>
           <%= link_to "http://res.cloudinary.com/banana-cake/image/upload/#{project_file.path}", target: "_blank" do %>
-          <i class="fa fa-download fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-download fa-lg" aria-hidden="true"></i>
           <% end %>
           <%= link_to project_project_file_path(@project, project_file.id), method: :delete do %>
-          <i class="fa fa-close fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-close fa-lg" aria-hidden="true"></i>
           <% end %>
         </td>
       </tr>
