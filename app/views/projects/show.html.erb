@@ -14,7 +14,7 @@
               <div>
                 <button class="ui green button" type="submit">Save</button>
               </div>
-              </div>
+            </div>
           </form>
         </div>
         <h3>
@@ -34,25 +34,24 @@
             </div>
             <li><i class="fa fa-building" aria-hidden="true"></i>
               <% if @project.client %>
-                <%= @project.client.name %>
+              <%= @project.client.name %>
               <% else %>
-                -
+              -
               <% end %>
             </li>
-            <li><i class="fa fa-tag" aria-hidden="true"></i> Corporate</li>
           </ul>
         </h3>
         <p class="editable-description"><%= @project.description %></p>
         <div class="ui popup editable-description-popup">
           <form class="ui form inline-editing-form">
-              <div class="field">
-                <textarea rows="4"></textarea>
-              </div>
-              <div>
+            <div class="field">
+              <textarea rows="4"></textarea>
+            </div>
+            <div>
               <div class="field">
                 <button class="ui green right floated button" type="submit">Save</button>
               </div>
-              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -61,16 +60,16 @@
         <h3>Project Leader</h3>
         <div class="ui list">
           <div class="item">
-          <% if @project.project_manager %>
-            <img class="ui avatar image" src="img/lukas.png">
+            <% if @project.project_manager %>
+            <%= cl_image_tag @project.project_manager.avatar.public_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%>
             <div class="content">
               <a class="header"><%= @project.project_manager.full_name if @project.project_manager.full_name %></a>
               <div class="description"><%= @project.project_manager.job_title if @project.project_manager.job_title %></div>
             </div>
-          <% else %>
+            <% else %>
             <div class="ui icon button editable-consultant add-project-lead"><i class="add icon"></i></div>
-          <% end %>
-          <div class="ui popup editable-consultant-popup">
+            <% end %>
+            <div class="ui popup editable-consultant-popup">
               <form class="ui form inline-editing-form">
                 <div class="inline fields">
                   <div class="field">
@@ -91,7 +90,7 @@
         <div class="ui list">
           <% @project.consultants.each do |c| %>
           <div class="item">
-            <img class="ui avatar image" src="img/lukas.png">
+            <%= cl_image_tag c.avatar.public_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%>
             <div class="content">
               <a class="header"><%= c.full_name if c.full_name %></a>
               <div class="description"><%= c.job_title if c.job_title %></div>
@@ -153,97 +152,97 @@
 </script>
 <script>
   $('.project-leader-select')
-    .dropdown({fullTextSearch: true})
-    ;
+  .dropdown({fullTextSearch: true})
+  ;
 </script>
 
-  <%= content_for(:after_js) do %>
-    <script type="text/javascript">
-      $('.editable').editable();
-      $('.ui.dropdown').dropdown();
-    </script>
-    <script type="text/javascript">
-      $('.editable-title')
-      .popup({
-        popup : $('.editable-text-popup'),
-        on    : 'click'
-      })
-      $('.editable-title').click(function() {
-        var text = $( this ).text();
-        $('.editable-text-popup input').val(text).focus();
-      });
+<%= content_for(:after_js) do %>
+<script type="text/javascript">
+  $('.editable').editable();
+  $('.ui.dropdown').dropdown();
+</script>
+<script type="text/javascript">
+  $('.editable-title')
+  .popup({
+    popup : $('.editable-text-popup'),
+    on    : 'click'
+  })
+  $('.editable-title').click(function() {
+    var text = $( this ).text();
+    $('.editable-text-popup input').val(text).focus();
+  });
 
-      $('.editable-description')
-      .popup({
-        popup : $('.editable-description-popup'),
-        on    : 'click'
-      })
+  $('.editable-description')
+  .popup({
+    popup : $('.editable-description-popup'),
+    on    : 'click'
+  })
 
-      $('.editable-consultant')
-      .popup({
-        popup : $('.editable-consultant-popup'),
-        on    : 'click'
-      })
+  $('.editable-consultant')
+  .popup({
+    popup : $('.editable-consultant-popup'),
+    on    : 'click'
+  })
 
-      $('.editable-description').click(function() {
-        var text = $( this ).text();
-        $('.editable-description-popup textarea').val(text).focus();
-      });
+  $('.editable-description').click(function() {
+    var text = $( this ).text();
+    $('.editable-description-popup textarea').val(text).focus();
+  });
 
-      $('.editable-number')
-      .popup({
-        popup : $('.editable-number-popup'),
-        on    : 'click'
-      })
+  $('.editable-number')
+  .popup({
+    popup : $('.editable-number-popup'),
+    on    : 'click'
+  })
 
-      $('.editable-number').click(function() {
-        var text = $( this ).text().match(/\d+/);
-        $('.editable-number-popup input').val(text).focus();
-      });
+  $('.editable-number').click(function() {
+    var text = $( this ).text().match(/\d+/);
+    $('.editable-number-popup input').val(text).focus();
+  });
 
-      $(".editable-consultant-task").click(function() {
-        $(this).popup("show");
-        var id = $(this).parent().parent().attr("id").match(/\d+/)
+  $(".editable-consultant-task").click(function() {
+    $(this).popup("show");
+    var id = $(this).parent().parent().attr("id").match(/\d+/)
 
-      });
-
-
-      $( ".editable-text-popup .inline-editing-form" ).submit(function( event ) {
-        event.preventDefault();
-        var input_path = $(".editable-text-popup input")
-        var form_data = { project: { name: input_path.val() } }
-        $(".editable-title").popup("hide");
-        $(".editable-title").hide().text(input_path.val()).fadeIn();
-        handleSubmit(form_data);
-      });
-
-      $( ".editable-number-popup .inline-editing-form" ).submit(function( event ) {
-        event.preventDefault();
-        var input_path = $(".editable-number-popup input")
-        var form_data = { project: { man_days: input_path.val() } }
-        $(".editable-number").popup("hide");
-        $(".man-days-number").hide().text(input_path.val()).fadeIn();
-        handleSubmit(form_data);
-      });
-
-      $( ".editable-description-popup .inline-editing-form" ).submit(function( event ) {
-        event.preventDefault();
-        var input_path = $(".editable-description-popup textarea")
-        var form_data = { project: { description: input_path.val() } }
-        $(".editable-description").popup("hide");
-        $(".editable-description").hide().text(input_path.val()).fadeIn();
-        handleSubmit(form_data);
-      });
+  });
 
 
-      function handleSubmit (data) {
-        $.ajax({
-          type: "PATCH",
-          url: "<%= url_for project_path(@project) %>",
-          data: data
-        })
-      }
-    </script>
+  $( ".editable-text-popup .inline-editing-form" ).submit(function( event ) {
+    event.preventDefault();
+    var input_path = $(".editable-text-popup input")
+    var form_data = { project: { name: input_path.val() } }
+    $(".editable-title").popup("hide");
+    $(".editable-title").hide().text(input_path.val()).fadeIn();
+    handleSubmit(form_data);
+  });
 
-    <script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
-  <% end %>
+  $( ".editable-number-popup .inline-editing-form" ).submit(function( event ) {
+    event.preventDefault();
+    var input_path = $(".editable-number-popup input")
+    var form_data = { project: { man_days: input_path.val() } }
+    $(".editable-number").popup("hide");
+    $(".man-days-number").hide().text(input_path.val()).fadeIn();
+    handleSubmit(form_data);
+  });
+
+  $( ".editable-description-popup .inline-editing-form" ).submit(function( event ) {
+    event.preventDefault();
+    var input_path = $(".editable-description-popup textarea")
+    var form_data = { project: { description: input_path.val() } }
+    $(".editable-description").popup("hide");
+    $(".editable-description").hide().text(input_path.val()).fadeIn();
+    handleSubmit(form_data);
+  });
+
+
+  function handleSubmit (data) {
+    $.ajax({
+      type: "PATCH",
+      url: "<%= url_for project_path(@project) %>",
+      data: data
+    })
+  }
+</script>
+
+<script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
+<% end %>
