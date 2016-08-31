@@ -10,7 +10,8 @@
       <% end %>
     </td>
     <td class="task-name"><div class="editable-task-name-task"><%= link_to edit_project_task_path(@project, task), remote:true  do %><%= task.name.nil? ? "Blank" : task.name %><% end %></div></td>
-    <td class="task-start"><div class="editable-start-date-task"><%= link_to edit_project_task_path(@project, task), remote:true  do %><%= task.start_date.presence || "-" %><% end %></div></td>
-    <td class="task-end"><div class="editable-end-date-task"><%= link_to edit_project_task_path(@project, task), remote:true  do %><%= task.end_date.presence || "-" %><% end %></div></td>
+    <td class="task-start"><div class="editable-start-date-task"><%= link_to edit_project_task_path(@project, task), remote:true  do %><%= task.start_date.nil? ? "-" : task.start_date.strftime("%a, %_d %b %Y") %><% end %></div></td>
+    <td class="task-end"><div class="editable-end-date-task"><%= link_to edit_project_task_path(@project, task), remote:true  do %><%= task.end_date.nil? ? "-" : task.end_date.strftime("%a, %_d %b %Y")
+ %><% end %></div></td>
     <td class="task-consultant"><div class="editable-consultant-task"><%= link_to edit_project_task_path(@project, task), remote:true  do %><%= task.user.nil? ? "No user defined" : task.user.full_name %><% end %></div></td>
 </tr>

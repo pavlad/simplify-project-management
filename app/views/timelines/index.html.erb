@@ -3,7 +3,7 @@
     <div class="project-info" style="padding: 20px;">
 
       <div class="basic-info">
-        <h2><%= editable @project, :name %></h2>
+        <h2><%= @project.name %></h2>
         <h3>
           <ul class="list-inline">
             <li><i class="fa fa-building" aria-hidden="true"></i>
@@ -15,7 +15,7 @@
             </li>
           </ul>
         </h3>
-        <p><%= editable @project, :description, type: :textarea %></p>
+        <p><%= @project.description %></p>
       </div>
 
       <div class="project-owners">
@@ -58,7 +58,7 @@
         <div class="timeline-content box">
           <h3><%= timeline.title %></h3>
           <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
-          <p><%= timeline.date %></p>
+          <p><%= timeline.date.strftime("%a, %_d %b %Y") %></p>
           <p><%= truncate(timeline.description, length: 400) %></p>
           <p><%= link_to "Edit", edit_project_timeline_path(@project, timeline), remote: true %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
         </div>
@@ -167,5 +167,13 @@
     ;
   });
 
+</script>
+<script type="text/javascript">
+  $('#timeline_date').daterangepicker({
+                                singleDatePicker: true,
+                                locale: {
+                                  format: 'YYYY-MM-DD'
+                                }
+                            });
 </script>
 <% end %>
