@@ -61,7 +61,7 @@
         <div class="ui list">
           <div class="item">
             <% if @project.project_manager %>
-            <%= cl_image_tag @project.project_manager.avatar.public_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%>
+            <%= cl_image_tag @project.project_manager.avatar_id, attachinary_presets %>
             <div class="content">
               <a class="header"><%= @project.project_manager.full_name if @project.project_manager.full_name %></a>
               <div class="description"><%= @project.project_manager.job_title if @project.project_manager.job_title %></div>
@@ -90,7 +90,7 @@
         <div class="ui list">
           <% @project.consultants.each do |c| %>
           <div class="item">
-            <%= cl_image_tag c.avatar.public_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%>
+            <%= cl_image_tag c.avatar_id, attachinary_presets %>
             <div class="content">
               <a class="header"><%= c.full_name if c.full_name %></a>
               <div class="description"><%= c.job_title if c.job_title %></div>

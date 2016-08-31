@@ -6,7 +6,7 @@
   <td><%= project.tasks.size == 0 ? "-" : "#{project.completion_percentage.to_i}%" %></td>
   <td>
     <% if project.project_manager %>
-    <div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name if project.project_manager %>" data-content=<%= project.project_manager.job_title if project.project_manager.job_title %> class="project-manager-popup-trigger"><%= cl_image_tag project.project_manager.avatar.public_id,  class: "ui mini circular image",transformation: [{ width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"} ]%></span></div>
+    <div class="consultant-avatars"><span data-title="<%= project.project_manager.full_name if project.project_manager %>" data-content=<%= project.project_manager.job_title if project.project_manager.job_title %> class="project-manager-popup-trigger"><%= cl_image_tag project.project_manager.avatar_id, attachinary_presets %></span></div>
     <% end %>
   </td>
 </tr>
