@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def find_tasks_in_array(project)
     array = []
-    normal_array = project.tasks.select{ |task| task.user = self}
+    normal_array = project.tasks.select{ |task| task.user == self}
     normal_array.each do |task|
       if task.has_date?
         array << [task.name, task.start_date, task.end_date]
@@ -50,7 +50,7 @@ class User < ApplicationRecord
 
   def get_color_tasks(project)
     array = []
-    normal_array = project.tasks.select{ |task| task.user = self}
+    normal_array = project.tasks.select{ |task| task.user == self}
     normal_array.each do |task|
       if task.has_date?
         array << task.color

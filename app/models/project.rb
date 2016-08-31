@@ -67,7 +67,7 @@ class Project < ApplicationRecord
   def has_consultant(consultant)
     ans = false
     self.tasks.each do |task|
-      if task.user == consultant
+      if task.user == consultant && task.has_date?
         ans = true
       end
     end
