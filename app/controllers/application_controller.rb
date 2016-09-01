@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     true # Or something like current_user.xeditable?
   end
 
+  def default_url_options
+    { host: ENV['HOST'] || 'localhost:3000' }
+  end
+
 end
