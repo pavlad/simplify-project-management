@@ -57,11 +57,15 @@
 
         <!-- Right aligned menu below button -->
 
+
+
+
+
         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="user-menu">
-          <li class="mdl-menu__item"><%= link_to 'Edit my profile', edit_user_registration_path %></li>
-          <li class="mdl-menu__item"><%= link_to 'Settings', settings_user_management_path %></li>
+          <%= link_to edit_user_registration_path do %><li class="mdl-menu__item">Edit my profile</li><% end %>
+          <%= link_to settings_user_management_path do %><li class="mdl-menu__item">Settings</li><% end %>
           <li disabled class="mdl-menu__item">Edit dashboard</li>
-          <li class="mdl-menu__item"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+          <%= link_to destroy_user_session_path, method: :delete do %><li class="mdl-menu__item">Log out</li><% end %>
         </ul>
         <div class="ui item right profile">
           <div class="ui header" id="user-menu">
