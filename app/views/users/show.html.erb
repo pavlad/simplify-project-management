@@ -1,16 +1,16 @@
 <% content_for :title, "#{@user.full_name}| Profile page" %>
 <div class="ui container">
   <div class="consultant-projects">
+    <div class="box">
     <% @projects.each do |project| %>
       <div class="project-timeline">
-        <%= link_to project_path(project) do %>
-        <%= project.name %>
-        <% end %>
+        <h3><%= project.name %></h3>
         <div class='consultant-tasks-timeline'>
           <%= timeline @user.find_tasks_in_array(project), colors: @user.get_color_tasks(project)%>
         </div>
       </div>
     <% end %>
+      </div>
   </div>
 </div>
 
