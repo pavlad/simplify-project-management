@@ -3,7 +3,7 @@ class PassthroughController < ApplicationController
     if current_user.is_client
       path = client_dashboard_index_path
     else
-      path = projects_path
+      path = overview_dashboard_index_path
     end
     redirect_to path
   end
