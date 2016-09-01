@@ -2,3 +2,4 @@ var new_task = $("<%= j render partial: "projects/task", locals: {project: @proj
 $('#task-list .list').append(new_task);
 new_task.fadeIn();
 $('.field').find('input').val('');
+$('.ui.fluid .text').text("");

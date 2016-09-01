@@ -1,6 +1,6 @@
 
 <tr data-link="<%= project_path(project) %>" class="cursor-pointer">
-  <td data-label="Status" class="mdl-data-table__cell--non-numeric project-status"><a class="ui label high-priority-issue"><%= project.issue_type%></a></td>
+  <td data-label="Status" class="mdl-data-table__cell--non-numeric project-status"><a class="<%="#{project.status_class}"%>"><%= project.issue_type %></a></td>
   <td class="project-name"><%= project.name %></td>
   <td class="project-client"><%= project.client ? project.client.name : "-" %> </td>
   <td class="project-progress"><%= project.tasks.size == 0 ? "-" : "#{project.completion_percentage.to_i}%" %></td>

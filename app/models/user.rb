@@ -84,6 +84,10 @@ class User < ApplicationRecord
     return self.tasks.count
   end
 
+  def projects_count
+    return self.projects.count
+  end
+
   def tasks_done_count
     return self.tasks.select{|task| task.is_done}.count
   end
