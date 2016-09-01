@@ -54,7 +54,7 @@
   width: 30px;
   left: 50%;
   margin-left: -15px;
-      box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 
 }
 
@@ -77,4 +77,10 @@
 
 .timeline-page .mdl-tabs__panel.is-active {
   display: block;
+}
+
+.job_title_modal {
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 14px;
 }

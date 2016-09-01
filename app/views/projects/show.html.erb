@@ -63,7 +63,7 @@
             <% if @project.project_manager %>
             <%= cl_image_tag @project.project_manager.avatar_id, attachinary_presets %>
             <div class="content">
-              <a class="header"><%= @project.project_manager.full_name if @project.project_manager.full_name %></a>
+              <a class="header"><%=link_to show_consultant_user_path(@project.project_manager), remote:true do %><%= @project.project_manager.full_name if @project.project_manager.full_name %><% end %></a>
               <div class="description"><%= @project.project_manager.job_title if @project.project_manager.job_title %></div>
             </div>
             <% else %>
@@ -92,7 +92,7 @@
           <div class="item">
             <%= cl_image_tag c.avatar_id, attachinary_presets %>
             <div class="content">
-              <a class="header"><%= c.full_name if c.full_name %></a>
+              <a class="header"><%=link_to show_consultant_user_path(c), remote:true do %><%= c.full_name if c.full_name %></a><% end %>
               <div class="description"><%= c.job_title if c.job_title %></div>
             </div>
           </div>
@@ -141,7 +141,9 @@
   <!-- end of the famous tabs -->
 </div>
 
+<div class="ui long modal show_consultant_modal">
 
+</div>
 
 <%= content_for(:after_js) do %>
 <!-- Modal -->

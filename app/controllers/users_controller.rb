@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :show_consultant]
 
   def index
     @users = User.all
@@ -25,6 +25,13 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_path
+  end
+
+  def show_consultant
+    respond_to do |format|
+      format.html { redirect_to users_path() }
+      format.js
+    end
   end
 
   private
