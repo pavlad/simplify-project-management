@@ -1,2 +1,5 @@
 $('.show_consultant_modal').html("<%= j render 'show_consultant' %>");
-$('.show_consultant_modal').modal('show');
+var show_modal = function(){
+  $('.show_consultant_modal').modal('show');
+};
+setTimeout(show_modal, 100);
