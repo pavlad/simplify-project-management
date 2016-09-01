@@ -1,7 +1,15 @@
 <%= simple_form_for [@project, @task] do |f| %>
   <%= f.input :name %>
-  <%= f.input :start_date, as: :string, input_html: { value: localize(f.object.start_date, format: "%-d/%m/%Y") } %>
-  <%= f.input :end_date, as: :string, input_html: { value: localize(f.object.end_date, format: "%-d/%m/%Y") } %>
+  <% if @task.start_date.nil? %>
+    <%= f.input :start_date, as: :string %>
+  <% else %>
+    <%= f.input :start_date, as: :string, input_html: { value: localize(f.object.start_date, format: "%-d/%m/%Y") } %>
+  <% end %>
+  <% if @task.end_date.nil? %>
+    <%= f.input :end_date, as: :string %>
+  <% else %>
+    <%= f.input :end_date, as: :string, input_html: { value: localize(f.object.end_date, format: "%-d/%m/%Y") } %>
+  <% end %>
   <%= render partial: 'shared/single_select_search_dropdown', locals: {field_name: :user_id, collection_name: @users, f: f, attribute_name: :full_name, prompt_message: 'Select Consultant'} %>
   <%= f.button :submit %>
 <% end %>

@@ -20,4 +20,8 @@ module ApplicationHelper
   def attachinary_presets
     {class: "ui mini circular image", transformation: [width: 25, height: 25, crop: "fill", quality: 100, gravity: "face"]}
   end
+
+  def attachinary_presets_consultant_details
+    {transformation: [width: 200, height: 200, crop: "fill", quality: 100, gravity: "face"]}
+  end
 end

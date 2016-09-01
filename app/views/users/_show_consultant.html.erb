@@ -1,0 +1,34 @@
+<div class="header"><%= @user.full_name %></div>
+<div class="content">
+<%= cl_image_tag @user.avatar_id, attachinary_presets_consultant_details %>
+<% if @user.email.present? %>
+    <div class="job_title_modal"><%= @user.job_title %></div>
+    <div><%= @user.description %></div>
+  <% end %>
+  <div class="ui list">
+    <% if @user.phone.present? %>
+      <div class="item">
+        <i class="volume control phone icon"></i>
+        <div class="content">
+          <%= @user.phone %>
+        </div>
+      </div>
+    <% end %>
+    <% if @user.mobile_phone.present? %>
+      <div class="item">
+        <i class="mobile icon"></i>
+        <div class="content">
+          <%= @user.mobile_phone %>
+        </div>
+      </div>
+    <% end %>
+    <% if @user.email.present? %>
+      <div class="item">
+        <i class="mail icon"></i>
+        <div class="content">
+          <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

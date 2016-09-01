@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :users do
     get 'projects', on: :member
     get 'tasks', on: :member
+    get 'show_consultant', on: :member
   end
   resources :clients
 
