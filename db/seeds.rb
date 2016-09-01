@@ -65,21 +65,25 @@ projects = [
   {
     name: "IT strategy redefinition",
     man_days: 123,
+    description: "",
     project_manager_id: User.all.map{|user| user.id}.sample
   },
   {
     name: "Market research of tiles in Gent",
     man_days: 120,
+    description: "",
     project_manager_id: User.all.map{|user| user.id}.sample
   },
   {
     name: "New Product development",
     man_days: 60,
+    description: "",
     project_manager_id: User.all.map{|user| user.id}.sample
   },
   {
     name: "Implentation strategy",
     man_days: 200,
+    description: "",
     project_manager_id: User.all.map{|user| user.id}.sample
   }
 ]
