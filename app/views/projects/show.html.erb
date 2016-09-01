@@ -41,7 +41,7 @@
             </li>
           </ul>
         </h3>
-        <p class="editable-description"><%= @project.description %></p>
+        <p class="editable-description"><%= @project.description.empty? ? "     " : @project.description %></p>
         <div class="ui popup editable-description-popup">
           <form class="ui form inline-editing-form">
             <div class="field">

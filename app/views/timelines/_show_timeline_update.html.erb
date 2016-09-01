@@ -1,0 +1,6 @@
+<div class="header"><%= @timeline.title %><br><span class="small-text-update"> posted by <%= @timeline.user.full_name %> <% if @timeline.date %> on <%= @timeline.date.to_datetime.strftime("%A, %d %B %Y") %> <% end %></span></div>
+<div class="content">
+  <div class="update-description">
+    <%= @timeline.description %>
+  </div>
+</div>

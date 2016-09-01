@@ -32,6 +32,22 @@
           </div>
         </div>
       </div>
+      <div class="project-members">
+        <h3>Consultants</h3>
+        <div class="ui list">
+          <% @project.consultants.each do |c| %>
+          <div class="item">
+            <%= cl_image_tag c.avatar_id, attachinary_presets %>
+            <div class="content">
+              <a class="header"><%=link_to show_consultant_user_path(c), remote:true do %><%= c.full_name if c.full_name %></a><% end %>
+              <div class="description"><%= c.job_title if c.job_title %></div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+
       </div>
        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
       <div class="mdl-tabs__tab-bar" style="margin-bottom: 20px;">
@@ -58,8 +74,16 @@
         <div class="timeline-content box">
           <h3><%= timeline.title %></h3>
           <p>Create by <%= timeline.user.first_name %> <%= timeline.user.last_name %></p>
-          <p><%= timeline.date.strftime("%a, %_d %b %Y") %></p>
-          <p><%= truncate(timeline.description, length: 400) %></p>
+          <p><% if timeline.date %>
+              <%= timeline.date.strftime("%a, %_d %b %Y") %>
+            <% end %>
+          </p>
+          <% if timeline.description %>
+            <p class="update-description"><%= truncate(timeline.description, length: 400) %>
+            <% if timeline.description.length > 400 %>
+              <%=link_to "Show more", project_timeline_path(@project,timeline), remote:true %></p>
+            <% end %>
+          <% end %>
           <p><%= link_to "Edit", edit_project_timeline_path(@project, timeline), remote: true %> | <%= link_to "Delete", project_timeline_path(@project, timeline), method: :delete %></p>
         </div>
       </div>
@@ -135,6 +159,10 @@
 
 <%= render 'form' %>
 <div class="ui long modal show_consultant_modal">
+
+</div>
+
+<div class="ui long modal show_timeline_update_modal">
 
 </div>
 
