@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :deliverables, only: :destroy
     resources :project_files, only: :destroy
-    resources :timelines, except: :show do
+    resources :timelines do
       post 'invite_client', on: :collection
     end
     resources :tasks do

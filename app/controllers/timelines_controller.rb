@@ -1,9 +1,16 @@
 class TimelinesController < ApplicationController
-  before_action :set_timeline, only: [:edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create, :index, :edit, :update, :destroy, :invite_client]
+  before_action :set_timeline, only: [:edit, :update, :destroy, :show]
+  before_action :set_project, only: [:new, :create, :index, :show, :edit, :update, :destroy, :invite_client]
 
   def index
     @timelines = Timeline.where(project_id: params[:project_id])
+  end
+
+  def show
+    respond_to do |format|
+      format.html { redirect_to timelines_path() }
+      format.js
+    end
   end
 
   def new
@@ -13,7 +20,9 @@ class TimelinesController < ApplicationController
   def create
     @timeline = Timeline.new(timeline_params)
     @timeline.user = current_user
-    @timeline.date = Date.parse(timeline_params[:date])
+    unless @timeline.date.nil?
+      @timeline.date = Date.parse(timeline_params[:date])
+    end
     @timeline.project_id = params[:project_id]
     @timeline.save!
 
