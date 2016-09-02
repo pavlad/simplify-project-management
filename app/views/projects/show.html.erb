@@ -39,6 +39,12 @@
               -
               <% end %>
             </li>
+            <li>
+              <span><%= link_to project_timelines_path(@project), {style: 'color: rgba(0,0,0,.87);'} do%>
+              <i class="fa fa-users" aria-hidden="true"></i>
+                <% end %>
+              </span>
+            </li>
           </ul>
         </h3>
         <p class="editable-description"><%= @project.description.empty? ? "     " : @project.description %></p>
@@ -248,14 +254,14 @@
 </script>
 
 
-    <script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
-    <script type="text/javascript">
-      $('#task_start_date').daterangepicker({
-                                singleDatePicker: true,
-                                locale: {
-                                  format: 'YYYY-MM-DD'
-                                }
-                            });
-    </script>
+<script type="text/javascript"> $('.ui.dropdown').dropdown(); </script>
+<script type="text/javascript">
+  $('#task_start_date').daterangepicker({
+    singleDatePicker: true,
+    locale: {
+      format: 'YYYY-MM-DD'
+    }
+  });
+</script>
 <% end %>
 
