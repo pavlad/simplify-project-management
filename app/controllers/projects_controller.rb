@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    @project.create_activity :destroy, owner: current_user, project_id: @project.id
+    redirect_to delete_dashboard_index_path
   end
 
   private

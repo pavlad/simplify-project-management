@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   # belongs_to :client
   has_many :issues, dependent: :destroy
   has_many :tasks, dependent: :destroy
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :users, through: :assignments
   belongs_to :client
   belongs_to :project_manager, class_name: "User", foreign_key: :project_manager_id

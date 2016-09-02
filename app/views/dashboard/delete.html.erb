@@ -1,0 +1,5 @@
+<% @projects.each do |project| %>
+
+<%= project.id %> - <%= project.name %> - <%= link_to 'delete', project_path(project), method: :delete %>
+
+<% end %>

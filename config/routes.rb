@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index] do
     collection do
       get 'overview'
+      get 'delete'
     end
   end
 

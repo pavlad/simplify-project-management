@@ -16,7 +16,10 @@ class DashboardController < ApplicationController
     @consultants = User.all
     @consultants_with_tasks = consultants_with_tasks(@consultants)
     @average_tasks = @consultants_with_tasks != 0 ? @total_undone_tasks / @consultants_with_tasks : 0
+  end
 
+  def delete
+    @projects = Project.all
   end
 
   private
