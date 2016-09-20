@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829095114) do
+ActiveRecord::Schema.define(version: 20160920112018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,14 @@ ActiveRecord::Schema.define(version: 20160829095114) do
     t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timelines_id"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+    t.index ["timelines_id"], name: "index_attachinary_files_on_timelines_id", using: :btree
+  end
+
+  create_table "client_project_access", id: false, force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "user_id",    null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -172,6 +179,7 @@ ActiveRecord::Schema.define(version: 20160829095114) do
 
   add_foreign_key "assignments", "projects"
   add_foreign_key "assignments", "users"
+  add_foreign_key "attachinary_files", "timelines", column: "timelines_id"
   add_foreign_key "issues", "projects"
   add_foreign_key "projects", "clients"
   add_foreign_key "tasks", "projects"

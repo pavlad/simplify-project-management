@@ -38,8 +38,10 @@ class TimelinesController < ApplicationController
 
   def update
     my_params = timeline_params
-    my_params[:date] = Date.parse(timeline_params[:date])
-    @timeline = Timeline.update(my_params)
+    unless my_params[:date].empty?
+      my_params[:date] = Date.parse(my_params[:date])
+    end
+    @timeline.update(my_params)
     redirect_to project_timelines_path(@project)
   end
 
@@ -57,7 +59,7 @@ class TimelinesController < ApplicationController
   private
 
   def timeline_params
-    params.require(:timeline).permit(:title, :date, :description, :user)
+    params.require(:timeline).permit(:title, :date, :description, :user, timeline_files: [])
   end
 
   def set_timeline

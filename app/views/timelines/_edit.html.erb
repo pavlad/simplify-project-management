@@ -1,7 +1,15 @@
 <%= simple_form_for [@project, @timeline] do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :date, as: :string, input_html: { value: localize(f.object.date, format: "%-d/%m/%Y"), class: "timeline-datepicker" }%>
+  <% if @timeline.date %>
+    <%= f.input :date, as: :string, input_html: { value: localize(f.object.date, format: "%-d/%m/%Y") , class: "timeline-datepicker" } %>
+  <% else %>
+    <%= f.input :date, as: :string, input_html: { class: "timeline-datepicker" } %>
+  <% end %>
+  <%= f.attachinary_file_field :timeline_files, as: :attachinary, cloudinary: {use_filename: true, unique_filename: false }, label: 'Project files' %>
+    <br>
+    <br>
+  <br>
   <%= f.button :submit %>
 <% end %>
 
