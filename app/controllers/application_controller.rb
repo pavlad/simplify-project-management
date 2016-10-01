@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :authenticate_user!
+  before_action :authenticate_user! if false
   helper_method :xeditable?
   # Pundit: white-list approach.
 
@@ -13,3 +13,4 @@ class ApplicationController < ActionController::Base
   end
 
 end
+
