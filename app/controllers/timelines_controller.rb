@@ -1,4 +1,5 @@
 class TimelinesController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_action :set_timeline, only: [:edit, :update, :destroy, :show]
   before_action :set_project, only: [:new, :create, :index, :show, :edit, :update, :destroy, :invite_client]
 

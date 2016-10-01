@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_done]
   before_action :set_project, only: [:create, :update, :new, :edit, :index, :destroy, :mark_as_done, :unmark_as_done]
 

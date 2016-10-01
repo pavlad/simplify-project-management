@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_action :find_project, only: [:show, :update, :destroy]
   before_action :load_activities, only: [:show]
 

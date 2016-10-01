@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy, :show_consultant]
 
   def index

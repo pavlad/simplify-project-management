@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  skip_before_filter :authenticate_user!
   before_action :find_project, only: [:new, :create, :destroy, :mark_as_resolved, :update]
   before_action :set_issue, only: [:update]
 

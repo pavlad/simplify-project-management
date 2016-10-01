@@ -1,4 +1,5 @@
 class PassthroughController < ApplicationController
+  skip_before_filter :authenticate_user!
   def index
     if current_user.present? && current_user.is_client
       path = client_dashboard_index_path
