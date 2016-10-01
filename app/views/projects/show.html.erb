@@ -41,13 +41,13 @@
             </li>
             <li>
               <span><%= link_to project_timelines_path(@project), {style: 'color: rgba(0,0,0,.87);'} do%>
-              <i class="fa fa-users" aria-hidden="true"></i>
+              <i class="fa fa-users" aria-hidden="true"></i> Timeline
                 <% end %>
               </span>
             </li>
           </ul>
         </h3>
-        <p class="editable-description"><%= @project.description.empty? ? "     " : @project.description %></p>
+        <p class="editable-description"><%= @project.description.empty? unless @project.description.nil? ? "     " : @project.description %></p>
         <div class="ui popup editable-description-popup">
           <form class="ui form inline-editing-form">
             <div class="field">
