@@ -15,7 +15,7 @@ class User < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :first_name, :last_name, :email, :job_title, :mobile_phone, :phone, :description
+    attribute :first_name, :last_name, :email, :job_title, :mobile_phone, :phone, :description, :id
   end
 
   def full_name

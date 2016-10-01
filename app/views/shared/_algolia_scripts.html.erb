@@ -9,12 +9,12 @@
   // Mustache templating by Hogan.js (http://mustache.github.io/)
   var templateDropdown = Hogan.compile(
     '<div class="container">' +
-    '<a href="http://localhost:3000/projects/{{ id }}"><div class="aa-dataset-project">' +
+    '<a href="https://simplify-projects.herokuapp.com/projects/{{ id }}"><div class="aa-dataset-project">' +
     '{{{ _highlightResult.name.value }}} {{{ _highlightResult.id.value }}}'+
     '</div></a>' +
     '</div>' +
     '<div class="container">' +
-    '<a href="http://localhost:3000/users"><div class="aa-dataset-user">' +
+    '<a href="https://simplify-projects.herokuapp.com/users/"><div class="aa-dataset-user">' +
     '{{{ _highlightResult.first_name.value }}} {{{ _highlightResult.last_name.value }}}'+
     '</div></a>' +
     '</div>');
@@ -24,7 +24,7 @@
   {
     source: autocomplete.sources.hits(teams, {hitsPerPage: 3}),
     templates: {
-      header: '<div class="category">Projects</div>',
+      header: '<div class="category"><div style="width:50%; text-align:left; display:inline-block;">Projects</div><div style="width:50%; text-align:right; display:inline-block;"><img src="https://simplify-projects.herokuapp.com/assets/algolia.png" height="20"/></div></div>',
       suggestion: function(hit) {
           // render the hit using Hogan.js
           return templateDropdown.render(hit);
@@ -34,7 +34,7 @@
     {
       source: autocomplete.sources.hits(players, {hitsPerPage: 5}),
       templates: {
-        header: '<div class="category">Consultants</div>',
+        header: '<div class="category"><div style="width:50%; text-align:left; display:inline-block;">Consultants</div><div style="width:50%; text-align:right; display:inline-block;"><img src="https://simplify-projects.herokuapp.com/assets/algolia.png" height="20"/></div></div>',
         suggestion: function(hit) {
           // render the hit using Hogan.js
           return templateDropdown.render(hit);
