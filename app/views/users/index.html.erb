@@ -16,6 +16,7 @@
       <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
         <thead>
           <tr>
+            <th><span class="sort" data-sort="consultant-avatar"></span></th>
             <th><span class="sort" data-sort="consultant-first_name">First Name</span></th>
             <th><span class="sort" data-sort="consultant-last_name">Last Name</span></th>
             <th><span class="sort" data-sort="consultant-job_title">Job Title</span></th>
@@ -26,11 +27,19 @@
         <tbody class="list">
           <% @users.each do |user| %>
           <tr>
+            <td class="consultant-avatar">
+              <% unless user.avatar.nil? %>
+                <img class="ui mini circular image" src="http://res.cloudinary.com/banana-cake/image/upload/<%= user.avatar.path %>">
+              <% end %>
+            </td>
             <td class="consultant-first_name"><%= user.first_name %></td>
             <td class="consultant-last_name"><%= user.last_name %></td>
             <td class="consultant-job_title"><%= user.job_title %></td>
             <td class="consultant-email"><%= user.email %></td>
-            <td><%= link_to "Edit", edit_user_path(user), remote: true %> - <%= link_to "Delete", user_path(user), method: :delete %> - <%= link_to "Details", user_path(user.id) %> </td>
+            <td><%= link_to "Edit", edit_user_path(user), remote: true %>
+            <% unless current_user.nil? %>
+               - <%= link_to "Delete", user_path(user), method: :delete %> - <%= link_to "Details", user_path(user.id) %> </td>
+            <% end %>
           </tr>
           <% end %>
         </tbody>
