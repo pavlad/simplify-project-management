@@ -9,9 +9,9 @@
 ![Project tasks progress](http://pavl.io/simplify/s3.png)
 
 ###Team:###
-* Phanarat Pak - https://github.com/phanpak
-* Lukas Gutwinski - https://github.com/LukasGutwinski
-* Vladimir Pavlyukov - https://github.com/pavlad
+* **Phanarat Pak** - https://github.com/phanpak
+* **Lukas Gutwinski** - https://github.com/LukasGutwinski
+* **Vladimir Pavlyukov** - https://github.com/pavlad
 
 ###To do:###
 - [ ] Fix sign up issues as params aren't passed
