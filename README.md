@@ -5,7 +5,7 @@
 
 **Demo**: https://simplify-projects.herokuapp.com
 
-![Projects overview](http://pavl.io/simplify/s1.png)
+![Projects overview](http://pavl.io/simplify/s4.png)
 ![Project tasks progress](http://pavl.io/simplify/s3.png)
 
 ###Team:###
