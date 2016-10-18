@@ -1,12 +1,12 @@
 # Simplify Project Management
 ## Created as a final project during Le Wagon Brussels 2016
 
-Simplify is a simplified project management tool for consultancies which is which was designed and built during the two last weeks of Le Wagon. This is a Rails application with a front-end mainly based on Semantic UI.
+**Simplify** is a **simplified project management tool** for consultancies which is which was designed and built during the two last weeks of Le Wagon. This is a Rails application with a front-end mainly based on Semantic UI.
 
 ![Projects overview](http://pavl.io/simplify/s1.png)
-![Project tasks progress](http://pavl.io/simplify/s1.png)
+![Project tasks progress](http://pavl.io/simplify/s2.png)
 
-Demo: https://simplify-projects.herokuapp.com
+**Demo**: https://simplify-projects.herokuapp.com
 
 Team:
 * Phanarat Pak - https://github.com/phanpak
