@@ -8,12 +8,12 @@
 ![Projects overview](http://pavl.io/simplify/s1.png)
 ![Project tasks progress](http://pavl.io/simplify/s2.png)
 
-Team:
+###Team:###
 * Phanarat Pak - https://github.com/phanpak
 * Lukas Gutwinski - https://github.com/LukasGutwinski
 * Vladimir Pavlyukov - https://github.com/pavlad
 
-To do:
+###To do:###
 - [ ] Fix sign up issues as params aren't passed
 - [ ] Build in multitenancy for each company
 - [ ] Create tasklist in timeline
