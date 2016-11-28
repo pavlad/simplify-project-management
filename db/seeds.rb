@@ -9,6 +9,7 @@ Task.destroy_all
 Assignment.destroy_all
 Project.destroy_all
 User.destroy_all
+Client.destroy_all
 
 ############################ User seed ##################################################
 
