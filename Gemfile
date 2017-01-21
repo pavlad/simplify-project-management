@@ -28,7 +28,6 @@ gem 'jquery-ui-rails'
 gem "algoliasearch-rails"
 gem 'chartjs-ror'
 gem "pundit"
-gem 'carrierwave', '~> 1.0'
 
 
 group :development, :test do
