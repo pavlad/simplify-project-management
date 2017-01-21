@@ -84,6 +84,10 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (9.0.5)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     chartjs-ror (3.0.2)
       rails (>= 3.1)
     chartkick (2.0.2)
@@ -267,6 +271,7 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
+  carrierwave (~> 1.0)
   chartjs-ror
   chartkick
   cloudinary (= 1.1.0)
@@ -302,4 +307,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.7
