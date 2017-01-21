@@ -24,4 +24,8 @@ module ApplicationHelper
   def attachinary_presets_consultant_details
     {transformation: [width: 200, height: 200, crop: "fill", quality: 100, gravity: "face"]}
   end
+
+  def shorten_string(string, character_limit=30)
+    string.truncate(character_limit, separator: ' ')
+  end
 end

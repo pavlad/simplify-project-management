@@ -29,7 +29,7 @@
                     <td class="client-email"><%= client.email %></td>
                     <td class="client-phone"><%= client.phone %></td>
                     <td class="client-website"><a href = "<%= client.website %>" target="_blank"><%= client.website %></a></td>
-                    <td class="client-address"><%= client.address %></td>
+                    <td class="client-address"><%= shorten_string(client.address) %></td>
                     <td><%= link_to "Edit", edit_client_path(client), remote:true %> - <%= link_to "Delete", client_url(client), method: :delete, data: { confirm: "Are you sure?" } %></td>
                   </tr>
                   <% end %>
