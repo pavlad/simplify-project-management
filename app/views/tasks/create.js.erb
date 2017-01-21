@@ -3,3 +3,5 @@ $('#task-list .list').append(new_task);
 new_task.fadeIn();
 $('.field').find('input').val('');
 $('.ui.fluid .text').text("");
+var completion_rate = <%= @project.completion_percentage %> ;
+$('#p1 .bar1').css('width', completion_rate + "%");
