@@ -9,6 +9,7 @@
             <tr>
               <th class="mdl-data-table__cell--non-numeric"><span class="sort" data-sort="task-status">Done</span></th>
               <th><span class="sort" data-sort="task-name">Task</span></th>
+              <th><span class="sort" data-sort="task-project">Project</span></th>
               <th><span class="sort" data-sort="task-start">Start</span></th>
               <th><span class="sort" data-sort="task-end">End</span></th>
               <th><span class="sort" data-sort="task-consultant">Assigned to</span></th>
@@ -29,6 +30,7 @@
                   <% end %>
                 </td>
                 <td class="task-name"><%= task.name.nil? ? "Blank" : task.name %></td>
+                <td class="task-project"><%= task.project.name unless task.project.name.nil? %></td>
                 <td class="task-start"><%= task.start_date unless task.start_date.nil? %></td>
                 <td class="task-end"><%= task.end_date unless task.end_date.nil? %></td>
                 <td class="task-consultant"><%= task.user.nil? ? "No user defined" : task.user.full_name %></td>
