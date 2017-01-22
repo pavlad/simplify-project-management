@@ -12,7 +12,7 @@
           <div class="header">
             <%= issue.name %> - <%= issue.label.nil? ? "Blank" : issue.label %>
           </div>
-          <div class="meta"><%= issue.created_at.to_datetime.strftime("%A, %d %B %Y") %></div>
+          <div class="meta"><%= issue.created_at.to_datetime.strftime("%A, %d %b %Y %l:%M %p") %></div>
           <div class="description">
             <p><%= issue.description.nil? ? "Blank" : issue.description %></p>
           </div>
